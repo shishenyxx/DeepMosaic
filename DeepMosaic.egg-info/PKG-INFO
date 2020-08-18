@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: DeepMosaic
+Version: 0.1
+Summary: image based mosaic variant classification tool using CNN based deeplearning
+Home-page: https://github.com/Virginiaxu/DeepMosaic
+Author: Xin (Virginia) Xu
+Author-email: xinxu@hsph.harvard.edu
+License: MIT
+Description: # DeepMosaic
+Keywords: variant-calling,cnn,deep-learning,transfer-learning,mosaic-variant,bioinformatics-tool
+Platform: UNKNOWN

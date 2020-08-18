@@ -1,0 +1,9 @@
+pandas
+numpy
+torch
+pysam
+efficientnet_pytorch
+argparse
+scipy
+tables
+matplotlib
