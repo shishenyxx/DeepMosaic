@@ -20,7 +20,7 @@ def repeats_annotation(all_variants, output_dir):
                sample_name, bam, chrom, pos, ref, alt, depth, sex = variant
                key = "_".join([chrom, pos, ref, alt])
                tmp.write("\t".join(map(str, [chrom, int(pos)-1, int(pos) + len(ref)-2, ref, alt, key])) + "\n")
-        command = "bedtools annotate -i " + rp_path +" -files " + all_repeats_path + " " +  segdup_path + " >> " + \
+        command = "bedtools annotate -i " + rp_path +" -files " + all_repeats_path + " " +  segdup_path + " > " + \
                    output_dir + "repeats_annotation.bed"
         subprocess.call(command, shell=True)
         os.remove(rp_path)

@@ -62,7 +62,7 @@ def getOptions(args=sys.argv[1:]):
     parser = argparse.ArgumentParser(description="Parses command.")
     parser.add_argument("-i", "--input_file", required=True, help="the input feature file generated from the previous step.")
     parser.add_argument("-t", "--testing_mode", required=False, default=True, help="testing mode or training mode; True for testing mode.")
-    parser.add_argument("-m", "--model", required=False, default="efficientnet-b0", help="the convolutional neural network model \
+    parser.add_argument("-m", "--model", required=False, default="efficientnet-b4_epoch_6.pt", help="the convolutional neural network model \
                                                                                          transfer learning is based on.")
     parser.add_argument("-b", "--batch_size", required=False, type=int, default=10, help="traing or testing batch size.")
     parser.add_argument("-o", "--output_file", required=True, help="prediction output file")
@@ -85,32 +85,36 @@ def check_y_region(positions):
     in_par2 = (positions >= y_par2_region[0]) & (positions <= y_par2_region[1])
     return (~in_par1) & (~in_par2)
 
-def prediction_decision(features_list, scores_list):
-    predictions = np.array(["artifact"] * len(features_list), dtype = object)
+def prediction_decision(features_df, scores_list):
+    predictions = np.array(["artifact"] * len(features_df), dtype = object)
     mosaic_scores = scores_list[:, -1].astype(float)
-    depth_fractions = features_list[:,-3].astype(float)
-    segdups = features_list[:,-6].astype(int)
-    all_repeats = features_list[:,-7].astype(int)
-    gnomads = features_list[:, -8].astype(float)
-    chroms = features_list[:,2]
-    positions = features_list[:,3].astype(int)
-    sexs = features_list[:,1].astype(str)
-    lower_CIs = features_list[:, 8].astype(float)
-    upper_CIs = features_list[:, 9].astype(float)
+    depth_fractions = features_df.depth_fraction.astype(float)
+    segdups = features_df.segdup.astype(int)
+    all_repeats = features_df.all_repeat.astype(int)
+    gnomads = features_df.gnomad
+    gnomads[gnomads=="."] = 0
+    gnomads = gnomads.astype(float)
+    chroms = features_df.chrom
+    positions = features_df.pos.astype(int)
+    sexs = features_df.sex.astype(str)
+    lower_CIs = features_df.lower_CI.astype(float)
+    upper_CIs = features_df.upper_CI.astype(float)
     #mosaic
     mosaic_filters = (depth_fractions >= 0.6) & (depth_fractions <= 1.7) & (segdups == 0) & (all_repeats == 0) &\
               (gnomads < 0.001) & (mosaic_scores > 0.6)
     predictions[np.where(mosaic_filters)] = "mosaic"
+    extra_mosaic_filters = (depth_fractions >= 0.6) & (depth_fractions <= 1.7) & (segdups == 0) & (all_repeats == 0) &\
+              (gnomads < 0.001) & (lower_CIs >= 0.5) & (upper_CIs < 0.5)
+    extra_mosaic_filters_X = extra_mosaic_filters & (sexs == "M") & (chroms == "X") & (check_x_region(positions))
+    extra_mosaic_filters_Y = extra_mosaic_filters & (sexs == "M") & (chroms == "Y") & (check_y_region(positions))
+    predictions[extra_mosaic_filters_X | extra_mosaic_filters_Y] = "mosaic"
     #heterozygous
-    hetero_filters = (mosaic_filters == False) & (upper_CIs >= 0.5) & (lower_CIs < 0.5)
+    hetero_filters = (mosaic_scores <= 0.6) & (upper_CIs >= 0.5) & (lower_CIs < 0.5)
     predictions[np.where(hetero_filters)] = "heterozygous"
-    predictions[np.where(hetero_filters & (sexs == "M") & (chroms == "X") & (check_x_region(positions)))] = "mosaic"
-    predictions[np.where(hetero_filters & (sexs == "M") & (chroms == "Y") & (check_y_region(positions)))] = "mosaic"
-    #reference homozygous
-    ref_homo_filters = (mosaic_filters == False) & (lower_CIs < 0.01) & (upper_CIs < 0.5)
+    #homozygous
+    ref_homo_filters = (mosaic_scores <= 0.6) & (lower_CIs < 0.01) & (upper_CIs < 0.5)
     predictions[np.where(ref_homo_filters)] = "reference_homozygous"
-    #alternative homozygous
-    alt_homo_filters = (mosaic_filters == False) & (lower_CIs > 0.5) & (upper_CIs > 0.99)
+    alt_homo_filters = (mosaic_scores <= 0.6) & (lower_CIs > 0.5) & (upper_CIs > 0.99)
     predictions[np.where(alt_homo_filters)] = "alternative_homozygous"
     return predictions.reshape(-1,1)
    
@@ -119,7 +123,7 @@ def main():
     options = getOptions(sys.argv[1:])
     input_file = options.input_file
     mode = options.testing_mode
-    model_path = options.model
+    model_name = options.model
     batch_size = options.batch_size
     output_file = os.path.abspath(options.output_file)
 
@@ -135,11 +139,13 @@ def main():
           'shuffle': True,
           'num_workers': 6}
 
-    model_name = model_path.split("/")[-1].split("_")[0]
 
+    model_type = model_name.split("_")[0]
+    model_path = pkg_resources.resource_filename('deepmosaic', 'models/' + model_name)
+    print(model_type, model_path)
     #model_name = os.path.abspath(model_path).split("/")[-1]
     if model_name.startswith("efficientnet"):
-        model = EfficientNet.from_pretrained(model_name)
+        model = EfficientNet.from_pretrained(model_type)
         num_ftrs = model._fc.in_features
         model._fc = nn.Linear(num_ftrs, 3)
         model.load_state_dict(torch.load(model_path,map_location=device))
@@ -167,7 +173,9 @@ def main():
         model = model.to(device)
 
     sys.stdout.write("Loading input data...")
-    data = pd.read_csv(input_file, sep="\t").values
+    data = pd.read_csv(input_file, sep="\t")
+    feature_header = data.columns
+    data = data.values
     sys.stdout.write("complete\n")
     global testing_generator
     testing_generator = DataLoader(TestDataset(data), **params)
@@ -176,10 +184,11 @@ def main():
     preds_list, indices_list, scores_list = model_predict(model)
     preds_list = np.array(preds_list).reshape(-1,1)
     features_list = data[indices_list, :]
+    features_df = pd.DataFrame(features_list, columns = feature_header)
     scores_list = np.array(scores_list)
     #determine genotypes
-    prediction_list = prediction_decision(features_list, scores_list)
-    image_list = features_list[:,-2].reshape(-1,1)
+    prediction_list = prediction_decision(features_df, scores_list)
+    image_list = features_df.image_filepath.values.reshape(-1,1)
     header = ["#sample_name", "sex","chrom", "pos", "ref", "alt", "variant", "maf", "lower_CI", "upper_CI", "variant_type", "gene_id",
               "gnomad", "all_repeat", "segdup", "homopolymer", "dinucluotide", "depth_fraction",
               "homo_score", "hetero_score", "mosaic_score", "prediction", "image_filepath"]

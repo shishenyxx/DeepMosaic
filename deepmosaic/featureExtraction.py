@@ -36,20 +36,24 @@ def wilson_binom_interval(success, total, alpha = 0.05):
     ci_upp = center + dist
     return ci_low, ci_upp
 
+
 x_par1_region = [60001, 2699520]
 y_par1_region = [10001, 2649520]
 x_par2_region = [154931044, 155260560]
 y_par2_region = [59034050, 59363566]
 
 def check_x_region(position):
-    in_par1 = (position >= x_par1_region[0]) & (position <= x_par1_region[1])
-    in_par2 = (position >= x_par2_region[0]) & (position <= x_par2_region[1])
-    return (~in_par1) & (~in_par2)
+    position = int(position)
+    in_par1 = (position >= x_par1_region[0]) and (position <= x_par1_region[1])
+    in_par2 = (position >= x_par2_region[0]) and (position <= x_par2_region[1])
+    return (not in_par1) and (not in_par2)
 
 def check_y_region(position):
-    in_par1 = (position >= y_par1_region[0]) & (position <= y_par1_region[1])
-    in_par2 = (position >= y_par2_region[0]) & (position <= y_par2_region[1])
-    return (~in_par1) & (~in_par2)
+    position = int(position)
+    in_par1 = (position >= y_par1_region[0]) and (position <= y_par1_region[1])
+    in_par2 = (position >= y_par2_region[0]) and (position <= y_par2_region[1])
+    return (not in_par1) and (not in_par2)
+
 
 
 def multiprocess_iterator(line):
@@ -84,9 +88,9 @@ def multiprocess_iterator(line):
     canvas = paint_canvas(reads, int(pos))
     #compute depth fraction
     depth_fraction = reads_count/int(sequencing_depth)
-    if sex == "M" and chrom == "X" and check_x_region(pos):
+    if sex == "M" and chrom == "X" and check_x_region(int(pos)):
         depth_fraction = depth_fraction * 2
-    if sex == "M" and chrom == "Y" and check_y_region(pos):
+    if sex == "M" and chrom == "Y" and check_y_region(int(pos)):
         depth_fraction = depth_fraction * 2
     #compute maf and binomial CI
     ref_count = base_info[0][0]
@@ -145,15 +149,19 @@ def main():
     else:
         annovar = annovar_path + "/annotate_variation.pl"
         annovar_db = annovar_path + "/humandb"
+    #check if annovar path is valid
+    if not os.path.exists(annovar) or not os.path.exists(annovar_db):
+        sys.stderr.write("Please provide a valid annovar program directory.\n")
+        sys.exit(2)
 
-    #check if all paths are valid
+    #check if input path is valid
     if not os.path.exists(input_file):
-        sys.stderr.write("Please provide a valid input file.")
+        sys.stderr.write("Please provide a valid input file.\n")
         sys.exit(2)
 
     #check if the build version is valid
     if (build != "hg19") & (build != "hg38"):
-        sys.stderr.write("Please provide a valid genome build version. Only hg19 and hg38 are supported.")
+        sys.stderr.write("Please provide a valid genome build version. Only hg19 and hg38 are supported.\n")
         sys.exit(2)
 
     #make dir if output_dir does not exist
@@ -200,7 +208,6 @@ def main():
                 ref, alt = vcf_line[3:5]
                 all_variants.append([sample_name, bam, chrom, pos, ref, alt, depth, sex])
             vcf_file.close()
-
     #annotation repeat and segdup
     repeats_dict = repeats_annotation(all_variants, output_dir)
 
