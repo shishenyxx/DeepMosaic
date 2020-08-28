@@ -34,15 +34,15 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 0.1. Install DeepMosaic
 
 ```
-    >git clone --recursive https://github.com/Virginiaxu/DeepMosaic
+> git clone --recursive https://github.com/Virginiaxu/DeepMosaic
     
-    >cd DeepMosaic && pip install dist/DeepMosaic-0.0.tar.gz    
+> cd DeepMosaic && pip install dist/DeepMosaic-0.0.tar.gz    
 ```
     
 0.2. Install dependency: bedtools (via conda)
 
 ```    
-    >conda install -c bioconda bedtools    
+> conda install -c bioconda bedtools    
 ```
 
 0.3. Install dependency: ANNOVAR
@@ -52,28 +52,28 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
    b) Once you have sucessfully download ANNOVAR package, run
     
 ```
-    >cd [path to ANNOVAR]
-    >perl ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gnomad_genome humandb/    
+> cd [path to ANNOVAR]
+> perl ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gnomad_genome humandb/    
 ```
     
    to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
    
 0.4. Load bedtools
 ```
-     >module load bedtools
+> module load bedtools
 ```
 
 
 ### Step 1. Image representation of Bam file based on input list of variants and feature extraction:
 
 ```
-    >deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
+> deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
 ```
 
 ### Step 2. Prediction for mosaicism
 
 ```
-    >deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
+> deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
 ```
 
 --------------------------------------------
@@ -82,10 +82,27 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 |#sample_name|bam|vcf|depth|sex|
 |---|---|---|---|---|
+|sample|sample.bam|sample.vcf|200|M|
+
+### Note: sample.vcf is in the format
+
+|#CHROM|POS|ID|REF|ALT|...|
+|---|---|---|---|---|---|
+|1|17697|.|G|C|.|.|
+|1|19890|.|T|C|.|.|
 
 --------------------------------------------
 
+## The intermediate features.txt file
+
+|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|image_filepath|npy_filepath|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+
+--------------------------------------------
 ## Output format
+|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|homo_score|hetero_score|mosaic_score|prediction|image_filepath|
+
 
 --------------------------------------------
 
