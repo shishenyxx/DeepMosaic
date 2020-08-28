@@ -1,4 +1,4 @@
-# DeepMosaic  <img src="https://user-images.githubusercontent.com/17311837/88461876-52d18f80-ce5c-11ea-9aed-534dfd07d351.png" alt="DeepMosaic_Logo" width=5%> 
+# DeepMosaic  <img src="https://user-images.githubusercontent.com/17311837/88461876-52d18f80-ce5c-11ea-9aed-534dfd07d351.png" alt="DeepMosaic_Logo" width=10%> 
 
 Visualization and control-independent classification tool of mosaic SNVs with deep convolutional neural networks.
 
@@ -52,7 +52,8 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
    b) Once you have sucessfully download ANNOVAR package, run
     
 ```
-    cd annovar && perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gnomad_genome humandb/    
+    cd [path to ANNOVAR]
+    perl ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gnomad_genome humandb/    
 ```
     
    to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
@@ -61,7 +62,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 ### Step 1. Image representation of Bam file based on input list of variants and feature extraction:
 
 ```
-    deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to annovar directory] 
+    deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
 ```
 
 ### Step 2. Prediction for mosaicism
