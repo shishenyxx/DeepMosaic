@@ -153,13 +153,12 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 If you have any questions please contact us:
 
-:email: [Prof. Joseph Gleeson's lab at UCSD](http://www.gleesonlab.org/index.html)
+[Prof. Joseph Gleeson's lab at UCSD](http://www.gleesonlab.org/index.html)
 
-:email: Prof. Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu)(PI)
+:email: Prof. Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) (PI)
 
+        Xin Xu: [xinxu@hsph.harvard.edu](mailto:xinxu@hsph.harvard.edu), [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
 
-:email: Xin Xu: [xinxu@hsph.harvard.edu](mailto:xinxu@hsph.harvard.edu), [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
-
-:email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
+        Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
 
 
