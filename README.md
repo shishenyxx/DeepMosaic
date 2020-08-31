@@ -27,7 +27,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 --------------------------------------------
 
-## Installation
+# Installation
 
 ### step 1. Install DeepMosaic
 
@@ -57,27 +57,27 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
    to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
    
 
-## Usage 
-
-### Step 0. Load BEDTools
+# Usage 
+--------------------------------------------
+## Step 0. Load BEDTools
 
 ```
 > module load bedtools
 ```
 
 
-### Step 1. Extract Features and encode image representation of the candidate variants
+## Step 1. Extract Features and encode image representation of the candidate variants
 
-#### usage
+### Usage
 
 ```
 > deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
 ```
-#### Note:
+### Note:
 
 1. `[input.txt]` file should be in the following format.
 
-### Input format
+#### Input format
 
 |#sample_name|bam|vcf|depth|sex|
 |---|---|---|---|---|
@@ -88,7 +88,7 @@ Each line of `[input.txt]` is a sample with its aligned reads in the bam format 
  
 2. `[sample.vcf]` in each line of the input file should be in the following format.
 
-### sample.vcf format
+#### sample.vcf format
 
 |#CHROM|POS|ID|REF|ALT|...|
 |---|---|---|---|---|---|
@@ -101,48 +101,57 @@ Each line of `[input.txt]` is a sample with its aligned reads in the bam format 
 
 4. `[path to ANNOVAR]` is the absolute path to the ANNOVAR program directory.
 
-#### Output:
+### Output:
 After deepmosaic-draw is successfully executed, the following files/directories would be generated in the `[output_dir]`
 
 1. `features.txt` contains the extracted features and the absolute path to the encoded image (.npy) file for each variant in each row. `features.txt` will serve as input file to the next step of mosaicism prediction. 
 
-2. `matrices` is a directory of the encoded image representations in the .npy format for all the candidate variants from all samples. Names of the file would be in the format of `[sample_name]_[chrom]_[pos]_[ref]_[alt].npy`.
+#### features.txt format
 
-2. `images` is a directory of the encoded image representations in the .jpg format for all the candidate variants from all samples. Names of the file would be in the format of `[sample_name]_[chrom]_[pos]_[ref]_[alt].jpg`. Image files in this directory could be directly open and inspected visually by users. 
+|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|image_filepath|npy_filepath|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |/.../images/sample_1-1_17697_G_C.jpg | /.../matrices/sample_1-1_17697_G_C.npy|
+
+2. `matrices` is a directory of the encoded image representations in the .npy format for all the candidate variants from all samples. Names of the file would be in the format of `[sample_name]-[chrom]_[pos]_[ref]_[alt].npy`.
+
+2. `images` is a directory of the encoded image representations in the .jpg format for all the candidate variants from all samples. Names of the file would be in the format of `[sample_name]-[chrom]_[pos]_[ref]_[alt].jpg`. Image files in this directory could be directly open and inspected visually by users. 
 
 3. `repeats_annotation.bed` is the intermediate file annotating the repeat and segdup information of each variant.
 
 4. `input.hg19_gnomad_genome_dropped`, `input.hg19_gnomad_genome_filtered`, `input.exonic_variant_function`, `input.variant_function` are ANNOVAR outputs annotating the gnomad and variant function information.
 
+--------------------------------------------
 
+## Step 2. Prediction for mosaicism
 
-### Step 2. Prediction for mosaicism
+### Usage
 
 ```
 > deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
 ```
 
---------------------------------------------
+### Note:
 
+1. `[output_dir/feature.txt]` is the output file from last step.
 
---------------------------------------------
+2. `[output.txt]` is the final prediction results.
 
-## The intermediate features.txt file
+3. `prediction model` is the pretrained DeepMosaic model. The default one (best performing model efficientnet-b4_epoch_6.pt) is trained on our train set for 6 epoch from the efficientnet-b4 architecture.
 
-|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|image_filepath|npy_filepath|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+4. `batch size` is the number of images (variants) predicted by DeepMosaic model simultaneously. Larger batch size means more memory and faster prediction. User can adjust this value depending on his/her available computing power. Default batch size is 10.
 
+### Output:
 
---------------------------------------------
-## Output format
+#### Output format
 |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|homo_score|hetero_score|mosaic_score|prediction|image_filepath|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |0.9999058880667084 |6.519687262508766e-10 | 9.411128132280348e-05 | artifact| /.../images/sample_1-1_17697_G_C.jpg |
 
+1. The prediction result is in the column "prediction". The possible results are `mosaic`, `heterozygous`, `ref_homozygous`, `alt_homozygous` or `artifact`. Only variants marked by `mosaic` are DeepMosaic predicted mosaic positive. The prediction decision is made by considering the mosaic score generated by DeepMosaic deeplearning model as well as the extracted features such as maf, depth_fraction, repeat, segdup, etc. 
 
+2. Image representations of the variants are stored in the files indicated by "image_filepath" column. User can directly open the .jpg files and visually inspect the piled reads for sanity check.
 --------------------------------------------
 
-## Demos
-
---------------------------------------------
 
 ## Contact
 
