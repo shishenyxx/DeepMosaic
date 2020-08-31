@@ -27,11 +27,9 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 --------------------------------------------
 
-## Getting Started
+## Installation
 
-### Step 0. Installation
-
-0.1. Install DeepMosaic
+### step 1. Install DeepMosaic
 
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
@@ -39,13 +37,13 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 > cd DeepMosaic && pip install dist/DeepMosaic-0.0.tar.gz    
 ```
     
-0.2. Install dependency: bedtools (via conda)
+### step 2. Install dependency: BEDTools (via conda)
 
 ```    
 > conda install -c bioconda bedtools    
 ```
 
-0.3. Install dependency: ANNOVAR
+### step 3. Install dependency: ANNOVAR
 
    a) Go to the ANNOVAR website and click "[here](http://annovar.openbioinformatics.org/en/latest/user-guide/download/)" to register and download the annovar distribution. 
     
@@ -58,30 +56,64 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
     
    to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
    
-0.4. Load bedtools
+
+## Usage 
+
+### Step 0. Load BEDTools
+
 ```
 > module load bedtools
 ```
 
 
-### Step 1. Image representation of Bam file based on input list of variants and feature extraction:
+### Step 1. Extract Features and encode image representation of the candidate variants
+
+#### usage
 
 ```
 > deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
 ```
+#### Note:
+
+1. `[input.txt]` file should be in the following format.
 
 ### Input format
 
 |#sample_name|bam|vcf|depth|sex|
 |---|---|---|---|---|
-|sample|sample.bam|sample.vcf|200|M|
+|sample_1|sample_1.bam|sample_1.vcf|200|M|
+|sample_2|sample_2.bam|sample_2.vcf|200|F|
 
-### Note: sample.vcf is in the format
+Each line of `[input.txt]` is a sample with its aligned reads in the bam format (there should be index files under the same directory), and its candidate variants in the vcf format. User should also provide the sequencing depth and the sex  (M/F) of the corresponding sample. Sample name (#sample_name column) should be a unique identifier for each sample; duplicated names are not allowed.
+ 
+2. `[sample.vcf]` in each line of the input file should be in the following format.
+
+### sample.vcf format
 
 |#CHROM|POS|ID|REF|ALT|...|
 |---|---|---|---|---|---|
 |1|17697|.|G|C|.|.|
 |1|19890|.|T|C|.|.|
+
+"#CHROM", "POS", "REF", "ALT" are essential columns that will be parsed and utilized by DeepMosaic.
+
+3. The outputs files including the extracted features and encoded imaged will be output to `[output_dir]`. DeepMosaic will create a new directory if `[output_dir]` hasn't been initialized by users. 
+
+4. `[path to ANNOVAR]` is the absolute path to the ANNOVAR program directory.
+
+#### Output:
+After deepmosaic-draw is successfully executed, the following files/directories would be generated in the `[output_dir]`
+
+1. `features.txt` contains the extracted features and the absolute path to the encoded image (.npy) file for each variant in each row. `features.txt` will serve as input file to the next step of mosaicism prediction. 
+
+2. `matrices` is a directory of the encoded image representations in the .npy format for all the candidate variants from all samples. Names of the file would be in the format of `[sample_name]_[chrom]_[pos]_[ref]_[alt].npy`.
+
+2. `images` is a directory of the encoded image representations in the .jpg format for all the candidate variants from all samples. Names of the file would be in the format of `[sample_name]_[chrom]_[pos]_[ref]_[alt].jpg`. Image files in this directory could be directly open and inspected visually by users. 
+
+3. `repeats_annotation.bed` is the intermediate file annotating the repeat and segdup information of each variant.
+
+4. `input.hg19_gnomad_genome_dropped`, `input.hg19_gnomad_genome_filtered`, `input.exonic_variant_function`, `input.variant_function` are ANNOVAR outputs annotating the gnomad and variant function information.
+
 
 
 ### Step 2. Prediction for mosaicism
