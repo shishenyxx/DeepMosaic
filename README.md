@@ -70,15 +70,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 > deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
 ```
 
-### Step 2. Prediction for mosaicism
-
-```
-> deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
-```
-
---------------------------------------------
-
-## Input format
+### Input format
 
 |#sample_name|bam|vcf|depth|sex|
 |---|---|---|---|---|
@@ -90,6 +82,16 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 |---|---|---|---|---|---|
 |1|17697|.|G|C|.|.|
 |1|19890|.|T|C|.|.|
+
+
+### Step 2. Prediction for mosaicism
+
+```
+> deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
+```
+
+--------------------------------------------
+
 
 --------------------------------------------
 
