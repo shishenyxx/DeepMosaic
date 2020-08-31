@@ -78,11 +78,11 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 |sample_1|sample_1.bam|sample_1.vcf|200|M|
 |sample_2|sample_2.bam|sample_2.vcf|200|F|
 
-Each line of `[input.txt]` is a sample with its aligned reads in the bam format (there should be index files under the same directory), and its candidate variants in the vcf format. User should also provide the sequencing depth and the sex  (M/F) of the corresponding sample. Sample name (#sample_name column) should be a unique identifier for each sample; duplicated names are not allowed.
+Each line of `[input.txt]` is a sample with its aligned reads in the bam format (with index in the same directory), and its candidate variants in the vcf (or vcf.gz) format. User should also provide the sequencing depth and the sex  (M/F) of the corresponding sample. Sample name (#sample_name column) should be a unique identifier for each sample; duplicated names are not allowed.
 
-2. DeepMosaic supports no-loss image representation for sequencing depth up to 500x. Reads with deeper sequencing depth would be randomly down-sampled to 500x during image encoding.
+2. DeepMosaic supports no-loss image representation for sequencing depth up to 500x. Reads with deeper sequencing depth will be randomly down-sampled to 500x during image representation.
  
-3. `[sample.vcf]` in each line of the input file should be in the following format.
+3. `[sample.vcf]` in each line of the input file should be in the following format:
 
 #### sample.vcf format
 
