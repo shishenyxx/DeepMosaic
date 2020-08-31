@@ -60,25 +60,18 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 # Usage 
 
-### Step 0. Load BEDTools
+## Step 1. Extract Features and encode image representation of the candidate variants
 
-```
-> module load bedtools
-```
-
-
-### Step 1. Extract Features and encode image representation of the candidate variants
-
-#### Usage
+### Usage
 
 ```
 > deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
 ```
-#### Note:
+### Note:
 
 1. `[input.txt]` file should be in the following format.
 
-##### Input format
+#### Input format
 
 |#sample_name|bam|vcf|depth|sex|
 |---|---|---|---|---|
@@ -89,7 +82,7 @@ Each line of `[input.txt]` is a sample with its aligned reads in the bam format 
  
 2. `[sample.vcf]` in each line of the input file should be in the following format.
 
-##### sample.vcf format
+#### sample.vcf format
 
 |#CHROM|POS|ID|REF|ALT|...|
 |---|---|---|---|---|---|
@@ -102,12 +95,12 @@ Each line of `[input.txt]` is a sample with its aligned reads in the bam format 
 
 4. `[path to ANNOVAR]` is the absolute path to the ANNOVAR program directory.
 
-#### Output:
+### Output:
 After deepmosaic-draw is successfully executed, the following files/directories would be generated in the `[output_dir]`
 
 1. `features.txt` contains the extracted features and the absolute path to the encoded image (.npy) file for each variant in each row. `features.txt` will serve as input file to the next step of mosaicism prediction. 
 
-##### features.txt format
+#### features.txt format
 
 |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|image_filepath|npy_filepath|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -123,15 +116,15 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 --------------------------------------------
 
-### Step 2. Prediction for mosaicism
+## Step 2. Prediction for mosaicism
 
-#### Usage
+### Usage
 
 ```
 > deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
 ```
 
-#### Note:
+### Note:
 
 1. `[output_dir/feature.txt]` is the output file from last step.
 
@@ -141,9 +134,9 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 4. `batch size` is the number of images (variants) predicted by DeepMosaic model simultaneously. Larger batch size means more memory and faster prediction. User can adjust this value depending on his/her available computing power. Default batch size is 10.
 
-#### Output:
+### Output:
 
-##### Output format
+#### Output format
 |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|homo_score|hetero_score|mosaic_score|prediction|image_filepath|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |0.9999058880667084 |6.519687262508766e-10 | 9.411128132280348e-05 | artifact| /.../images/sample_1-1_17697_G_C.jpg |
