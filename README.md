@@ -148,11 +148,17 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 2. Image representations of the variants are stored in the files indicated by "image_filepath" column. User can directly open the .jpg files and visually inspect the piled reads for sanity check.
 
 3. Raw extracted, user-input, as well as annotated features are listed in the output file, to allow users to implement further filters: 
+
 `maf`,`lower_CI`, and `upper_CI` are calculated from the MAF and 95% exact binomial confidence intervals extracted from the bam file. 
-`variant_type` and `gene_id` are annotated by ANNOVAR
-`gnomad` is annotated from gnomAD (v2.1.1)
-`all_repeat` and `segdup` are provided in the "resources" folder
+
+`variant_type` and `gene_id` are annotated by ANNOVAR.
+
+`gnomad` is annotated from gnomAD (v2.1.1).
+
+`all_repeat` and `segdup` are provided in the "resources" folder.
+
 `homopolymer` and `dinucluotide` are calculated from the .h5 files in the "resources" folder. 
+
 
 --------------------------------------------
 
