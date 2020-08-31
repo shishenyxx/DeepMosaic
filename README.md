@@ -149,11 +149,11 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 3. Raw extracted, user-input, as well as annotated features are listed in the output file, to allow users to implement further filters: 
 
-`maf`,`lower_CI`, and `upper_CI` are calculated from the MAF and 95% exact binomial confidence intervals extracted from the bam file. 
+`maf`,`lower_CI`, and `upper_CI` are calculated from the mutant allelic fractions and 95% exact binomial confidence intervals extracted from the bam file. 
 
 `variant_type` and `gene_id` are annotated by ANNOVAR.
 
-`gnomad` is annotated from gnomAD (v2.1.1).
+`gnomad` is annotated from the combined allele frequency in gnomAD (v2.1.1).
 
 `all_repeat` and `segdup` are provided in the "resources" folder.
 
