@@ -79,8 +79,10 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 |sample_2|sample_2.bam|sample_2.vcf|200|F|
 
 Each line of `[input.txt]` is a sample with its aligned reads in the bam format (there should be index files under the same directory), and its candidate variants in the vcf format. User should also provide the sequencing depth and the sex  (M/F) of the corresponding sample. Sample name (#sample_name column) should be a unique identifier for each sample; duplicated names are not allowed.
+
+2. DeepMosaic supports no-loss image representation for sequencing depth up to 500x. Reads with deeper sequencing depth would be randomly down-sampled to 500x during image encoding.
  
-2. `[sample.vcf]` in each line of the input file should be in the following format.
+3. `[sample.vcf]` in each line of the input file should be in the following format.
 
 #### sample.vcf format
 
@@ -91,9 +93,9 @@ Each line of `[input.txt]` is a sample with its aligned reads in the bam format 
 
 "#CHROM", "POS", "REF", "ALT" are essential columns that will be parsed and utilized by DeepMosaic.
 
-3. The outputs files including the extracted features and encoded imaged will be output to `[output_dir]`. DeepMosaic will create a new directory if `[output_dir]` hasn't been initialized by users. 
+4. The outputs files including the extracted features and encoded imaged will be output to `[output_dir]`. DeepMosaic will create a new directory if `[output_dir]` hasn't been initialized by users. 
 
-4. `[path to ANNOVAR]` is the absolute path to the ANNOVAR program directory.
+5. `[path to ANNOVAR]` is the absolute path to the ANNOVAR program directory.
 
 ### Output:
 After deepmosaic-draw is successfully executed, the following files/directories would be generated in the `[output_dir]`
