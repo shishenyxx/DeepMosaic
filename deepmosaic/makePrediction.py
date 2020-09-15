@@ -112,9 +112,9 @@ def prediction_decision(features_df, scores_list):
     hetero_filters = (mosaic_scores <= 0.6) & (upper_CIs >= 0.5) & (lower_CIs < 0.5)
     predictions[np.where(hetero_filters)] = "heterozygous"
     #homozygous
-    ref_homo_filters = (mosaic_scores <= 0.6) & (lower_CIs < 0.01) & (upper_CIs < 0.5)
+    ref_homo_filters = (lower_CIs < 0.01) & (upper_CIs < 0.5)
     predictions[np.where(ref_homo_filters)] = "reference_homozygous"
-    alt_homo_filters = (mosaic_scores <= 0.6) & (lower_CIs > 0.5) & (upper_CIs > 0.99)
+    alt_homo_filters = (lower_CIs > 0.5) & (upper_CIs > 0.99)
     predictions[np.where(alt_homo_filters)] = "alternative_homozygous"
     return predictions.reshape(-1,1)
    
