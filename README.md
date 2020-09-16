@@ -198,7 +198,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 #### Expected output: results/final_predictions.txt
 
-|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|score1|core2|score3|prediction|image_filepath|
+|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|score1|score2|score3|prediction|image_filepath|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |sample_1| M |      10  |    25509499   |     A   |    G   |    10_25509499_A_G |0.05737704918032788  |   0.03448247887605271   |  0.09399263167327017  |   intronic  |      GPR158 | 0.0  |   0    |   0   |    1   |    0  |     1.22  |  0.00010761513038663674 | 3.852715883900453e-05 |  0.9998538577107744   |   mosaic | results/images/sample_1-10_25509499_A_G.jpg|
 |sample_3   |     M    |   20   |   1805075| G   |    T   |    20_1805075_G_T |  0.018072289156626502  |  0.008308354195089811  |  0.03886110152464575   |  intergenic |     LOC100289473(dist=44683),SIRPA(dist=69738) |     0.0    | 0    |   0   |    0   |    0   |    1.66  |  0.003562673370702711    |2.9057256040721804e-06 | 0.9964344209036933  |    mosaic  | results/images/sample_3-20_1805075_G_T.jpg|
