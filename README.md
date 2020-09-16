@@ -160,6 +160,13 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 `homopolymer` and `dinucluotide` are calculated from the .h5 files in the "resources" folder. 
 
 
+
+--------------------------------------------
+# Demo
+### Demo input
+### Expected output
+
+
 --------------------------------------------
 
 
