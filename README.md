@@ -162,8 +162,27 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 
 --------------------------------------------
-# Demo
+# Demo 
+We have provided a simple example in the sub-directory of "demo". The directory includes the input files and the expected results from running DeepMosaic. User could refer to the example for the expected input format and output format.
+
+#### demo
+##### --input.txt
+##### ---vcfs
+     sample_1.vcf
+     sample_2.vcf
+     sample_3.vcf
+     sample_4.vcf
+##### ---bams
+     sample_1.bam  sample_1.bam.bai
+     sample_2.bam  sample_2.bam.bai
+     sample_3.bam  sample_3.bam.bai
+     sample_4.bam  sample_4.bam.bai
+##### ---results
+     features.txt                (intermediate result of running deepmosaic-draw)
+     final_predictions.txt       (final result of running deepmosaic-predict)
+
 ### Demo input
+
 ### Expected output
 
 
