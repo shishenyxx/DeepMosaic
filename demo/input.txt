@@ -1,0 +1,5 @@
+#sample_name    bam     vcf     depth   sex
+sample_1	bams/sample_1.bam	vcfs/sample_1.vcf	200	M
+sample_2	bams/sample_2.bam	vcfs/sample_2.vcf	200	M
+sample_3	bams/sample_3.bam	vcfs/sample_3.vcf	200	M
+sample_4	bams/sample_4.bam	vcfs/sample_4.vcf	200	M
