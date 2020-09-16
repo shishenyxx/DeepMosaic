@@ -162,10 +162,42 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 
 --------------------------------------------
-# Demo
-### Demo input
-### Expected output
+# Demo 
+We have provided a simple example in the sub-directory of "demo". The directory includes the input files and the expected results from running DeepMosaic. User could refer to the example for the expected input format and output format.
 
+## "Demo" Directory hierarchy
+##### --input.txt
+##### ---vcfs
+     sample_1.vcf
+     sample_2.vcf
+     sample_3.vcf
+     sample_4.vcf
+##### ---bams
+     sample_1.bam  sample_1.bam.bai
+     sample_2.bam  sample_2.bam.bai
+     sample_3.bam  sample_3.bam.bai
+     sample_4.bam  sample_4.bam.bai
+##### ---results
+     features.txt                (intermediate result of running deepmosaic-draw)
+     final_predictions.txt       (final result of running deepmosaic-predict)
+     -----images (image encodings in .jpg formats)
+     -----matrices (image encodings in .npy format to be used in prediction directly)
+     repeat.annotation.bed       (intermediate file for repeat annotation)
+     input.variant_function, input.exonic_variant_function, input.hg19_gnomad_genome_dropped, input.hg19_gnomad_genome_filtered, input.log (intermediate files after running annovar)
+
+
+#### Demo input: input.txt
+
+|#sample_name|bam|vcf|depth|sex|
+|---|---|---|---|---|
+|sample_1|sample_1.bam|sample_1.vcf|200|M|
+|sample_2|sample_2.bam|sample_2.vcf|200|F|
+
+#### Expected output: results/final_predictions.txt
+
+|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|homo_score|hetero_score|mosaic_score|prediction|image_filepath|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |0.9999058880667084 |6.519687262508766e-10 | 9.411128132280348e-05 | artifact| /.../images/sample_1-1_17697_G_C.jpg |
 
 --------------------------------------------
 
