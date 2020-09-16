@@ -190,14 +190,21 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 |#sample_name|bam|vcf|depth|sex|
 |---|---|---|---|---|
-|sample_1|sample_1.bam|sample_1.vcf|200|M|
-|sample_2|sample_2.bam|sample_2.vcf|200|F|
+|sample_1|bams/sample_1.bam|vcfs/sample_1.vcf|200|M|
+|sample_2|bams/sample_2.bam|vcfs/sample_2.vcf|200|M|
+|sample_3|bams/sample_3.bam|vcfs/sample_3.vcf|200|M|
+|sample_4|bams/sample_4.bam|vcfs/sample_4.vcf|200|M|
+
 
 #### Expected output: results/final_predictions.txt
 
 |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|homo_score|hetero_score|mosaic_score|prediction|image_filepath|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |0.9999058880667084 |6.519687262508766e-10 | 9.411128132280348e-05 | artifact| /.../images/sample_1-1_17697_G_C.jpg |
+|sample_1| M |      10  |    25509499   |     A   |    G   |    10_25509499_A_G |0.05737704918032788  |   0.03448247887605271   |  0.09399263167327017  |   intronic  |      GPR158 | 0.0  |   0    |   0   |    1   |    0  |     1.22  |  0.00010761513038663674 | 3.852715883900453e-05 |  0.9998538577107744   |   mosaic  results/images/sample_1-10_25509499_A_G.jpg|
+|sample_3   |     M    |   20   |   1805075| G   |    T   |    20_1805075_G_T |  0.018072289156626502  |  0.008308354195089811  |  0.03886110152464575   |  intergenic |     LOC100289473(dist=44683),SIRPA(dist=69738) |     0.0    | 0    |   0   |    0   |    0   |    1.66  |  0.003562673370702711    |2.9057256040721804e-06 | 0.9964344209036933  |    mosaic  | results/images/sample_3-20_1805075_G_T.jpg|
+|sample_4   |     M    |   16  |    65589896   |     G    |   C   |    16_65589896_G_C |0.5306122448979592  |    0.43252467204457545  |   0.6263904306010359    |  ncRNA_intronic|  LINC00922   |    0.3142 | 1   |    0 |      1  |     0  |     0.49 |   0.9998079754132149 |     5.6467567415316954e-08 | 0.00019196811921752858  |heterozygous |   results/images/sample_4-16_65589896_G_C.jpg|
+|sample_2   |     M      | 14   |   37531674     |   A   |    T  |     14_37531674_A_T| 0.9948186528497408 |     0.9712392635106 |0.9990847787125622   |   intronic|        SLC25A21   |     0.2267  1    |   0    |   1   |    1   |    0.98  |  0.19976294102631714  |   4.0270887857736005e-06|  0.800233031884897   |    alternative_homozygous  |results/images/sample_2-14_37531674_A_T.jpg|
+~                                                                                    
 
 --------------------------------------------
 
