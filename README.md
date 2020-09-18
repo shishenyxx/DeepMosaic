@@ -11,7 +11,7 @@ An RGB image was used to represent the pileup results for all the reads aligned 
 * DeepMosaic workflow: From variant to result (10 models were compared and Efficientnet b4 was selected as the best-performing): 
 
      
-<img src="https://user-images.githubusercontent.com/17311837/88461821-caeb8580-ce5b-11ea-8c91-7c3ad916fc60.png" alt="DeepMosaic_workflow" width=80%>
+<img src="https://user-images.githubusercontent.com/17311837/88461821-caeb8580-ce5b-11ea-8c91-7c3ad916fc60.png"  width=80%>
 
 Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. Deep convolution neural network then extract the high-dimontional information from the image, experimental, genomic, and population related information were further incoperated in to the classifier.
 
