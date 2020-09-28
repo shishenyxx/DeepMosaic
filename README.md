@@ -18,7 +18,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 --------------------------------------------
 
 # Contents
-[Requirements before you start](#-Requirements-before-you-start)
+[Requirements before you start](#Requirements-before-you-start)
 
 [Installation](#Installation)
 
