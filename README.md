@@ -40,6 +40,7 @@ An RGB image was used to represent the pileup results for all the reads aligned 
 
 Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. Deep convolution neural network then extract the high-dimontional information from the image, experimental, genomic, and population related information were further incoperated in to the classifier.
 
+[Return to Contents](#Contents)
 
 --------------------------------------------
 
