@@ -6,17 +6,17 @@ Visualization and control-independent classification tool of (somatic or germlin
 
 # Contents
 
-[*Overview](#Overview)
+[* Overview](#Overview)
 
-[*Requirements before you start](#Requirements-before-you-start)
+[* Requirements before you start](#Requirements-before-you-start)
 
-[*Installation](#Installation)
+[* Installation](#Installation)
 
-[*Usage](#Usage)
+[* Usage](#Usage)
 
-[*Demo](#Demo)
+[* Demo](#Demo)
 
-[*Contact](#Contact)
+[* Contact](#Contact)
 
 --------------------------------------------
 
@@ -46,6 +46,8 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [PyTorch](https://pytorch.org/)
 * [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch)
 * [argparse](https://docs.python.org/3/library/argparse.html)
+
+[Return to Contents](#Contents)
 
 --------------------------------------------
 
@@ -78,7 +80,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
     
    to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
 
-[Return to Contents](# Contents)
+[Return to Contents](#Contents)
 
 --------------------------------------------
 
@@ -142,7 +144,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 4. `input.hg19_gnomad_genome_dropped`, `input.hg19_gnomad_genome_filtered`, `input.exonic_variant_function`, `input.variant_function` are ANNOVAR outputs annotating the gnomad and variant function information.
 
-[Return to Contents](# Contents)
+[Return to Contents](#Contents)
 
 --------------------------------------------
 
@@ -187,7 +189,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 `homopolymer` and `dinucluotide` are calculated from the .h5 files in the "resources" folder. 
 
-[Return to Contents](# Contents)
+[Return to Contents](#Contents)
 
 --------------------------------------------
 # Demo 
@@ -237,7 +239,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 <img src="/Virginiaxu/DeepMosaic/blob/master/demo/results/images/sample_1-10_25509499_A_G.jpg?raw=true" alt="sample_1-10_25509499_A_G.jpg">
 
-[Return to Contents](# Contents)
+[Return to Contents](#Contents)
 
 --------------------------------------------
 
