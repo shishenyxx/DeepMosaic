@@ -242,7 +242,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 #### Expected images: results/images
 
-<img src="/Virginiaxu/DeepMosaic/blob/master/demo/results/images/sample_1-10_25509499_A_G.jpg?raw=true" alt="sample_1-10_25509499_A_G.jpg">
+<img src="https://user-images.githubusercontent.com/17311837/94381398-16d1d980-00ee-11eb-9fad-e4029224a76d.jpg" alt="sample_1-10_25509499_A_G.jpg">
 
 [Return to Contents](#Contents)
 
