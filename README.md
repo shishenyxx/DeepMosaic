@@ -47,7 +47,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch)
 * [argparse](https://docs.python.org/3/library/argparse.html)
 
-[Return to Contents](#Contents)
+<p align="right">[Return to Contents](#Contents)</p>
 
 --------------------------------------------
 
