@@ -60,7 +60,9 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 # Usage 
 
-## Step 1. Extract Features and encode image representation of the candidate variants
+## Step 1. Feature extraction and visualization of the candidate mosaic variants
+
+This step is used for the extraction of genomic features of the variant from raw bams as well as population information. It can serve as an independent tool for the visualization and evaluation of mosaic candidates.
 
 ### Usage
 
