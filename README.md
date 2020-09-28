@@ -2,6 +2,27 @@
 
 Visualization and control-independent classification tool of (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks.
 
+--------------------------------------------
+
+# Contents
+
+[*Overview](#Overview)
+
+[*Requirements before you start](#Requirements-before-you-start)
+
+[*Installation](#Installation)
+
+[*Usage](#Usage)
+
+[*Demo](#Demo)
+
+[*Contact](#Contact)
+
+--------------------------------------------
+
+# Overview
+
+
 * Information of aligned sequences for any SNV represented with an RGB image
 
 <img src="https://user-images.githubusercontent.com/17311837/88461918-a04dfc80-ce5c-11ea-888b-4ea8d68d425a.png" alt="Image_representation" width=50%> 
@@ -15,18 +36,6 @@ An RGB image was used to represent the pileup results for all the reads aligned 
 
 Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. Deep convolution neural network then extract the high-dimontional information from the image, experimental, genomic, and population related information were further incoperated in to the classifier.
 
---------------------------------------------
-
-# Contents
-[* Requirements before you start](#Requirements-before-you-start)
-
-[* Installation](#Installation)
-
-[* Usage](#Usage)
-
-[* Demo](#Demo)
-
-[* Contact](#Contact)
 
 --------------------------------------------
 
