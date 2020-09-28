@@ -58,7 +58,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 # Installation
 
-### Step 1. Install DeepMosaic
+## Step 1. Install DeepMosaic
 
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
@@ -66,13 +66,13 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 > cd DeepMosaic && pip install dist/DeepMosaic-0.0.tar.gz    
 ```
     
-### Step 2. Install dependency: BEDTools (via conda)
+## Step 2. Install dependency: BEDTools (via conda)
 
 ```    
 > conda install -c bioconda bedtools    
 ```
 
-### Step 3. Install dependency: ANNOVAR
+## Step 3. Install dependency: ANNOVAR
 
    a) Go to the ANNOVAR website and click "[here](http://annovar.openbioinformatics.org/en/latest/user-guide/download/)" to register and download the annovar distribution. 
     
