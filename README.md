@@ -17,7 +17,20 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 --------------------------------------------
 
-## Requirements before you start
+# Contents
+[Requirements before you start](# Requirements before you start)
+
+[Installation](# Installation)
+
+[Usage](# Usage)
+
+[Demo](# Demo)
+
+[Contact](# Contact)
+
+--------------------------------------------
+
+# Requirements before you start
 * [BEDTools](https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html) (command line)
 * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
 * [Pysam](https://github.com/pysam-developers/pysam)
@@ -29,7 +42,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 # Installation
 
-### step 1. Install DeepMosaic
+### Step 1. Install DeepMosaic
 
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
@@ -37,13 +50,13 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 > cd DeepMosaic && pip install dist/DeepMosaic-0.0.tar.gz    
 ```
     
-### step 2. Install dependency: BEDTools (via conda)
+### Step 2. Install dependency: BEDTools (via conda)
 
 ```    
 > conda install -c bioconda bedtools    
 ```
 
-### step 3. Install dependency: ANNOVAR
+### Step 3. Install dependency: ANNOVAR
 
    a) Go to the ANNOVAR website and click "[here](http://annovar.openbioinformatics.org/en/latest/user-guide/download/)" to register and download the annovar distribution. 
     
@@ -213,7 +226,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 --------------------------------------------
 
 
-## Contact
+# Contact
 
 If you have any questions please contact us:
 
