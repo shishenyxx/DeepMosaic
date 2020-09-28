@@ -247,7 +247,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 # Contact
 
-If you have any questions please contact us:
+If you have any questions please contact us or post a thread at the issue section:
 
 [Prof. Joseph Gleeson's lab at UCSD](http://www.gleesonlab.org/index.html)
 
