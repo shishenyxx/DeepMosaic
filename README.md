@@ -14,9 +14,9 @@ Visualization and control-independent classification tool of (somatic or germlin
 
 [Usage](#Usage)
 
-[-Step 1. Feature extraction and visualization of the candidate mosaic variants](#Step-1-Feature-extraction-and-visualization-of-the-candidate-mosaic-variants)
+[-Step 1. Feature extraction and visualization of the candidate mosaic variants(DeepMosaic Visualization Module)](#step-1-feature-extraction-and-visualization-of-the-candidate-mosaic-variants-visualization-module)
 
-[-Step 2. Prediction for mosaicism](#Step-2-Prediction-for-mosaicism)
+[-Step 2. Prediction for mosaicism (DeepMosaic Classification Module)](#step-2-prediction-for-mosaicism-classification-module)
 
 [Demo](#Demo)
 
@@ -91,7 +91,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 # Usage 
 
-## Step 1. Feature extraction and visualization of the candidate mosaic variants (Image-based representation module)
+## Step 1. Feature extraction and visualization of the candidate mosaic variants (Visualization Module)
 
 This step is used for the extraction of genomic features of the variant from raw bams as well as population information. It can serve as an independent tool for the visualization and evaluation of mosaic candidates.
 
@@ -153,7 +153,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 --------------------------------------------
 
-## Step 2. Prediction for mosaicism (Classification module)
+## Step 2. Prediction for mosaicism (Classification Module)
 
 ### Usage
 
