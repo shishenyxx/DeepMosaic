@@ -27,13 +27,13 @@ Visualization and control-independent classification tool of (somatic or germlin
 # Overview
 
 
-* DeepMosaic image representation module: Information of aligned sequences for any SNV represented with an RGB image
+* DeepMosaic Visualization Module: Information of aligned sequences for any SNV represented with an RGB image:
 
 <img src="https://user-images.githubusercontent.com/17311837/88461918-a04dfc80-ce5c-11ea-888b-4ea8d68d425a.png" alt="Image_representation" width=50%> 
 
 An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualitites, and blue channel for the strand orientations of the read.
 
-* DeepMosaic classification module workflow: From variant to result (10 models were compared and Efficientnet b4 was selected as default because it performed the best on a gold standard benchmark dataset.): 
+* DeepMosaic Classification Module: Workflow from variant to result (10 models were compared and Efficientnet b4 was selected as default because it performed the best on a gold standard benchmark dataset.): 
 
      
 <img src="https://user-images.githubusercontent.com/17311837/88461821-caeb8580-ce5b-11ea-8c91-7c3ad916fc60.png"  width=80%>
