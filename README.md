@@ -249,7 +249,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 If you have any questions please contact us or post a thread at the issue section:
 
-[Prof. Joseph Gleeson's lab at UCSD](http://www.gleesonlab.org/index.html)
+[Prof. Joseph Gleeson's lab at University of California, San Diego, and Rady Children's Institute for Genomic Medicine](http://www.gleesonlab.org/index.html)
 
 :email: Prof. Joseph Gleeson (PI): [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), [contact@gleesonlab.org](mailto:contact@gleesonlab.org) 
 
