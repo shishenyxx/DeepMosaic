@@ -27,13 +27,13 @@ Visualization and control-independent classification tool of (somatic or germlin
 # Overview
 
 
-* Information of aligned sequences for any SNV represented with an RGB image
+* DeepMosaic image representation module: Information of aligned sequences for any SNV represented with an RGB image
 
 <img src="https://user-images.githubusercontent.com/17311837/88461918-a04dfc80-ce5c-11ea-888b-4ea8d68d425a.png" alt="Image_representation" width=50%> 
 
 An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualitites, and blue channel for the strand orientations of the read.
 
-* DeepMosaic workflow: From variant to result (10 models were compared and Efficientnet b4 was selected as default because it performed the best on a gold standard benchmark dataset.): 
+* DeepMosaic classification module workflow: From variant to result (10 models were compared and Efficientnet b4 was selected as default because it performed the best on a gold standard benchmark dataset.): 
 
      
 <img src="https://user-images.githubusercontent.com/17311837/88461821-caeb8580-ce5b-11ea-8c91-7c3ad916fc60.png"  width=80%>
@@ -91,7 +91,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 # Usage 
 
-## Step 1. Feature extraction and visualization of the candidate mosaic variants
+## Step 1. Feature extraction and visualization of the candidate mosaic variants (Image-based representation module)
 
 This step is used for the extraction of genomic features of the variant from raw bams as well as population information. It can serve as an independent tool for the visualization and evaluation of mosaic candidates.
 
@@ -153,7 +153,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 --------------------------------------------
 
-## Step 2. Prediction for mosaicism
+## Step 2. Prediction for mosaicism (Classification module)
 
 ### Usage
 
