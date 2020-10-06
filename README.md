@@ -6,21 +6,21 @@ Visualization and control-independent classification tool of (somatic or germlin
 
 # Contents
 
-[* Overview](#Overview)
+[Overview](#Overview)
 
-[* Requirements before you start](#Requirements-before-you-start)
+[Requirements before you start](#Requirements-before-you-start)
 
-[* Installation](#Installation)
+[Installation](#Installation)
 
-[* Usage](#Usage)
+[Usage](#Usage)
 
-[** Step 1. Feature extraction and visualization of the candidate mosaic variants](#Step-1-Feature-extraction-and-visualization-of-the-candidate-mosaic-variants)
+[ Step 1. Feature extraction and visualization of the candidate mosaic variants](#Step-1-Feature-extraction-and-visualization-of-the-candidate-mosaic-variants)
 
-[** Step 2. Prediction for mosaicism](#Step-2-Prediction-for-mosaicism)
+[ Step 2. Prediction for mosaicism](#Step-2-Prediction-for-mosaicism)
 
-[* Demo](#Demo)
+[Demo](#Demo)
 
-[* Contact](#Contact)
+[Contact](#Contact)
 
 --------------------------------------------
 
