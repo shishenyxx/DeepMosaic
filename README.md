@@ -137,7 +137,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 #### features.txt format
 
-|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|image_filepath|npy_filepath|
+|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucleotide|depth_fraction|image_filepath|npy_filepath|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |/.../images/sample_1-1_17697_G_C.jpg | /.../matrices/sample_1-1_17697_G_C.npy|
 
@@ -174,7 +174,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 ### Output:
 
 #### Output format
-|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|score1|score2|score3|prediction|image_filepath|
+|#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucleotide|depth_fraction|score1|score2|score3|prediction|image_filepath|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |0.9999058880667084 |6.519687262508766e-10 | 9.411128132280348e-05 | artifact| /.../images/sample_1-1_17697_G_C.jpg |
 
@@ -192,7 +192,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 `all_repeat` and `segdup` are provided in the "resources" folder.
 
-`homopolymer` and `dinucluotide` are calculated from the .h5 files in the "resources" folder. 
+`homopolymer` and `dinucleotide` are calculated from the .h5 files in the "resources" folder. 
 
 [Return to Contents](#Contents)
 
