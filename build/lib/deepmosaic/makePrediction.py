@@ -5,6 +5,7 @@ import torch.nn as nn
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 import os, sys
+import io
 import argparse
 import math
 from efficientnet_pytorch import EfficientNet
@@ -12,9 +13,6 @@ import pkg_resources
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-params = {'batch_size': 10,
-          'shuffle': True,
-          'num_workers': 6}
 
 def softmax_transformation(scores):
     exp_scores = list(map(math.exp, scores))
@@ -42,7 +40,7 @@ def model_predict(model):
 class TestDataset(Dataset):
   def __init__(self, data_table):
         'Initialization'
-        self.list_npys = data_table[:,-1]
+        self.list_npys = data_table.npy_filepath.values
 
   def __len__(self):
         'Denotes the total number of samples'
@@ -89,12 +87,12 @@ def prediction_decision(features_df, scores_list):
     predictions = np.array(["artifact"] * len(features_df), dtype = object)
     mosaic_scores = scores_list[:, -1].astype(float)
     depth_fractions = features_df.depth_fraction.astype(float)
-    segdups = features_df.segdup.astype(int)
+    segdups = features_df.segdup.values.astype(int)
     all_repeats = features_df.all_repeat.astype(int)
-    gnomads = features_df.gnomad
+    gnomads = features_df.gnomad.astype(object)
     gnomads[gnomads=="."] = 0
     gnomads = gnomads.astype(float)
-    chroms = features_df.chrom
+    chroms = features_df.chrom.astype(str)
     positions = features_df.pos.astype(int)
     sexs = features_df.sex.astype(str)
     lower_CIs = features_df.lower_CI.astype(float)
@@ -112,7 +110,7 @@ def prediction_decision(features_df, scores_list):
     hetero_filters = (mosaic_scores <= 0.6) & (upper_CIs >= 0.5) & (lower_CIs < 0.5)
     predictions[np.where(hetero_filters)] = "heterozygous"
     #homozygous
-    ref_homo_filters = (lower_CIs < 0.01) & (upper_CIs < 0.5)
+    ref_homo_filters = (mosaic_scores <= 0.6) & (lower_CIs < 0.01) & (upper_CIs < 0.5)
     predictions[np.where(ref_homo_filters)] = "reference_homozygous"
     alt_homo_filters = (lower_CIs > 0.5) & (upper_CIs > 0.99)
     predictions[np.where(alt_homo_filters)] = "alternative_homozygous"
@@ -142,7 +140,7 @@ def main():
 
     model_type = model_name.split("_")[0]
     model_path = pkg_resources.resource_filename('deepmosaic', 'models/' + model_name)
-    print(model_type, model_path)
+
     #model_name = os.path.abspath(model_path).split("/")[-1]
     if model_name.startswith("efficientnet"):
         model = EfficientNet.from_pretrained(model_type)
@@ -173,18 +171,16 @@ def main():
         model = model.to(device)
 
     sys.stdout.write("Loading input data...")
-    data = pd.read_csv(input_file, sep="\t")
-    feature_header = data.columns
-    data = data.values
+    features_df = pd.read_csv(input_file, sep="\t")
+    features_header = features_df.columns
     sys.stdout.write("complete\n")
     global testing_generator
-    testing_generator = DataLoader(TestDataset(data), **params)
+    testing_generator = DataLoader(TestDataset(features_df), **params)
 
     #make predcitions
     preds_list, indices_list, scores_list = model_predict(model)
     preds_list = np.array(preds_list).reshape(-1,1)
-    features_list = data[indices_list, :]
-    features_df = pd.DataFrame(features_list, columns = feature_header)
+    features_df = features_df.loc[indices_list, :]
     scores_list = np.array(scores_list)
     #determine genotypes
     prediction_list = prediction_decision(features_df, scores_list)
@@ -192,7 +188,8 @@ def main():
     header = ["#sample_name", "sex","chrom", "pos", "ref", "alt", "variant", "maf", "lower_CI", "upper_CI", "variant_type", "gene_id",
               "gnomad", "all_repeat", "segdup", "homopolymer", "dinucluotide", "depth_fraction",
               "homo_score", "hetero_score", "mosaic_score", "prediction", "image_filepath"]
-    results = np.hstack([features_list[:,:-2], scores_list, prediction_list, image_list])
-    results_pd = pd.DataFrame(np.hstack([features_list[:,:-2], scores_list, prediction_list, image_list]), columns = header)
+    results = np.hstack([features_df[features_header[:-2]].values, scores_list, prediction_list, image_list])
+    results_pd = pd.DataFrame(results, columns = header)
     results_pd.to_csv(output_file, index=None, sep="\t")
+
 

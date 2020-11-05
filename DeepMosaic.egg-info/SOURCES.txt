@@ -16,7 +16,11 @@ deepmosaic/makePrediction.py
 deepmosaic/pysamReader.py
 deepmosaic/repeatAnnotation.py
 deepmosaic/track.py
+deepmosaic/trainModel.py
+deepmosaic/models/densenet121_epoch_11.pt
 deepmosaic/models/efficientnet-b4_epoch_6.pt
+deepmosaic/models/inception-v3_epoch_5.pt
+deepmosaic/models/resnet_epoch_7.pt
 deepmosaic/resources/all_repeats.b37.bed
 deepmosaic/resources/hg19_seq.h5
 deepmosaic/resources/hg38_seq.h5

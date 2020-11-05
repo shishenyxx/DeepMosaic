@@ -4,7 +4,7 @@ except ImportError:
     from distutils.core import setup
 setup(
     name='DeepMosaic',
-    version='0.0',
+    version='0.0.0',
     author='Xin (Virginia) Xu',
     author_email='xinxu@hsph.harvard.edu',
     description="image based mosaic variant classification tool using CNN based deeplearning",

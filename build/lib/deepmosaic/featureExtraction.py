@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+plt.switch_backend('agg')
 import sys, os
+import gzip
 import random
 from multiprocessing import Pool
 import argparse
@@ -126,6 +128,7 @@ def multiprocess_iterator(line):
 def getOptions(args=sys.argv[1:]):
     parser = argparse.ArgumentParser(description="Parses command.")
     parser.add_argument("-i", "--input_file", required=True, help="Input file (input.txt). [bam],[vcf],[sequencing_depth],[sex]")
+    parser.add_argument("-f", "--vcf_filters", required=False, default=None, help="Filter the vcf file by INFO column, e.g. PASS. Default is no filtering")
     parser.add_argument("-o", "--output_dir", required=True, help="Output directory (output)")
     parser.add_argument("-a", "--annovar_path", required=True, help="Absolute path to the annovar package \
                                                                      (humandb directory should already be specified inside)")
@@ -138,6 +141,7 @@ def main():
     since = time.time()
     options = getOptions(sys.argv[1:])
     input_file = options.input_file
+    filters = options.vcf_filters
     output_dir = options.output_dir
     annovar_path = options.annovar_path
     global build 
@@ -188,6 +192,8 @@ def main():
     
     #process input files
     all_variants = []
+    if filters != None:
+        filters = filters.split(",")
     with open(input_file, "r") as f:
         for line in f:
             if line.startswith("#"):
@@ -206,6 +212,10 @@ def main():
                 vcf_line = vcf_line.rstrip().split("\t")
                 chrom, pos = vcf_line[:2]
                 ref, alt = vcf_line[3:5]
+                if len(ref) != 1 or len(alt) != 1:
+                    continue
+                if filters != None and vcf_line[6] not in filters:
+                    continue
                 all_variants.append([sample_name, bam, chrom, pos, ref, alt, depth, sex])
             vcf_file.close()
     #annotation repeat and segdup
@@ -246,6 +256,4 @@ def main():
     sys.stdout.write("complete image recoding in {:.0f}m {:.0f}s".format(time_elapsed // 60, time_elapsed % 60) + "\n")
 
 
-
-if __name__=='__main__': main()
 
