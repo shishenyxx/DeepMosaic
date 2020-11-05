@@ -63,7 +63,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
     
-> cd DeepMosaic && pip install dist/DeepMosaic-0.0.tar.gz    
+> cd DeepMosaic && pip install dist/DeepMosaic-0.0.0.tar.gz    
 ```
     
 ## Step 2. Install dependency: BEDTools (via conda)
