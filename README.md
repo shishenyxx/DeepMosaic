@@ -60,6 +60,8 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 ## Step 1. Install DeepMosaic
 
+Make sure you have git-lfs installed in your environment to be able to download this repository correctly. 
+
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
     
