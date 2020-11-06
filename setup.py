@@ -21,7 +21,7 @@ setup(
         "numpy",
         "torch",
 	"pysam",
-        "efficientnet_pytorch",
+        "efficientnet-pytorch",
     	"argparse",
         "scipy",
         "tables",

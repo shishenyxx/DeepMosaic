@@ -8,24 +8,51 @@ Author-email: xinxu@hsph.harvard.edu
 License: MIT
 Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/17311837/88461876-52d18f80-ce5c-11ea-9aed-534dfd07d351.png" alt="DeepMosaic_Logo" width=15%> 
         
-        Visualization and control-independent classification tool of mosaic SNVs with deep convolutional neural networks.
-        
-        * Information of aligned sequences for any SNV represented with an RGB image
-        
-        <img src="https://user-images.githubusercontent.com/17311837/88461918-a04dfc80-ce5c-11ea-888b-4ea8d68d425a.png" alt="Image_representation" width=50%> 
-        
-        An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualitites, and blue channel for the strand orientations of the read.
-        
-        * DeepMosaic workflow: From variant to result (10 models were compared and Efficientnet b4 was selected as the best-performing): 
-        
-             
-        <img src="https://user-images.githubusercontent.com/17311837/88461821-caeb8580-ce5b-11ea-8c91-7c3ad916fc60.png" alt="DeepMosaic_workflow" width=80%>
-        
-        Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. Deep convolution neural network then extract the high-dimontional information from the image, experimental, genomic, and population related information were further incoperated in to the classifier.
+        Visualization and control-independent classification tool of (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks.
         
         --------------------------------------------
         
-        ## Requirements before you start
+        # Contents
+        
+        [Overview](#Overview)
+        
+        [Requirements before you start](#Requirements-before-you-start)
+        
+        [Installation](#Installation)
+        
+        [Usage](#Usage)
+        
+        [-Step 1. Feature extraction and visualization of the candidate mosaic variants(DeepMosaic Visualization Module)](#step-1-feature-extraction-and-visualization-of-the-candidate-mosaic-variants-visualization-module)
+        
+        [-Step 2. Prediction for mosaicism (DeepMosaic Classification Module)](#step-2-prediction-for-mosaicism-classification-module)
+        
+        [Demo](#Demo)
+        
+        [Contact](#Contact)
+        
+        --------------------------------------------
+        
+        # Overview
+        
+        
+        * <b>DeepMosaic Visualization Module:</b> Information of aligned sequences for any SNV represented with an RGB image:
+        
+        <img src="https://user-images.githubusercontent.com/17311837/95255932-fb925880-07d6-11eb-8c16-7d2a5e1d12ed.png" alt="Image_representation" width=50%> 
+        
+        An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualitites, and blue channel for the strand orientations of the read.
+        
+        * <b>DeepMosaic Classification Module:</b> Workflow from variant to result (10 models were compared and Efficientnet b4 was selected as default because it performed the best on a gold standard benchmark dataset.): 
+        
+             
+        <img src="https://user-images.githubusercontent.com/17311837/95255993-0fd65580-07d7-11eb-843d-2a3950469cb9.png"  width=80%>
+        
+        Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. Deep convolution neural network then extract the high-dimontional information from the image, experimental, genomic, and population related information were further incoperated in to the classifier.
+        
+        [Return to Contents](#Contents)
+        
+        --------------------------------------------
+        
+        # Requirements before you start
         * [BEDTools](https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html) (command line)
         * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
         * [Pysam](https://github.com/pysam-developers/pysam)
@@ -33,11 +60,13 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         * [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch)
         * [argparse](https://docs.python.org/3/library/argparse.html)
         
+        [Return to Contents](#Contents)
+        
         --------------------------------------------
         
         # Installation
         
-        ### step 1. Install DeepMosaic
+        ## Step 1. Install DeepMosaic
         
         ```
         > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
@@ -45,13 +74,13 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         > cd DeepMosaic && pip install dist/DeepMosaic-0.0.tar.gz    
         ```
             
-        ### step 2. Install dependency: BEDTools (via conda)
+        ## Step 2. Install dependency: BEDTools (via conda)
         
         ```    
         > conda install -c bioconda bedtools    
         ```
         
-        ### step 3. Install dependency: ANNOVAR
+        ## Step 3. Install dependency: ANNOVAR
         
            a) Go to the ANNOVAR website and click "[here](http://annovar.openbioinformatics.org/en/latest/user-guide/download/)" to register and download the annovar distribution. 
             
@@ -63,12 +92,16 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         ```
             
            to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
-           
+        
+        [Return to Contents](#Contents)
+        
         --------------------------------------------
         
         # Usage 
         
-        ## Step 1. Extract Features and encode image representation of the candidate variants
+        ## Step 1. Feature extraction and visualization of the candidate mosaic variants (Visualization Module)
+        
+        This step is used for the extraction of genomic features of the variant from raw bams as well as population information. It can serve as an independent tool for the visualization and evaluation of mosaic candidates.
         
         ### Usage
         
@@ -112,7 +145,7 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         
         #### features.txt format
         
-        |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|image_filepath|npy_filepath|
+        |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucleotide|depth_fraction|image_filepath|npy_filepath|
         |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
         |sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |/.../images/sample_1-1_17697_G_C.jpg | /.../matrices/sample_1-1_17697_G_C.npy|
         
@@ -124,9 +157,11 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         
         4. `input.hg19_gnomad_genome_dropped`, `input.hg19_gnomad_genome_filtered`, `input.exonic_variant_function`, `input.variant_function` are ANNOVAR outputs annotating the gnomad and variant function information.
         
+        [Return to Contents](#Contents)
+        
         --------------------------------------------
         
-        ## Step 2. Prediction for mosaicism
+        ## Step 2. Prediction for mosaicism (Classification Module)
         
         ### Usage
         
@@ -147,7 +182,7 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         ### Output:
         
         #### Output format
-        |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|homo_score|hetero_score|mosaic_score|prediction|image_filepath|
+        |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucleotide|depth_fraction|score1|score2|score3|prediction|image_filepath|
         |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
         |sample_1| M | 1 | 17697 | G | C | 1_17697_G_C | 0.18236472945891782 | 0.15095348571574527 | 0.21862912439071866 | ncRNA_exonic | WASH7P | 0.1231 | 1 | 1 | 0 | 0 | 3.09 |0.9999058880667084 |6.519687262508766e-10 | 9.411128132280348e-05 | artifact| /.../images/sample_1-1_17697_G_C.jpg |
         
@@ -165,9 +200,9 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         
         `all_repeat` and `segdup` are provided in the "resources" folder.
         
-        `homopolymer` and `dinucluotide` are calculated from the .h5 files in the "resources" folder. 
+        `homopolymer` and `dinucleotide` are calculated from the .h5 files in the "resources" folder. 
         
-        
+        [Return to Contents](#Contents)
         
         --------------------------------------------
         # Demo 
@@ -206,21 +241,23 @@ Description: # DeepMosaic  <img src="https://user-images.githubusercontent.com/1
         
         #### Expected output: results/final_predictions.txt
         
-        |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|homo_score|hetero_score|mosaic_score|prediction|image_filepath|
+        |#sample_name|sex|chrom|pos|ref|alt|variant|maf|lower_CI|upper_CI|variant_type|gene_id|gnomad|all_repeat|segdup|homopolymer|dinucluotide|depth_fraction|score1|score2|score3|prediction|image_filepath|
         |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
         |sample_1| M |      10  |    25509499   |     A   |    G   |    10_25509499_A_G |0.05737704918032788  |   0.03448247887605271   |  0.09399263167327017  |   intronic  |      GPR158 | 0.0  |   0    |   0   |    1   |    0  |     1.22  |  0.00010761513038663674 | 3.852715883900453e-05 |  0.9998538577107744   |   mosaic | results/images/sample_1-10_25509499_A_G.jpg|
+        |sample_2   |     M      | 14   |   37531674     |   A   |    T  |     14_37531674_A_T| 0.9948186528497408 |     0.9712392635106 |0.9990847787125622   |   intronic|        SLC25A21   |     0.2267 | 1    |   0    |   1   |    1   |    0.98  |  0.19976294102631714  |   4.0270887857736005e-06|  0.800233031884897   |    alternative_homozygous  |results/images/sample_2-14_37531674_A_T.jpg|
         |sample_3   |     M    |   20   |   1805075| G   |    T   |    20_1805075_G_T |  0.018072289156626502  |  0.008308354195089811  |  0.03886110152464575   |  intergenic |     LOC100289473(dist=44683),SIRPA(dist=69738) |     0.0    | 0    |   0   |    0   |    0   |    1.66  |  0.003562673370702711    |2.9057256040721804e-06 | 0.9964344209036933  |    mosaic  | results/images/sample_3-20_1805075_G_T.jpg|
         |sample_4   |     M    |   16  |    65589896   |     G    |   C   |    16_65589896_G_C |0.5306122448979592  |    0.43252467204457545  |   0.6263904306010359    |  ncRNA_intronic|  LINC00922   |    0.3142 | 1   |    0 |      1  |     0  |     0.49 |   0.9998079754132149 |     5.6467567415316954e-08 | 0.00019196811921752858  |heterozygous |   results/images/sample_4-16_65589896_G_C.jpg|
-        |sample_2   |     M      | 14   |   37531674     |   A   |    T  |     14_37531674_A_T| 0.9948186528497408 |     0.9712392635106 |0.9990847787125622   |   intronic|        SLC25A21   |     0.2267 | 1    |   0    |   1   |    1   |    0.98  |  0.19976294102631714  |   4.0270887857736005e-06|  0.800233031884897   |    alternative_homozygous  |results/images/sample_2-14_37531674_A_T.jpg|
+        
+        [Return to Contents](#Contents)
         
         --------------------------------------------
         
         
-        ## Contact
+        # Contact
         
-        If you have any questions please contact us:
+        If you have any questions please post a thread at the issue section or contact us at:
         
-        [Prof. Joseph Gleeson's lab at UCSD](http://www.gleesonlab.org/index.html)
+        [Prof. Joseph Gleeson's lab at the University of California San Diego and Rady Children's Institute for Genomic Medicine](http://www.gleesonlab.org/index.html)
         
         :email: Prof. Joseph Gleeson (PI): [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), [contact@gleesonlab.org](mailto:contact@gleesonlab.org) 
         
