@@ -65,16 +65,14 @@ Make sure you have <b>git-lfs</b> installed in your environment (download [git-l
 
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
-
 ```
+
 Make sure you cloned the whole repository, total folder size should be ~ 11G.
 
 ```    
-
 > cd DeepMosaic 
 
 > pip install dist/DeepMosaic-0.0.0.tar.gz    
-
 ```
     
 ## Step 2. Install dependency: BEDTools (via conda)
