@@ -61,12 +61,15 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 ## Step 1. Install DeepMosaic
 
-Make sure you have git-lfs installed in your environment to be able to download this repository correctly. 
+Make sure you have <b>git-lfs</b> installed in your environment to be able to download this repository correctly. 
 
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
     
-> cd DeepMosaic && pip install dist/DeepMosaic-0.0.0.tar.gz    
+> cd DeepMosaic 
+
+> pip install dist/DeepMosaic-0.0.0.tar.gz    
+
 ```
     
 ## Step 2. Install dependency: BEDTools (via conda)
