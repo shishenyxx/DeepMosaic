@@ -67,7 +67,7 @@ Make sure you have <b>git-lfs</b> installed in your environment (download [git-l
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
 
 ```
-Make sure you cloned the whole repository, total folder size should be ~ 14G.
+Make sure you cloned the whole repository, total folder size should be ~ 11G.
 
 ```    
 
