@@ -263,5 +263,5 @@ If you have any questions please post a thread at the issue section or contact u
 :email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
 
 # Cite DeepMosaic
-Yang X, Xin X, et al. Gleeson JG DeepMosaic: Control-independent mosaic single nucleotide variant detection using deep convolutional neural networks. [bioRxiv](https://doi.org/10.1101/2020.11.14.382473)
+Yang X, Xin X, et al. Gleeson JG DeepMosaic: Control-independent mosaic single nucleotide variant detection using deep convolutional neural networks. [bioRxiv](https://www.biorxiv.org/content/10.1101/2020.11.14.382473v1)
 
