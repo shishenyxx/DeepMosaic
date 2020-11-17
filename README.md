@@ -65,7 +65,12 @@ Make sure you have <b>git-lfs</b> installed in your environment to be able to do
 
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
-    
+
+```
+Make sure you cloned the whole repository, total folder size should be ~ 14G.
+
+```    
+
 > cd DeepMosaic 
 
 > pip install dist/DeepMosaic-0.0.0.tar.gz    
