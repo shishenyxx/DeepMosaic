@@ -45,6 +45,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 --------------------------------------------
 
 # Requirements before you start
+* [git-lfs](https://git-lfs.github.com/) for the system you work on
 * [BEDTools](https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html) (command line)
 * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
 * [Pysam](https://github.com/pysam-developers/pysam)
