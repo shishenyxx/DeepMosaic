@@ -61,7 +61,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 ## Step 1. Install DeepMosaic
 
-Make sure you have <b>git-lfs</b> installed in your environment (download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), put the binary file in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs, you only need to do it once) to be able to download this repository correctly. 
+Make sure you have <b>git-lfs</b> installed in your environment (download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), unzip the tar.gz and put the binary file ```git-lfs``` in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs, you only need to do it once) to be able to download this repository correctly. 
 
 ```
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
