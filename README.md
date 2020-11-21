@@ -260,11 +260,13 @@ If you have any questions please post a thread at the issue section or contact u
 
 [Prof. Joseph Gleeson's lab at the University of California San Diego and Rady Children's Institute for Genomic Medicine](http://www.gleesonlab.org/index.html)
 
+
+:email: Prof. Joseph Gleeson (PI): [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), [contact@gleesonlab.org](mailto:contact@gleesonlab.org) 
+
 :email: Xin Xu: [xinxu@hsph.harvard.edu](mailto:xinxu@hsph.harvard.edu), [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
 
 :email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
 
-:email: Prof. Joseph Gleeson (PI): [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), [contact@gleesonlab.org](mailto:contact@gleesonlab.org) 
 
 
 
