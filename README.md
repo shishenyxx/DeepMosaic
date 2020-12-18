@@ -31,7 +31,7 @@ Visualization and control-independent classification tool of (somatic or germlin
 
 <img src="https://user-images.githubusercontent.com/17311837/95255932-fb925880-07d6-11eb-8c16-7d2a5e1d12ed.png" alt="Image_representation" width=50%> 
 
-An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualitites, and blue channel for the strand orientations of the read.
+An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualitites, and blue channel for the strand orientations of the read. Note that the green channel is modified to show better contrast for human eyes.
 
 * <b>DeepMosaic Classification Module:</b> Workflow from variant to result (10 models were compared and Efficientnet b4 was selected as default because it performed the best on a gold standard benchmark dataset.): 
 
