@@ -89,6 +89,7 @@ Make sure you cloned the whole repository, total folder size should be ~ 11G.
     
 ```
 > cd [path to ANNOVAR]
+
 > perl ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gnomad_genome humandb/    
 ```
     
