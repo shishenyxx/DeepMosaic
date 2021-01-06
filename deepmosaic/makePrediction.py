@@ -188,7 +188,7 @@ def main():
     image_list = features_df.image_filepath.values.reshape(-1,1)
     header = ["#sample_name", "sex","chrom", "pos", "ref", "alt", "variant", "maf", "lower_CI", "upper_CI", "variant_type", "gene_id",
               "gnomad", "all_repeat", "segdup", "homopolymer", "dinucluotide", "depth_fraction",
-              "homo_score", "hetero_score", "mosaic_score", "prediction", "image_filepath"]
+              "score1", "score2", "score3", "prediction", "image_filepath"]
     results = np.hstack([features_df[features_header[:-2]].values, scores_list, prediction_list, image_list])
     results_pd = pd.DataFrame(results, columns = header)
     results_pd.to_csv(output_file, index=None, sep="\t")
