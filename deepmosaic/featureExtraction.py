@@ -11,11 +11,11 @@ import time
 import subprocess
 import pkg_resources
 from scipy import stats
-from deepmosaic.canvasPainter import paint_canvas
-from deepmosaic.pysamReader import pysamReader
-from deepmosaic.repeatAnnotation import repeats_annotation
-from deepmosaic.gnomadAnnotation import gnomad_annotation 
-from deepmosaic.homopolymerDinucleotideAnnotation import homopolymer_dinucleotide_annotation
+from canvasPainter import paint_canvas
+from pysamReader import pysamReader
+from repeatAnnotation import repeats_annotation
+from gnomadAnnotation import gnomad_annotation 
+from homopolymerDinucleotideAnnotation import homopolymer_dinucleotide_annotation
 
 MAX_DP = 500
 WIDTH = 300

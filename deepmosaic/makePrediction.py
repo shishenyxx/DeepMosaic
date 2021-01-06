@@ -139,7 +139,8 @@ def main():
 
 
     model_type = model_name.split("_")[0]
-    model_path = pkg_resources.resource_filename('deepmosaic', 'models/' + model_name)
+    HERE = os.path.abspath(os.path.dirname(__file__))
+    model_path = os.path.join(HERE, "models/" + model_name)
 
     #model_name = os.path.abspath(model_path).split("/")[-1]
     if model_name.startswith("efficientnet"):

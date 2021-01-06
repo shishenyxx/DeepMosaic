@@ -5,11 +5,11 @@ import subprocess
 import pkg_resources
 import re
 
-all_repeats_path = pkg_resources.resource_filename('deepmosaic', 'resources/all_repeats.b37.bed')
-segdup_path = pkg_resources.resource_filename('deepmosaic', 'resources/segdup.hg19.bed')
-
-#all_repeats_path = "/projects/ps-gleesonlab3/xinxu/deepmosaic_08_12_2020/resources/all_repeats.b37.bed"
-#segdup_path = "/projects/ps-gleesonlab3/xinxu/deepmosaic_08_12_2020/resources/segdup.hg19.bed"
+#all_repeats_path = pkg_resources.resource_filename('deepmosaic', 'resources/all_repeats.b37.bed')
+#segdup_path = pkg_resources.resource_filename('deepmosaic', 'resources/segdup.hg19.bed')
+HERE = os.path.abspath(os.path.dirname(__file__))
+all_repeats_path = os.path.join(HERE, "./resources/all_repeats.b37.bed")
+segdup_path = os.path.join(HERE, "./resources/segdup.hg19.bed")
 
 def repeats_annotation(all_variants, output_dir):
     rp_fd, rp_path = tempfile.mkstemp()

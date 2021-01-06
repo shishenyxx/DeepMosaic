@@ -1,14 +1,17 @@
-from deepmosaic.track import Track
+from track import Track
 import pandas as pd
 import tempfile
 import pkg_resources
 import re
+import os.path
 
-hg19_track_path = pkg_resources.resource_filename('deepmosaic', 'resources/hg19_seq.h5')
-hg38_track_path = pkg_resources.resource_filename('deepmosaic', 'resources/hg38_seq.h5')
+#hg19_track_path = pkg_resources.resource_filename('deepmosaic', 'resources/hg19_seq.h5')
+#hg38_track_path = pkg_resources.resource_filename('deepmosaic', 'resources/hg38_seq.h5')
 
-#hg19_track_path = "/projects/ps-gleesonlab3/xinxu/deepmosaic_08_12_2020/resources/hg19_seq.h5"
-#hg38_track_path = "/projects/ps-gleesonlab3/xinxu/deepmosaic_08_12_2020/resources/hg38_seq.h5"
+# The directory containing this file
+HERE = os.path.abspath(os.path.dirname(__file__))
+hg19_track_path = os.path.join(HERE, "./resources/hg19_seq.h5")
+hg38_track_path = os.path.join(HERE, "./resources/hg38_seq.h5")
 
 def homopolymer_dinucleotide_annotation(chrom, pos, build):
     def check_if_in_homopolymer(seq_str):
