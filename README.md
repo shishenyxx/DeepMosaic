@@ -67,12 +67,10 @@ Make sure you have <b>git-lfs</b> installed in your environment (download [git-l
 > git clone --recursive https://github.com/Virginiaxu/DeepMosaic
 ```
 
-Make sure you cloned the whole repository, total folder size should be ~ 11G.
+Make sure you cloned the whole repository, total folder size should be ~ 4G.
 
 ```    
-> cd DeepMosaic 
-
-> pip install dist/DeepMosaic-0.0.0.tar.gz    
+> cd DeepMosaic   
 ```
     
 ## Step 2. Install dependency: BEDTools (via conda)
@@ -108,7 +106,7 @@ This step is used for the extraction of genomic features of the variant from raw
 ### Usage
 
 ```
-> deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
+> [DeepMosaic Path]/deepmosaic/deepmosaic-draw -i [input.txt] -o [output_dir] -a [path to ANNOVAR] 
 ```
 ### Note:
 
@@ -168,7 +166,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 ### Usage
 
 ```
-> deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
+> DeepMosaic Path]/deepmosaic/deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
 ```
 
 ### Note:
