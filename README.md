@@ -49,8 +49,8 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [BEDTools](https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html) (command line)
 * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
 * [Pysam](https://github.com/pysam-developers/pysam)
-* [PyTorch](https://pytorch.org/)
-* [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch)
+* [PyTorch](https://pytorch.org/) version>=1.6.0
+* [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch) version>=1.7.0
 * [argparse](https://docs.python.org/3/library/argparse.html)
 
 [Return to Contents](#Contents)
