@@ -166,7 +166,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 ### Usage
 
 ```
-> DeepMosaic Path]/deepmosaic/deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
+> [DeepMosaic Path]/deepmosaic/deepmosaic-predict -i [output_dir/feature.txt] -o [output.txt] -m [prediction model (default: efficientnet-b4_epoch_6.pt)] -b [batch size (default: 10)]
 ```
 
 ### Note:
