@@ -260,6 +260,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 2. For WGS variants, exclusion of annotated homopolymer and dinucleotide repeats will remove false positive and increase validation rate, but decrease the sensitivity.
 
 [Return to Contents](#Contents)
+
 --------------------------------------------
 
 
