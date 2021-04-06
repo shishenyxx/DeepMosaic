@@ -256,7 +256,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 --------------------------------------------
 # Tips
-1. If you have a larege number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have relatively a small number of variants in each file but multiple files (samples), integrate everything together in one input file.
+1. If you have a larege number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file.
 2. For WGS variants, exclusion of annotated homopolymer and dinucleotide repeats will remove false positive and increase validation rate, but decrease the sensitivity.
 
 [Return to Contents](#Contents)
