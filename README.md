@@ -257,17 +257,14 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 --------------------------------------------
 # Q&A
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
-
    A: If you have a larege number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file.
    
    
 2. Q: How do I balance/further filter the variants base on DeepMosaic output?
-
    A: For WGS variants, exclusion of annotated homopolymer and dinucleotide repeats will remove false positive and increase validation rate, but decrease the sensitivity.
    
    
 3. Q: What does Score 1, Score 2, and Score 3 mean in the output file?
-
    A: The three scores are combined information from the complex features extracted by the neural network, from our experiences, Score 1 is more like a "het and homo probability", Score 2&3, especially Score 3 is more like a "potential mosaic possibility". In other words, the higher Score 1 is, the more likely the candidate is a germline variant, whereas the higher Score 3 is, the more likely the candidate is a mosaic variant. But both categories contained a lot of potential artifacts, that's why for the final output we included a more complex classifier.
    
    
