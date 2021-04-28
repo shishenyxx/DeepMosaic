@@ -20,7 +20,7 @@ Visualization and control-independent classification tool of (somatic or germlin
 
 [Demo](#Demo)
 
-[Q&A](#Q&A)
+[Q&A](#qa)
 
 [Contact](#Contact)
 
