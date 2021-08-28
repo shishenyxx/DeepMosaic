@@ -281,14 +281,13 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 If you have any questions please post a thread at the issue section or contact us at:
 
-:email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
-
-:email: Xin Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
-
 :email: Prof. Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), [contact@gleesonlab.org](mailto:contact@gleesonlab.org) 
 
 [Prof. Joseph Gleeson's lab at the University of California San Diego and Rady Children's Institute for Genomic Medicine](http://www.gleesonlab.org/index.html)
 
+:email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
+
+:email: Xin Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
 
 # Cite DeepMosaic
 Yang X, Xin X, et al. Gleeson JG. DeepMosaic: Control-independent mosaic single nucleotide variant detection using deep convolutional neural networks. ([bioRxiv 2020](https://www.biorxiv.org/content/10.1101/2020.11.14.382473v2.full))
