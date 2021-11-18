@@ -20,6 +20,8 @@ Visualization and control-independent classification tool of (somatic or germlin
 
 [Demo](#Demo)
 
+[Performance](#Performance)
+
 [Q&A](#qa)
 
 [Contact](#Contact)
@@ -265,6 +267,8 @@ We estimated > 90% experimental validation rate for WGS data identified as "mosa
 2. WES
 
 We estimated ~40% experimental validation rate for WES data identified as "mosaic" by the current DeepMosaic WGS model.
+
+[Return to Contents](#Contents)
 
 --------------------------------------------
 # Q&A
