@@ -255,6 +255,18 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 [Return to Contents](#Contents)
 
 --------------------------------------------
+
+# Performance
+
+1. WGS
+
+We estimated > 90% experimental validation rate for WGS data identified as "mosaic" by DeepMosaic.
+
+2. WES
+
+We estimated ~40% experimental validation rate for WES data identified as "mosaic" by the current DeepMosaic WGS model.
+
+--------------------------------------------
 # Q&A
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
    
