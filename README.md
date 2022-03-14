@@ -292,6 +292,16 @@ We estimated ~40% experimental validation rate for WES data identified as "mosai
 
 --------------------------------------------
 
+# Cite DeepMosaic
+Yang X, Xin X, et al. Gleeson JG. DeepMosaic: Control-independent mosaic single nucleotide variant detection using deep convolutional neural networks. ([bioRxiv 2021](https://www.biorxiv.org/content/10.1101/2020.11.14.382473v2.full))
+
+--------------------------------------------
+
+# Licence
+Released under GNU-GPL licence.
+
+
+--------------------------------------------
 
 # Contact
 
@@ -305,9 +315,4 @@ If you have any questions please post a thread at the issue section or contact u
 
 :email: Xin Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
 
-# Cite DeepMosaic
-Yang X, Xin X, et al. Gleeson JG. DeepMosaic: Control-independent mosaic single nucleotide variant detection using deep convolutional neural networks. ([bioRxiv 2021](https://www.biorxiv.org/content/10.1101/2020.11.14.382473v2.full))
-
-# Licence
-Released under GNU-GPL licence.
 
