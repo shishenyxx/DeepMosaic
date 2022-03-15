@@ -24,6 +24,10 @@ Visualization and control-independent classification tool of (somatic or germlin
 
 [Q&A](#qa)
 
+[Cite DeepMosaic](#cite-deepmosaic)
+
+[Licence](#licence)
+
 [Contact](#Contact)
 
 --------------------------------------------
