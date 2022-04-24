@@ -58,7 +58,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
 * [Pysam](https://github.com/pysam-developers/pysam)
 * [PyTorch](https://pytorch.org/) version>=1.6.0
-* [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch) version>=1.7.0
+* [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch) version>=0.7.1
 * [argparse](https://docs.python.org/3/library/argparse.html)
 
 [Return to Contents](#Contents)
