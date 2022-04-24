@@ -129,7 +129,7 @@ This step is used for the extraction of genomic features of the variant from raw
 
 Each line of `[input.txt]` is a sample with its aligned reads in the bam format (with index in the same directory), and its candidate variants in the vcf (or vcf.gz) format. User should also provide the sequencing depth and the sex  (M/F) of the corresponding sample. Sample name (#sample_name column) should be a unique identifier for each sample; duplicated names are not allowed.
 
-Note the sequencing depth is required for increasing specificity and if the user is not clear about the average depth, we recommend piloting a fast depth analysis with SAMtools mpileup for several hundreds of variants, or a complete depth of coverage analysis.
+Note the sequencing depth is required for increasing specificity and if the user is not clear about the average depth, we recommend piloting a fast depth analysis with SAMtools mpileup for several hundreds of variants, or a complete depth of coverage analysis. The depth should integers. 
 
 2. DeepMosaic supports no-loss image representation for sequencing depth up to 500x. Reads with deeper sequencing depth will be randomly down-sampled to 500x during image representation.
  
