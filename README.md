@@ -268,11 +268,13 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 1. WGS
 
-We estimated > 90% experimental validation rate for WGS data identified as "mosaic" by DeepMosaic.
+We estimated > 90% experimental validation rate for WGS data identified as "mosaic" by DeepMosaic (GRCh37).
 
 2. WES
 
-We estimated ~40% experimental validation rate for WES data identified as "mosaic" by the current DeepMosaic WGS model.
+We estimated ~40% experimental validation rate for WES data identified as "mosaic" by the current DeepMosaic WGS model (GRCh37).
+
+Note that the performance of DeepMosaic on GRCh38 might be different.
 
 [Return to Contents](#Contents)
 
