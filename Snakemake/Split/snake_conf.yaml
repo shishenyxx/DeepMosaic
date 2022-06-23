@@ -1,0 +1,9 @@
+out_dir: "/projects/ps-gleesonlab7/gleeson6/FCD_re-process_all/6-DeepMosaic/RE_only"
+
+#path to aggregated input txt
+input_files: "/projects/ps-gleesonlab7/gleeson6/FCD_re-process_all/6-DeepMosaic/RE_only/input_files.txt"
+#path to annovar 
+annovar: "/home/jis215/tools/annovar"
+
+#path to deepmosaic
+deepmosaic: "/home/jis215/tools/DeepMosaic/deepmosaic"
