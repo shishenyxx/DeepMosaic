@@ -216,6 +216,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 [Return to Contents](#Contents)
 
+## We also prepared a [Snakemake wrapper](https://github.com/Virginiaxu/DeepMosaic/tree/master/Snakemake) 
 --------------------------------------------
 # Demo 
 We have provided a simple example in the sub-directory of "demo". The directory includes the input files and the expected results from running DeepMosaic. User could refer to the example for the expected input format and output format.
