@@ -1,3 +1,1 @@
 #sample_name	bam	vcf	depth	sex
-RE-2168_Br	/projects/ps-gleesonlab7/gleeson6/FCD_re-process_all/1-WES-Re-process/recaled_bams/RE-2168_Br.recaled.bam	/projects/ps-gleesonlab7/gleeson6/FCD_re-process_all/8-Mutect2_Single_Mode/RE_only/scratch/filtered_single_mode/RE-2168_Br_somatic.vcf.gz	60	M
-RE-2168_Sal	/projects/ps-gleesonlab7/gleeson6/FCD_re-process_all/1-WES-Re-process/recaled_bams/RE-2168_Sal.recaled.bam	/projects/ps-gleesonlab7/gleeson6/FCD_re-process_all/8-Mutect2_Single_Mode/RE_only/scratch/filtered_single_mode/RE-2168_Sal_somatic.vcf.gz	88	M
