@@ -1,0 +1,9 @@
+out_dir: "/home/jis215/scripts/Deepmosaic_no_split"
+
+#path to aggregated input txt
+input_files: "/home/jis215/scripts/Deepmosaic_no_split/input_files.txt"
+#path to annovar 
+annovar: "/home/jis215/tools/annovar"
+
+#path to deepmosaic
+deepmosaic: "/home/jis215/tools/DeepMosaic/deepmosaic"

@@ -1,1 +1,191 @@
+configfile: "snake_conf.yaml"
 
+
+import os
+
+
+def get_sample_and_input_dicts():
+
+    f = open(config["input_files"], "r")
+    sample = []
+    bam_dict = {}
+    vcf_dict = {}
+    depth_dict = {}
+    sex_dict = {}
+    line_dict = {}
+    for line in f:
+        if line.startswith("#"):
+            continue
+        words = line.rstrip().split("\t")
+        print(words)
+        sample_id = words[0]
+        bam_path = words[1]
+        vcf_path = words[2]
+        depth = words[3]
+        sex = words[4]
+
+        sample.append(sample_id)
+        bam_dict[sample_id] = bam_path
+        vcf_dict[sample_id] = vcf_path
+        depth_dict[sample_id] = depth
+        sex_dict[sample_id] = sex
+        line_dict[sample_id] = [sample_id, bam_path, vcf_path, depth, sex]
+    f.close()
+    return sample, bam_dict, vcf_dict, depth_dict, sex_dict, line_dict
+
+
+HEADER = ["#sample_name", "bam", "vcf", "depth", "sex"]
+
+OUTPUT_HEADER = [
+    "#sample_name",
+    "sex",
+    "chrom",
+    "pos",
+    "ref",
+    "alt",
+    "variant",
+    "maf",
+    "lower_CI",
+    "upper_CI",
+    "variant_type",
+    "gene_id",
+    "gnomad",
+    "all_repeat",
+    "segdup",
+    "homopolymer",
+    "dinucluotide",
+    "depth_fraction",
+    "score1",
+    "score2",
+    "score3",
+    "prediction",
+    "image_filepath",
+]
+(
+    SAMPLE,
+    BAM_DICT,
+    VCF_DICT,
+    DEPTH_DICT,
+    SEX_DICT,
+    LINE_DICT,
+) = get_sample_and_input_dicts()
+print(SAMPLE)
+OUT_DIR = config["out_dir"]
+INPUT_FILES = config["input_files"]
+ANNOVAR = config["annovar"]
+DEEPMOSAIC = config["deepmosaic"]
+
+
+wildcard_constraints:
+    sample="[a-zA-Z\d_-]+",
+
+
+localrules:
+    all,
+    generate_sample_input_txt,
+    filter_prediction_results,
+
+
+rule all:
+    input:
+        #expand(OUT_DIR + "/{sample}/output.txt", sample=SAMPLE),
+        #expand(OUT_DIR + "/{sample}/input.txt", sample=SAMPLE),
+        #expand(OUT_DIR + "/{sample}/features.txt", sample=SAMPLE),
+        expand(OUT_DIR + "/{sample}/filtered_output.txt", sample=SAMPLE),
+        OUT_DIR + "/final_summary.vcf",
+
+
+rule generate_sample_input_txt:
+    # input:
+    # sample_id = lambda wildcards: LINE_DICT[wildcards.sample][0],
+    output:
+        outfile=OUT_DIR + "/{sample}/input.txt",
+    params:
+        sample_id=lambda wildcards: LINE_DICT[wildcards.sample][0],
+    run:
+        # for sample in SAMPLE:
+        if not os.path.exists(params.sample_id):
+            os.mkdir(params.sample_id)
+        # outfile = OUT_DIR + "/" + sample + "/" + sample + "_input.txt"
+        if not os.path.exists(output.outfile) or os.path.getsize(output.outfile) == 0:
+            wfile = open(output.outfile, "w")
+            wfile.write("\t".join(HEADER) + "\n")
+            # contents = [sample, BAM_DICT[sample], VCF_DICT[sample], DEPTH_DICT[sample], SEX_DICT[sample]]
+            wfile.write("\t".join(LINE_DICT[params.sample_id]) + "\n")
+            wfile.close()
+
+
+rule deepmosaic_draw:
+    input:
+        infile=OUT_DIR + "/{sample}/input.txt",
+    output:
+        #target_dir = directory(OUT_DIR + "/{sample}"),
+        feature=OUT_DIR + "/{sample}/features.txt",
+    log:
+        OUT_DIR + "/{sample}/deepmosaic_draw.log",
+    params:
+        cluster="-q home -l nodes=1:ppn=1 -l walltime=168:00:00",
+        target_dir=directory(OUT_DIR + "/{sample}"),
+        #sample_id = lambda wildcards: LINE_DICT[wildcards.sample][0],
+    benchmark:
+        OUT_DIR + "/benchmark/deepmosaic_draw/{sample}.deepmosaic_draw.benchmark.txt"
+    conda:
+        "deepmosaic"
+    shell:
+        "({DEEPMOSAIC}/deepmosaic-draw"
+        " -i {input.infile}"
+        " -o {params.target_dir}"
+        " -a {ANNOVAR}) 2> {log}"
+
+
+rule deepmosaic_predict:
+    input:
+        infile=OUT_DIR + "/{sample}/features.txt",
+    output:
+        outfile=OUT_DIR + "/{sample}/output.txt",
+    log:
+        OUT_DIR + "/{sample}/deepmosaic_predict.log",
+    params:
+        cluster="-q hotel -l nodes=1:ppn=12 -l walltime=168:00:00",
+        #sample_id = lambda wildcards: LINE_DICT[wildcards.sample][0],
+    benchmark:
+        (
+            OUT_DIR
+            + "/benchmark/deepmosaic_predict/{sample}.deepmosaic_predict.benchmark.txt"
+        )
+    conda:
+        "deepmosaic"
+    shell:
+        "({DEEPMOSAIC}/deepmosaic-predict"
+        " -i {input.infile}"
+        " -o {output.outfile}) 2> {log}"
+
+
+# filter out mosaic variants from the prediction results
+rule filter_prediction_results:
+    input:
+        OUT_DIR + "/{sample}/output.txt",
+    output:
+        OUT_DIR + "/{sample}/filtered_output.txt",
+    run:
+        shell(""" cat {input}|awk '$22~"mosaic"{{print $0}}' >{output} """)
+
+
+rule merge_filtered_results:
+    input:
+        expand(OUT_DIR + "/{sample}/filtered_output.txt", sample=SAMPLE),
+    output:
+        outfile=OUT_DIR + "/final_summary.vcf",
+    params:
+        cluster="-q condo -l walltime=2:00:00",
+    run:
+        wfile = open(output.outfile, "w")
+        wfile.write("\t".join(OUTPUT_HEADER) + "\n")
+        for file in input:
+            print(file)
+            with open(file, "r") as f:
+                for line in f:
+                    if line.startswith("#"):
+                        continue
+                    wfile.write(line)
+        wfile.close()
