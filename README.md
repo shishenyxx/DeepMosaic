@@ -295,7 +295,11 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 3. Q: What does Score 1, Score 2, and Score 3 mean in the output file?
    
    A: The three scores are combined information from the complex features extracted by the neural network, from our experiences, Score 1 is more like a "het and homo probability", Score 2&3, especially Score 3 is more like a "potential mosaic possibility". In other words, the higher Score 1 is, the more likely the candidate is a germline variant, whereas the higher Score 3 is, the more likely the candidate is a mosaic variant. But both categories contained a lot of potential artifacts, that's why for the final output we included a more complex classifier.
+
+
+4. Q: How to deal with mitochondria and sex chromosomes?
    
+   A: First you should choose a reference genome that supports mitochondria as a separate chromosome. DeepMosaic is not specifically trained on mitochondria variants so we can't guarantee the result, thus we suggest to remove the MT variants from DeepMosaic input. For sex chromosomes, DeepMosaic takes into consideration the biological gender of the input sample and also considered the pseduo autosomal regions separately.
    
 
 [Return to Contents](#Contents)
