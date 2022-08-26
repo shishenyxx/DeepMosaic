@@ -120,14 +120,16 @@ Make sure you cloned the whole repository, total folder size should be ~ 4G.
 
 --------------------------------------------
 
-<details><summary>
+
 
 # Usage 
 
-</summary>
+<details><summary>
 
 ## Step 1. Feature extraction and visualization of the candidate mosaic variants (Visualization Module)
 
+</summary>
+     
 This step is used for the extraction of genomic features of the variant from raw bams as well as population information. It can serve as an independent tool for the visualization and evaluation of mosaic candidates.
 
 ### Usage
@@ -190,10 +192,16 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 [Return to Contents](#Contents)
 
+</details>
+
 --------------------------------------------
+
+<details><summary>
 
 ## Step 2. Prediction for mosaicism (Classification Module)
 
+</summary>
+     
 ### Usage
 
 ```
