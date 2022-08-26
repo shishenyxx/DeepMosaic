@@ -116,7 +116,7 @@ def getOptions(args=sys.argv[1:]):
     return options
 
 
-def main(argv):
+def main():
     options = getOptions(sys.argv[1:])
     input_file = options.input_file
     epoch = opions.train_epoch
@@ -129,7 +129,7 @@ def main(argv):
         sys.exit(2)
 
     #user provided input data has two columns: npy_filepath, label (note: npy_filepath could be obtained from deepmosaic-draw)
-    data = pd.read_csv(input_file, sep="\t")
+    data = pd.read_csv(input_file, sep="\t").values
 
     output_dir = "/".join(output_file.split("/")[:-1])
     if not os.path.exists(output_dir):
@@ -196,4 +196,4 @@ def main(argv):
         np.save(output_dir + "/training_loss.npy", np.array(loss_list))
         sys.stdout.write("complete\n")
 
-
+main()
