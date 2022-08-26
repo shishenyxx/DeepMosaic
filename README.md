@@ -1,6 +1,6 @@
 # DeepMosaic  <img src="https://user-images.githubusercontent.com/17311837/88461876-52d18f80-ce5c-11ea-9aed-534dfd07d351.png" alt="DeepMosaic_Logo" width=15%> 
 
-Visualization and control-independent classification tool of (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks.
+Visualization and control-independent classification tool of noncancer (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks.
 
 --------------------------------------------
 
