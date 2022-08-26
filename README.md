@@ -273,9 +273,13 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 If you have you own training set, you can train you own DeepMosaic model using trainModel.py. 
 
 -i: input file, tab delimiated |path_to_npy_file_generated_by_DeepMosaic_draw|label|
+
 -e: training epoches
+
 -o: output directory
+
 --model_type: supported model types, see the model folder
+
 --model_path: path to the base model (pt file)
 
 example command:
