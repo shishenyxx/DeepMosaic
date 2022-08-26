@@ -14,28 +14,26 @@ from torch.optim import lr_scheduler
 import time
 import copy
 
-
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class VariantDataset(Dataset):
-  'Characterizes a dataset for PyTorch'
-  def __init__(self, data_table):
-        'Initialization'
+    #'Characterizes a dataset for PyTorch'
+    def __init__(self, data_table):
+        #'Initialization'
         self.labels = data_table[:,1]
         self.list_npys = data_table[:,0]
-
-  def __len__(self):
-        'Denotes the total number of samples'
+    def __len__(self):
+        #'Denotes the total number of samples'
         return len(self.labels)
-
-  def __getitem__(self, index):
-        'Generates one sample of data'
+    def __getitem__(self, index):
+        #'Generates one sample of data'
         # Select sample
         npy_file = self.list_npys[index]
         # Load data and get label
         X = torch.from_numpy(np.load(npy_file).transpose(2,0,1)/255)
         y = int(self.labels[index])
         return X, y
+
 
 def model_train(model, criterion, optimizer, scheduler, num_epochs, model_type):
     since = time.time()
@@ -108,92 +106,66 @@ def getOptions(args=sys.argv[1:]):
     parser.add_argument("-e", "--train_epoch", required=False, type=int, default=0, help="conduct training on user-provided labeled \
                                                                                         sample from your own data set with \
                                                                                         provided number of epochs to train.")
-    parser.add_argument("-m", "--model", required=False, default="efficientnet-b0", help="the convolutional neural network model \
+    parser.add_argument("-p", "--model_path", required=False, default="efficientnet-b0", help="the convolutional neural network model \
+                                                                                         transfer learning is based on.")
+    parser.add_argument("-t", "--model_type", required=False, default="efficientnet-b0", help="the convolutional neural network model \
                                                                                          transfer learning is based on.")
     parser.add_argument("-b", "--batch_size", required=False, type=int, default=10, help="traing or testing batch size.")
-    parser.add_argument("-o", "--output_file", required=True, help="prediction output file")
+    parser.add_argument("-o", "--output_dir", required=True, help="prediction output file")
     options = parser.parse_args(args)
     return options
 
 
+
+#start scripts
 def main():
     options = getOptions(sys.argv[1:])
     input_file = options.input_file
-    epoch = opions.train_epoch
-    model_name = options.model
+    epoch = options.train_epoch
+    model_path = options.model_path
+    model_type = options.model_type
     batch_size = options.batch_size
-    output_file = os.path.abspath(options.output_file)
+    output_dir = os.path.abspath(options.output_dir)
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     if not os.path.exists(input_file):
         sys.stderr.write("Please provide a valid input file.")
         sys.exit(2)
 
-    #user provided input data has two columns: npy_filepath, label (note: npy_filepath could be obtained from deepmosaic-draw)
     data = pd.read_csv(input_file, sep="\t").values
-
-    output_dir = "/".join(output_file.split("/")[:-1])
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
+    
     params = {'batch_size': batch_size,
           'shuffle': True,
           'num_workers': 6}
-
-    model_type = model_name.split("_")[0]
-    model_path = pkg_resources.resource_filename('deepmosaic', 'models/' + model_name)
-
-    #model_name = os.path.abspath(model_path).split("/")[-1]
-    if model_name.startswith("efficientnet"):
+   
+    if model_type.startswith("efficientnet"):
         model = EfficientNet.from_pretrained(model_type)
         num_ftrs = model._fc.in_features
         model._fc = nn.Linear(num_ftrs, 3)
         model.load_state_dict(torch.load(model_path,map_location=device))
+        model._fc = nn.Linear(num_ftrs, 2)
         model = model.to(device)
 
-    elif model_name.startswith("densenet"):
-        model = torch.hub.load('pytorch/vision:v0.5.0', 'densenet121', pretrained=True)
-        num_ftrs = model.classifier.in_features
-        model.classifier = nn.Linear(num_ftrs, 3)
-        model.load_state_dict(torch.load(model_path,map_location=device))
-        model = model.to(device)
+    train_data = data[:int(len(data)*0.8), :]
+    validation_data = data[int(len(data)*0.8):, :]
 
-    elif model_name.startswith("inception"):
-        model = models.inception_v3(pretrained=True)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, 3)
-        model.load_state_dict(torch.load(model_path,map_location=device))
-        model = model.to(device)
+    training_generator = DataLoader(VariantDataset(train_data), **params)
+    validation_generator = DataLoader(VariantDataset(validation_data), **params)
+    global dataloaders
+    global dataset_sizes
 
-    elif model_name.startswith("resnet"):
-        model = models.resnet18(pretrained=True)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, 3)
-        model.load_state_dict(torch.load(model_path,map_location=device))
-        model = model.to(device)
+    dataloaders= {"train": training_generator, "val": validation_generator}
+    dataset_sizes = {'train':len(train_data), "val": len(validation_data)}
 
+    criterion = nn.CrossEntropyLoss()
+    optimizer_ft = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
-    #start training-----------------------------------------
-    for i in range(epoch):
-        train_data = data[:int(len(data)*0.8), :]
-        validation_data = data[int(len(data)*0.8):, :]
+    model, loss_list = model_train(model, criterion, optimizer_ft, exp_lr_scheduler, epoch, model_type)
+    torch.save(model.state_dict(), output_dir + "/" + model_type + "_epoch" + str(epoch) + ".pt")
+    np.save(output_dir + "/" + model_type + "_epoch" + str(epoch) + "_training_loss.npy", np.array(loss_list))
 
-        training_generator = DataLoader(VariantDataset(train_data), **params)
-        validation_generator = DataLoader(VariantDataset(validation_data), **params)
-
-        global dataloaders
-        global dataset_sizes
-
-        dataloaders= {"train": training_generator, "val": validation_generator}
-        dataset_sizes = {'train':len(train_data), "val": len(validation_data)}
-        #initialize criterion etc.
-        criterion = nn.CrossEntropyLoss()
-        optimizer_ft = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-        exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
-        #pseudo training
-        model, loss_list = model_train(model, criterion, optimizer_ft, exp_lr_scheduler, 1, model_name)
-        #save your model
-        torch.save(model.state_dict(), output_file)
-        np.save(output_dir + "/training_loss.npy", np.array(loss_list))
-        sys.stdout.write("complete\n")
 
 main()
