@@ -54,7 +54,12 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 --------------------------------------------
 
-# Requirements before you start
+<details><summary>
+
+# Requirements before you start 
+
+</summary>
+
 * [git-lfs](https://github.com/git-lfs/git-lfs) for the system you work on
 * [BEDTools](https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html) (command line)
 * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
@@ -65,9 +70,15 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 [Return to Contents](#Contents)
 
+</details>
+
 --------------------------------------------
 
-# Installation
+<details><summary>
+
+# Installation 
+
+</summary>
 
 ## Step 1. Install DeepMosaic
 
@@ -105,9 +116,15 @@ Make sure you cloned the whole repository, total folder size should be ~ 4G.
 
 [Return to Contents](#Contents)
 
+</details>
+
 --------------------------------------------
 
+<details><summary>
+
 # Usage 
+
+</summary>
 
 ## Step 1. Feature extraction and visualization of the candidate mosaic variants (Visualization Module)
 
@@ -216,12 +233,20 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 `homopolymer` and `dinucleotide` are calculated from the .h5 files in the "resources" folder. 
 
+## We also provided a [Snakemake wrapper](https://github.com/Virginiaxu/DeepMosaic/tree/master/Snakemake) for DeepMosaic users.
+
 [Return to Contents](#Contents)
 
-## We also prepared a [Snakemake wrapper](https://github.com/Virginiaxu/DeepMosaic/tree/master/Snakemake) for DeepMosaic users.
+</details>
 
 --------------------------------------------
+
+<details><summary>
+
 # Demo 
+
+</summary>
+
 We have provided a simple example in the sub-directory of "demo". The directory includes the input files and the expected results from running DeepMosaic. User could refer to the example for the expected input format and output format.
 
 ## "Demo" Directory hierarchy
@@ -266,11 +291,17 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 [Return to Contents](#Contents)
 
+</details>
+
 --------------------------------------------
+
+<details><summary>
 
 # Model Training
 
-If you have you own training set, you can train you own DeepMosaic model using trainModel.py. 
+</summary>
+
+If you have you own training set, you can train you own DeepMosaic model using [trainModel.py](https://github.com/Virginiaxu/DeepMosaic/blob/master/deepmosaic/trainModel.py). 
 
 -i: input file, tab delimiated |path_to_npy_file_generated_by_DeepMosaic_draw|label|
 
@@ -289,9 +320,15 @@ example command:
 
 [Return to Contents](#Contents)
 
+</details>
+
 --------------------------------------------
 
+<details><summary>
+
 # Performance
+
+</summary>
 
 1. WGS
 
@@ -305,8 +342,16 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 
 [Return to Contents](#Contents)
 
+</details>
+
 --------------------------------------------
+
+<details><summary>
+
 # Q&A
+
+</summary>
+
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
    
    A: If you have a larege number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file.
@@ -325,9 +370,10 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 4. Q: How to deal with mitochondria and sex chromosomes?
    
    A: First you should choose a reference genome that supports mitochondria as a separate chromosome. DeepMosaic is not specifically trained on mitochondria variants so we can't guarantee the result, thus we suggest to remove the MT variants from DeepMosaic input. For sex chromosomes, DeepMosaic takes into consideration the biological gender of the input sample and also considered the pseduo autosomal regions separately.
-   
 
 [Return to Contents](#Contents)
+
+</details>
 
 --------------------------------------------
 
