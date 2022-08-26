@@ -393,7 +393,6 @@ Yang X, Xin X, <i>et al.</i> Gleeson JG. DeepMosaic: Control-independent mosaic 
 # Licence
 Released under GNU-GPL licence.
 
-
 --------------------------------------------
 
 # Contact
