@@ -379,6 +379,10 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
    
    A: First you should choose a reference genome that supports mitochondria as a separate chromosome. DeepMosaic is not specifically trained on mitochondria variants so we can't guarantee the result, thus we suggest to remove the MT variants from DeepMosaic input. For sex chromosomes, DeepMosaic takes into consideration the biological gender of the input sample and also considered the pseduo autosomal regions separately.
 
+5. Q: Can I use DeepMosaic for cancer somatic mutation detection without control?
+     
+   A: The currently models presented by DeepMosaic does not suppot cancer samples, according to benchmarks, the specificity is high (0.97) while the sensitvity is low. We are training new models that support single sample accurate detection of somatic mutations in cancer.
+ 
 [Return to Contents](#Contents)
 
 </details>
