@@ -395,7 +395,7 @@ Yang X, Xin X, <i>et al.</i> Gleeson JG. DeepMosaic: Control-independent mosaic 
 --------------------------------------------
 
 # Licence
-Released under GNU-GPL licence.
+Released under GNU-GPL 3.0 [licence](https://github.com/Virginiaxu/DeepMosaic/blob/master/LICENSE).
 
 --------------------------------------------
 
