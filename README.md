@@ -382,7 +382,12 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 5. Q: Can I use DeepMosaic for cancer somatic mutation detection without control?
      
    A: The currently models presented by DeepMosaic does not suppot cancer samples, according to benchmarks, the specificity is high (0.97) while the sensitvity is low. We are training new models that support single sample accurate detection of somatic mutations in cancer.
- 
+
+
+6. Q: What genome versions does DeepMosaic support:
+
+   A: DeepMosaic is benchmarked on GRCh37(hg19) we are working on some tests for GRCh38(hg39) and are providing some scripts [here](https://github.com/Virginiaxu/DeepMosaic/tree/master/DeepMosaic_hg38) the model is still the same so the main differences lie in coordinate differences. We will make further updates for new models trained on GRCh38 or CHM13.
+   
 [Return to Contents](#Contents)
 
 </details>
