@@ -1,5 +1,7 @@
 # Snakemake Wrapper for DeepMosaic
 
+by Jiawei Shen
+
 To facilitate the user to run DeepMosaic on high performance computing clusters at a large scale, we provide some snakemake wrappers for DeepMosaic.
 
 First you should install [Snakemake](https://snakemake.readthedocs.io/en/stable/).
