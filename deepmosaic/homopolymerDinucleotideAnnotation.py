@@ -39,7 +39,16 @@ def homopolymer_dinucleotide_annotation(chrom, pos, build):
 
     seq_track = Track("seq", track_path)
     pos = int(pos)
-    chrom = "chr" + chrom
+    if chrom.startswith('c'):
+        chrom = chrom
+    elif chrom.startswith('M'):
+        chrom = chrom
+    elif chrom.startswith('h'):
+        chrom = chrom
+    elif chrom.startswith('N'):
+        chrom = chrom
+    else:
+        chrom = "chr" + chrom
     seq_str_9bp = seq_track.get_seq_str(chrom, pos-4, pos+4)
     seq_str_17bp = seq_track.get_seq_str(chrom, pos-8, pos+8)
     return check_if_in_homopolymer(seq_str_9bp), check_if_in_dinucleotide_repeat(seq_str_17bp)
