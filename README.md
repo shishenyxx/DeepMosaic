@@ -367,26 +367,26 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
    
-   A: If you have a larege number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file.
+   A: If you have a large number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file.
    
    
 2. Q: How do I balance/further filter the variants base on DeepMosaic output?
    
-   A: For WGS variants, exclusion of annotated homopolymer and dinucleotide repeats will remove false positive and increase validation rate, but decrease the sensitivity.
+   A: For WGS variants, the exclusion of annotated homopolymer and dinucleotide repeats will remove false positives and increase the validation rate, but decrease the sensitivity.
    
    
-3. Q: What does Score 1, Score 2, and Score 3 mean in the output file?
+3. Q: What do Score 1, Score 2, and Score 3 mean in the output file?
    
-   A: The three scores are combined information from the complex features extracted by the neural network, from our experiences, Score 1 is more like a "het and homo probability", Score 2&3, especially Score 3 is more like a "potential mosaic possibility". In other words, the higher Score 1 is, the more likely the candidate is a germline variant, whereas the higher Score 3 is, the more likely the candidate is a mosaic variant. But both categories contained a lot of potential artifacts, that's why for the final output we included a more complex classifier.
+   A: The three scores are combined information from the complex features extracted by the neural network, from our experiences, Score 1 is more like a "het and homo probability", Scores 2&3, especially Score 3 is more like a "potential mosaic possibility". In other words, the higher Score 1 is, the more likely the candidate is a germline variant, whereas the higher Score 3 is, the more likely the candidate is a mosaic variant. But both categories contained a lot of potential artifacts, that's why for the final output we included a more complex classifier.
 
 
 4. Q: How to deal with mitochondria and sex chromosomes?
    
-   A: First you should choose a reference genome that supports mitochondria as a separate chromosome. DeepMosaic is not specifically trained on mitochondria variants so we can't guarantee the result, thus we suggest to remove the MT variants from DeepMosaic input. For sex chromosomes, DeepMosaic takes into consideration the biological gender of the input sample and also considered the pseduo autosomal regions separately.
+   A: First you should choose a reference genome that supports mitochondria as a separate chromosome. DeepMosaic is not specifically trained on mitochondria variants so we can't guarantee the result, thus we suggest removing the MT variants from DeepMosaic input. For sex chromosomes, DeepMosaic takes into consideration the biological gender of the input sample and also considered the pseudo autosomal regions separately.
 
 5. Q: Can I use DeepMosaic for cancer somatic mutation detection without control?
      
-   A: The currently models presented by DeepMosaic does not suppot cancer samples, according to benchmarks, the specificity is high (0.97) while the sensitvity is low. We are training new models that support single sample accurate detection of somatic mutations in cancer.
+   A: The current models presented by DeepMosaic does not support cancer samples, according to benchmarks, the specificity is high (0.97) while the sensitivity is low. We are training new models that support single sample accurate detection of somatic mutations in cancer.
 
 
 6. Q: What genome versions does DeepMosaic support?
@@ -395,7 +395,7 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
    
 7. Q: Why I got errors about pickle_module.load(f, **pickle_load_args)?
 
-   A: Because you didn't fully downloaded DeepMosaic, the entire modle folder should be more than 200 MB. Please refer to the git-lfs section above.
+   A: Because you didn't fully download DeepMosaic, the entire model folder should be more than 200 MB. Please refer to the git-lfs section in the tutorial.
    
 [Return to Contents](#Contents)
 
