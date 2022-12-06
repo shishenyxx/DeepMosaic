@@ -170,6 +170,8 @@ Note the sequencing depth is required for increasing specificity and if the user
 
 Note tha the "#CHROM" shouldn't contain 'chr'
 
+While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic
+
 4. The outputs files including the extracted features and encoded imaged will be output to `[output_dir]`. DeepMosaic will create a new directory if `[output_dir]` hasn't been initialized by users. 
 
 5. `[path to ANNOVAR]` is the absolute path to the ANNOVAR program directory.
