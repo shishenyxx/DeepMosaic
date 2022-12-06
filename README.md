@@ -393,6 +393,10 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 
    A: DeepMosaic is benchmarked on GRCh37(hg19) we are working on some tests for GRCh38(hg39) and are providing some scripts [here](https://github.com/Virginiaxu/DeepMosaic/tree/master/DeepMosaic_hg38) the model is still the same so the main differences lie in coordinate differences. We will make further updates for new models trained on GRCh38 or CHM13.
    
+7. Q: Why I got errors about pickle_module.load(f, **pickle_load_args)?
+
+   A: Because you didn't fully downloaded DeepMosaic, the entire modle folder should be more than 200 MB. Please refer to the git-lfs section above.
+   
 [Return to Contents](#Contents)
 
 </details>
