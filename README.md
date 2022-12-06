@@ -417,7 +417,7 @@ If you have any questions please post a thread at the issue section or contact u
 
 :email: Xin Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
 
-:email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), or the Gleeson lab[gleesonlab@health.ucsd.edu](mailto:gleesonlab@health.ucsd.edu) 
+:email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), or [visit the Gleeson lab](https://gleesonlab.ucsd.edu) 
 
 [Return to Contents](#Contents)
 
