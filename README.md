@@ -63,6 +63,9 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [git-lfs](https://github.com/git-lfs/git-lfs) for the system you work on
 * [BEDTools](https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html) (command line)
 * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
+* [PyTables](https://pypi.org/project/tables/)
+* [Matplotlib](https://matplotlib.org/)
+* [pandas](https://pandas.pydata.org/)
 * [Pysam](https://github.com/pysam-developers/pysam)
 * [PyTorch](https://pytorch.org/) version>=1.6.0
 * [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch) version>=0.7.1
