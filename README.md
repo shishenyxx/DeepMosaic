@@ -400,7 +400,7 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 --------------------------------------------
 
 # Cite DeepMosaic
-Yang X, Xin X, <i>et al.</i> Gleeson JG. DeepMosaic: Control-independent mosaic single nucleotide variant detection using deep convolutional neural networks. ([<i>bioRxiv</i> 2021](https://www.biorxiv.org/content/10.1101/2020.11.14.382473v2.full))
+Yang X, Xin X, <i>et al.</i> Gleeson JG. DeepMosaic: Control-independent mosaic single nucleotide variant detection using deep convolutional neural networks. ([<i>bioRxiv</i>](https://www.biorxiv.org/content/10.1101/2020.11.14.382473v2.full))
 
 --------------------------------------------
 
