@@ -389,7 +389,7 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 
 6. Q: What genome versions does DeepMosaic support?
 
-   A: DeepMosaic is benchmarked on GRCh37(hg19) we are working on some tests for GRCh38(hg39) and are providing some scripts [here](https://github.com/Virginiaxu/DeepMosaic/tree/master/DeepMosaic_hg38) the model is still the same so the main differences lie in coordinate differences. We will make further updates for new models trained on GRCh38 or CHM13.
+   A: DeepMosaic is benchmarked on GRCh37(hg19) we are working on some tests for GRCh38(hg39) and are providing some scripts [here](https://github.com/Virginiaxu/DeepMosaic/tree/master/DeepMosaic_hg38) the model is still the same so the main differences lie in coordinate differences. We will make further updates when we finish new models trained on GRCh38 or CHM13. As most of our current benchmark experiments are carried out on GRCh37 we cannot guarantee the performance on GRCh38.
    
 7. Q: Why I got errors about pickle_module.load(f, **pickle_load_args)?
 
