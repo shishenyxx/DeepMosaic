@@ -363,6 +363,8 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 
 </summary>
 
+## [Starting from Jan 2023, new Q&A section will be added to the wiki page](https://github.com/Virginiaxu/DeepMosaic/wiki)
+
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
    
    A: If you have a large number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file.
