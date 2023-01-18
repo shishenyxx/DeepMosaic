@@ -404,7 +404,7 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 --------------------------------------------
 
 # Cite DeepMosaic
-Yang X, Xin X, <i>et al.</i> Gleeson JG. Control-independent mosaic single nucleotide variant detection with DeepMosaic. ([<i>Nature Biotechnology</i>](https://www.nature.com/articles/s41587-022-01559-w))
+Yang X*<sup>,#</sup>, Xin X*, <i>et al.</i> Gleeson JG<sup>#</sup>. Control-independent mosaic single nucleotide variant detection with DeepMosaic. ([<i>Nature Biotechnology</i>](https://www.nature.com/articles/s41587-022-01559-w))
 
 The Manuscript is also available [here](https://github.com/Virginiaxu/DeepMosaic/blob/master/Publication/s41587-022-01559-w.pdf).
 
