@@ -367,7 +367,7 @@ Note that the performance of DeepMosaic on GRCh38 might be different.
 
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
    
-   A: If you have a large number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file.
+   A: If you have a large number of variants in each file, to run DeepMosaic in parallel, submit each file in independent input files. If you have a relatively small number of variants from each file but multiple files (samples), integrate everything together into one input file. If you have a huge vcf, you can split it into smaller vcfs and run them parallelly (for both visualization and quantification). You only need to split the vcf, not the bam file.
    
    
 2. Q: How do I balance/further filter the variants base on DeepMosaic output?
