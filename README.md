@@ -168,7 +168,7 @@ Note the sequencing depth is required for increasing specificity and if the user
 
 "#CHROM", "POS", "REF", "ALT" are essential columns that will be parsed and utilized by DeepMosaic.
 
-While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic
+While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic. Running MuTect2 single mode, [generate the panel of normals](https://gatk.broadinstitute.org/hc/en-us/articles/360037227652-CreateSomaticPanelOfNormals-BETA-) and downstream filtering could either be found following the [official GATK tutorials](https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2), or following [this example snakemake pipeline](https://github.com/shishenyxx/Adult_brain_somatic_mosaicism/tree/master/pipelines/WGS_SNV_indel_calling_pipeline/Mutect2_single_mode).
 
 4. The outputs files including the extracted features and encoded imaged will be output to `[output_dir]`. DeepMosaic will create a new directory if `[output_dir]` hasn't been initialized by users. 
 
