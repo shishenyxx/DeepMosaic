@@ -35,7 +35,7 @@ def paint_canvas(reads, pos):
                 if pos >= start_pos:
                     start = pos
                     break
-            offset = 0
+            offset = int(start-start_pos)
         else:
             start = read.reference_start
             offset = int(read.reference_start - start_pos)
