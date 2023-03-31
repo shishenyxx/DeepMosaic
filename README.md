@@ -60,6 +60,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 </summary>
 
+* Python 3.7
 * [git-lfs](https://github.com/git-lfs/git-lfs) for the system you work on
 * [BEDTools](https://bedtools.readthedocs.io/en/latest/content/tools/coverage.html) (command line)
 * [ANNOVAR](https://doc-openbio.readthedocs.io/projects/annovar/en/latest/) (command line)
