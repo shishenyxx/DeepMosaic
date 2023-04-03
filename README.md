@@ -72,6 +72,8 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch) version>=0.7.1
 * [argparse](https://docs.python.org/3/library/argparse.html)
 
+Some of the version of packages are provided as an example in this [list](https://github.com/Virginiaxu/DeepMosaic/blob/master/environment.yml). 
+
 [Return to Contents](#Contents)
 
 </details>
