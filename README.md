@@ -86,6 +86,8 @@ Some of the version of packages are provided as an example in this [list](https:
 
 </summary>
 
+The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem linux etc., whichever have the computational resource and >20G storage to run DeepMosaic)
+
 ## Step 1. Install DeepMosaic
 
 Make sure you have <b>git-lfs</b> installed in your environment (download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), unzip the tar.gz and put the binary file ```git-lfs``` in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs, you only need to do it once) to be able to download this repository correctly. 
