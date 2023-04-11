@@ -145,7 +145,6 @@ def main():
         num_ftrs = model._fc.in_features
         model._fc = nn.Linear(num_ftrs, 3)
         model.load_state_dict(torch.load(model_path,map_location=device))
-        model._fc = nn.Linear(num_ftrs, 2)
         model = model.to(device)
 
     train_data = data[:int(len(data)*0.8), :]

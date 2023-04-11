@@ -10,6 +10,7 @@ import argparse
 import math
 from efficientnet_pytorch import EfficientNet
 import pkg_resources
+from torchvision import models
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -62,6 +63,9 @@ def getOptions(args=sys.argv[1:]):
     parser.add_argument("-t", "--testing_mode", required=False, default=True, help="testing mode or training mode; True for testing mode.")
     parser.add_argument("-m", "--model", required=False, default="efficientnet-b4_epoch_6.pt", help="the convolutional neural network model \
                                                                                          transfer learning is based on.")
+    parser.add_argument("-mp", "--model-path", required=False, help="if you want to use a model that you trained or modifed, you can input  \
+                                                                                         the path to the model here. Make sure the matching \
+                                                                                         model type is given in the -m argument")
     parser.add_argument("-b", "--batch_size", required=False, type=int, default=10, help="traing or testing batch size.")
     parser.add_argument("-o", "--output_file", required=True, help="prediction output file")
     options = parser.parse_args(args)
@@ -122,6 +126,7 @@ def main():
     input_file = options.input_file
     mode = options.testing_mode
     model_name = options.model
+    model_path = options.model_path
     batch_size = options.batch_size
     output_file = os.path.abspath(options.output_file)
 
@@ -140,7 +145,8 @@ def main():
 
     model_type = model_name.split("_")[0]
     HERE = os.path.abspath(os.path.dirname(__file__))
-    model_path = os.path.join(HERE, "models/" + model_name)
+    if not model_path:
+        model_path = os.path.join(HERE, "models/" + model_name)
 
     #model_name = os.path.abspath(model_path).split("/")[-1]
     if model_name.startswith("efficientnet"):
