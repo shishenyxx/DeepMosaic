@@ -22,6 +22,8 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 [Model Training](#model-training)
 
+[Singularity](#Singularity)
+
 [Performance](#Performance)
 
 [Q&A](#qa)
@@ -73,6 +75,8 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [argparse](https://docs.python.org/3/library/argparse.html)
 
 Some of the version of packages are provided as an example in this [list](https://github.com/Virginiaxu/DeepMosaic/blob/master/environment.yml). 
+
+Alternatively you can use the singularity container. See [Singularity](#Singularity).
 
 [Return to Contents](#Contents)
 
@@ -337,6 +341,38 @@ example command:
 
 `python trainModel.py -i test_input_training_10.csv -e 2 --model_type efficientnet-b4 --model_path efficientnet-b4_epoch_6.pt -o ./test_trained_model`
 
+[Return to Contents](#Contents)
+
+</details>
+
+--------------------------------------------
+
+<details><summary>
+
+# Singularity
+
+</summary>
+
+Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic).
+
+### Note
+
+1. The singularity container currently only works with grch37.
+2. You'll need your own copy of annovar.
+
+### Usage
+
+Basic Usage
+
+1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
+2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
+
+Training and using your own model
+
+1. `singularity exec DeepMosaic.sif python /DeepMosaic/deepmosaic/trainModel.py <options>`
+2. `singularity exec DeepMosaic.sif deepmosaic-predict <options> --model-path <path_to_your_model>`
+
+See [Usage](#Usage) and [Model Training](#model-training) for more details.
 
 [Return to Contents](#Contents)
 
