@@ -358,7 +358,7 @@ Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/
 ### Note
 
 1. The singularity container currently only works with grch37.
-2. You'll need your own copy of annovar.
+2. You'll need your own copy of ANNOVAR outside the singularity (please specify the path of ANNOVAR in `<options>`).
 
 ### Usage
 
