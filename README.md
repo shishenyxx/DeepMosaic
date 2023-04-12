@@ -353,7 +353,7 @@ example command:
 
 </summary>
 
-Singularity containers can be found on [dockerhub](https://hub.docker.com/r/arzoopatel5/deepmosaic).
+Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic).
 
 ### Note
 
