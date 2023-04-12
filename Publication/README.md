@@ -3,3 +3,5 @@ Published version of the DeepMosaic [manuscript](https://github.com/Virginiaxu/D
 Two version of the Supplementary Table 3 is provided. The entire gzip file is uploaded with git lfs.
 
 The files is also broken down to two parts due to the GitHub upload file size limit without git lfs support.
+
+We also provide the scripts we used to run [Neusoamtic singularity image](https://github.com/Virginiaxu/DeepMosaic/blob/master/Publication/run_Neusomatic.sh)
