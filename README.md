@@ -357,20 +357,20 @@ Singularity containers can be found on [dockerhub](https://hub.docker.com/r/arzo
 
 ### Note
 
-1. The singularity container currently only works with grch37. Future releases will be compatible with hg38.
+1. The singularity container currently only works with grch37.
 2. You'll need your own copy of annovar.
 
 ### Usage
 
 Basic Usage
 
-1. ~singularity exec DeepMosaic.sif deepmosaic-draw <options>~
-2. ~singularity exec DeepMosaic.sif deepmosaic-predict <options>~
+1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
+2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
 
 Training and using your own model
 
-1. ~singularity exec DeepMosaic.sif python /DeepMosaic/deepmosaic/trainModel.py <options>~
-2. ~singularity exec DeepMosaic.sif deepmosaic-predict <options> --model-path <path_to_your_model>
+1. `singularity exec DeepMosaic.sif python /DeepMosaic/deepmosaic/trainModel.py <options>`
+2. `singularity exec DeepMosaic.sif deepmosaic-predict <options> --model-path <path_to_your_model>`
 
 See [Usage](#Usage) and [Model Training](#model-training) for more details.
 
