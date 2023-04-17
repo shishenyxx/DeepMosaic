@@ -468,7 +468,7 @@ If you have any questions please post a thread at the [issues](https://github.co
 
 :email: Xin Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
 
-:email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu), or [visit the Gleeson lab](https://gleesonlab.ucsd.edu) 
+:email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
 
 [Return to Contents](#Contents)
 
