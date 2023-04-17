@@ -67,14 +67,9 @@ def getOptions(args=sys.argv[1:]):
                                                                                          model type is given in the -m argument")
     parser.add_argument("-b", "--batch_size", required=False, type=int, default=10, help="traing or testing batch size.")
     parser.add_argument("-o", "--output_file", required=True, help="prediction output file")
+    parser.add_argument("-gb", "--build", required=True, help="genome build, use hg19 or hg38")
     options = parser.parse_args(args)
     return options
-
-
-x_par1_region = [60001, 2699520]
-y_par1_region = [10001, 2649520]
-x_par2_region = [154931044, 155260560]
-y_par2_region = [59034050, 59363566]
 
 def check_x_region(positions):
     in_par1 = (positions >= x_par1_region[0]) & (positions <= x_par1_region[1])
@@ -122,6 +117,20 @@ def prediction_decision(features_df, scores_list):
 
 def main():
     options = getOptions(sys.argv[1:])
+    if options.build == 'hg19':
+        x_par1_region = [60001, 2699520]
+        y_par1_region = [10001, 2649520]
+        x_par2_region = [154931044, 155260560]
+        y_par2_region = [59034050, 59363566]
+    elif options.build == 'hg38':
+        x_par1_region = [10001, 2781479]
+        y_par1_region = [10001, 2781479]
+        x_par2_region = [155701383, 156030895]
+        y_par2_region = [56887903, 57217415]
+    else:
+        sys.stderr.write((options.build + " is an invalid genome build, please see help message")
+        sys.exit(3)
+
     input_file = options.input_file
     mode = options.testing_mode
     model_name = options.model

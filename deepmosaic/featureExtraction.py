@@ -38,12 +38,6 @@ def wilson_binom_interval(success, total, alpha = 0.05):
     ci_upp = center + dist
     return ci_low, ci_upp
 
-
-x_par1_region = [60001, 2699520]
-y_par1_region = [10001, 2649520]
-x_par2_region = [154931044, 155260560]
-y_par2_region = [59034050, 59363566]
-
 def check_x_region(position):
     position = int(position)
     in_par1 = (position >= x_par1_region[0]) and (position <= x_par1_region[1])
@@ -140,6 +134,20 @@ def getOptions(args=sys.argv[1:]):
 def main():
     since = time.time()
     options = getOptions(sys.argv[1:])
+    if options.build == 'hg19':
+        x_par1_region = [60001, 2699520]
+        y_par1_region = [10001, 2649520]
+        x_par2_region = [154931044, 155260560]
+        y_par2_region = [59034050, 59363566]
+    elif options.build == 'hg38':
+        x_par1_region = [10001, 2781479]
+        y_par1_region = [10001, 2781479]
+        x_par2_region = [155701383, 156030895]
+        y_par2_region = [56887903, 57217415]
+    else:
+        sys.stderr.write((options.build + " is an invalid genome build, please ssee help message")
+        sys.exit(3)
+
     input_file = options.input_file
     filters = options.vcf_filters
     output_dir = options.output_dir
@@ -219,10 +227,10 @@ def main():
                 all_variants.append([sample_name, bam, chrom, pos, ref, alt, depth, sex])
             vcf_file.close()
     #annotation repeat and segdup
-    repeats_dict = repeats_annotation(all_variants, output_dir)
+    repeats_dict = repeats_annotation(all_variants, output_dir, build)
 
     #annovar annotation for gnomad
-    function_dict, gnomad_dict = gnomad_annotation(all_variants, output_dir, annovar, annovar_db)
+    function_dict, gnomad_dict = gnomad_annotation(all_variants, output_dir, annovar, annovar_db, build)
 
     #draw images
     try:

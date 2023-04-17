@@ -5,7 +5,7 @@ import tempfile
 import subprocess
 import pkg_resources
 
-def gnomad_annotation(all_variants, output_dir, annovar, annovar_db):
+def gnomad_annotation(all_variants, output_dir, annovar, annovar_db, build):
     gm_fd, gm_path = tempfile.mkstemp()
     try:
         with os.fdopen(gm_fd, 'w') as tmp:
@@ -14,10 +14,10 @@ def gnomad_annotation(all_variants, output_dir, annovar, annovar_db):
                 sample_name, bam, chrom, pos, ref, alt, depth, sex = variant
                 key = "_".join([chrom, pos, ref, alt])
                 tmp.write("\t".join(map(str, [chrom, int(pos), int(pos) + len(ref) -1, ref, alt, key])) + "\n")
-        annovar_command_1 = annovar + " -geneanno -build hg19 -dbtype refGene " + gm_path + " " + annovar_db + " -outfile " + \
+        annovar_command_1 = annovar + " -geneanno -build " + build + " -dbtype refGene " + gm_path + " " + annovar_db + " -outfile " + \
                             output_dir + "input"
         subprocess.call(annovar_command_1, shell=True)
-        annovar_command_2 = annovar + " -filter -build hg19 -dbtype gnomad_genome " + gm_path + " " + annovar_db + " -outfile " + \
+        annovar_command_2 = annovar + " -filter -build " + build + " -dbtype gnomad_genome " + gm_path + " " + annovar_db + " -outfile " + \
                             output_dir + "input"
         subprocess.call(annovar_command_2, shell=True)
     except:
@@ -25,9 +25,9 @@ def gnomad_annotation(all_variants, output_dir, annovar, annovar_db):
         sys.exit(2)
     finally:
         os.remove(gm_path)
-    if os.path.exists(output_dir + "input.hg19_gnomad_genome_dropped") and not \
-       os.stat(output_dir + "input.hg19_gnomad_genome_dropped").st_size == 0:
-            df = pd.read_csv(output_dir + "input.hg19_gnomad_genome_dropped", header=None, sep="\t")
+    if os.path.exists(output_dir + "input." + build + "_gnomad_genome_dropped") and not \
+       os.stat(output_dir + "input." + build + "_gnomad_genome_dropped").st_size == 0:
+            df = pd.read_csv(output_dir + "input." + build + "_gnomad_genome_dropped", header=None, sep="\t")
             gnomad_dict = dict(zip(df[7], df[1]))
     else:
         gnomad_dict = {}
