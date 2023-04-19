@@ -90,7 +90,7 @@ Alternatively you can use the singularity container. See [Singularity](#Singular
 
 </summary>
 
-The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem linux etc., whichever have the computational resource and >20G storage to run DeepMosaic)
+We are now providing a [singularity image](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow the these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem linux etc., whichever have the computational resource and >20G storage to run DeepMosaic)
 
 ## Step 1. Install DeepMosaic
 
