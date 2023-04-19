@@ -117,6 +117,10 @@ def prediction_decision(features_df, scores_list):
 
 def main():
     options = getOptions(sys.argv[1:])
+    global x_par1_region
+    global y_par1_region
+    global x_par2_region
+    global y_par2_region
     if options.build == 'hg19':
         x_par1_region = [60001, 2699520]
         y_par1_region = [10001, 2649520]
@@ -128,7 +132,7 @@ def main():
         x_par2_region = [155701383, 156030895]
         y_par2_region = [56887903, 57217415]
     else:
-        sys.stderr.write((options.build + " is an invalid genome build, please see help message")
+        sys.stderr.write(options.build + " is an invalid genome build, please see help message")
         sys.exit(3)
 
     input_file = options.input_file
