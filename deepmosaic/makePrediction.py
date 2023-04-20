@@ -158,7 +158,6 @@ def main():
     model_type = model_name.split("_")[0]
     HERE = os.path.abspath(os.path.dirname(__file__))
     if not model_path:
-        print('no model path given, using pretrained model')
         model_path = os.path.join(HERE, "models/" + model_name)
 
     #model_name = os.path.abspath(model_path).split("/")[-1]
