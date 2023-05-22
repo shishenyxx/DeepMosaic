@@ -126,7 +126,7 @@ def getOptions(args=sys.argv[1:]):
     parser.add_argument("-o", "--output_dir", required=True, help="Output directory (output)")
     parser.add_argument("-a", "--annovar_path", required=True, help="Absolute path to the annovar package \
                                                                      (humandb directory should already be specified inside)")
-    parser.add_argument("-b", "--build", required=False, default="hg19", help="Version of genome build, options: hg19, hg38")
+    parser.add_argument("-b", "--build", required=True, help="Version of genome build, options: hg19, hg38")
     options = parser.parse_args(args)
     return options
 
