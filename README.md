@@ -187,7 +187,7 @@ While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic. Running Mu
      
 7. `genome_build` is the build version of the reference genome, currently hg19 and hg38 are supported.
      
-8. To generate h5 files for other genome builds (not recommended) please follow [this link](https://github.com/gmcvicker/genome).
+8. To generate h5 files for other genome builds (not recommended) please follow [this link](https://github.com/gmcvicker/genome), note that this package runs in Python 2.7.
 
 ### Output:
 After deepmosaic-draw is successfully executed, the following files/directories would be generated in the `[output_dir]`
@@ -363,7 +363,7 @@ Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/
 
 ### Note
 
-1. The singularity container currently only works with hg19/GRCh37 and hg38/GRCH38.
+1. The singularity container currently only works with hg19/GRCh37 and hg38/GRCh38.
 2. You'll need your own copy of ANNOVAR outside the singularity (please specify the path of ANNOVAR in `<options>`).
 
 ### Usage
