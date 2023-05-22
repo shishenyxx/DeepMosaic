@@ -8,10 +8,14 @@ import re
 #all_repeats_path = pkg_resources.resource_filename('deepmosaic', 'resources/all_repeats.b37.bed')
 #segdup_path = pkg_resources.resource_filename('deepmosaic', 'resources/segdup.hg19.bed')
 HERE = os.path.abspath(os.path.dirname(__file__))
-all_repeats_path = os.path.join(HERE, "./resources/all_repeats.b37.bed")
-segdup_path = os.path.join(HERE, "./resources/segdup.hg19.bed")
+all_repeats_path = {}
+segdup_path = {}
+all_repeats_path['hg19'] = os.path.join(HERE, "./resources/all_repeats.b37.bed")
+segdup_path['hg19'] = os.path.join(HERE, "./resources/segdup.hg19.bed")
+all_repeats_path['hg38'] = os.path.join(HERE, "./resources/all_repeats.b38.bed")
+segdup_path['hg38'] = os.path.join(HERE, "./resources/segdup.hg38.bed")
 
-def repeats_annotation(all_variants, output_dir):
+def repeats_annotation(all_variants, output_dir, build):
     rp_fd, rp_path = tempfile.mkstemp()
     try:
         with os.fdopen(rp_fd, 'w') as tmp:
@@ -20,7 +24,7 @@ def repeats_annotation(all_variants, output_dir):
                sample_name, bam, chrom, pos, ref, alt, depth, sex = variant
                key = "_".join([chrom, pos, ref, alt])
                tmp.write("\t".join(map(str, [chrom, int(pos)-1, int(pos) + len(ref)-2, ref, alt, key])) + "\n")
-        command = "bedtools annotate -i " + rp_path +" -files " + all_repeats_path + " " +  segdup_path + " > " + \
+        command = "bedtools annotate -i " + rp_path +" -files " + all_repeats_path[build] + " " +  segdup_path[build] + " > " + \
                    output_dir + "repeats_annotation.bed"
         subprocess.call(command, shell=True)
         os.remove(rp_path)
