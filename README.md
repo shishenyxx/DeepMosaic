@@ -472,8 +472,6 @@ If you have any questions please post a thread at the [issues](https://github.co
 
 :email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
 
-:email: Xin Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com)
-
 :email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
 
 [Return to Contents](#Contents)
