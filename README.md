@@ -34,6 +34,8 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 [Contact](#Contact)
 
+[Maintainance Team](maintainance-team)
+
 --------------------------------------------
 
 # Overview
@@ -478,3 +480,8 @@ If you have any questions please post a thread at the [issues](https://github.co
 
 [Return to Contents](#Contents)
 
+# Maintainance Team
+Arzoo Petal
+Virginia (Xin) Xu
+Jiawei Shen
+Xiaoxu Yang
