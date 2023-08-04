@@ -32,9 +32,9 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 [Licence](#licence)
 
-[Contact](#Contact)
-
 [Maintainance Team](#maintainance-team)
+
+[Contact](#Contact)
 
 --------------------------------------------
 
@@ -470,18 +470,6 @@ Released under GNU-GPL 3.0 [licence](https://github.com/Virginiaxu/DeepMosaic/bl
 
 --------------------------------------------
 
-# Contact
-
-If you have any questions please post a thread at the [issues](https://github.com/Virginiaxu/DeepMosaic/issues) section or contact us at:
-
-:email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
-
-:email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
-
-[Return to Contents](#Contents)
-
---------------------------------------------
-
 # Maintainance Team
 
 [Arzoo Patel](https://github.com/arzoopatel5) 
@@ -491,3 +479,15 @@ If you have any questions please post a thread at the [issues](https://github.co
 [Jiawei Shen](https://github.com/JiaweiShen1116)
 
 [Xiaoxu Yang](https://github.com/shishenyxx)
+
+--------------------------------------------
+
+# Contact
+
+If you have any questions please post a thread at the [issues](https://github.com/Virginiaxu/DeepMosaic/issues) section or contact us at:
+
+:email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
+
+:email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
+
+[Return to Contents](#Contents)
