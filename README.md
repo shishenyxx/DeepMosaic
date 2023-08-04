@@ -22,9 +22,9 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 [Model Training](#model-training)
 
-[Singularity](#singularity)
+[Singularity](#Singularity)
 
-[Performance](#performance)
+[Performance](#Performance)
 
 [Q&A](#qa)
 
