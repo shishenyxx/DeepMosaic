@@ -484,10 +484,10 @@ If you have any questions please post a thread at the [issues](https://github.co
 
 # Maintainance Team
 
-Arzoo Patel
+[Arzoo Patel](https://github.com/arzoopatel5) 
 
-Virginia (Xin) Xu
+[Virginia (Xin) Xu](https://github.com/Virginiaxu)
 
-Jiawei Shen
+[Jiawei Shen](https://github.com/JiaweiShen1116)
 
-Xiaoxu Yang
+[Xiaoxu Yang](https://github.com/shishenyxx)
