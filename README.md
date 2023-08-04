@@ -6,25 +6,25 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 # Contents
 
-[Overview](#Overview)
+[Overview](#overview)
 
-[Requirements before you start](#Requirements-before-you-start)
+[Requirements before you start](#requirements-before-you-start)
 
 [Installation](#Installation)
 
-[Usage](#Usage)
+[Usage](#usage)
 
 [-Step 1. Feature extraction and visualization of the candidate mosaic variants(DeepMosaic Visualization Module)](#step-1-feature-extraction-and-visualization-of-the-candidate-mosaic-variants-visualization-module)
 
 [-Step 2. Prediction for mosaicism (DeepMosaic Classification Module)](#step-2-prediction-for-mosaicism-classification-module)
 
-[Demo](#Demo)
+[Demo](#demo)
 
 [Model Training](#model-training)
 
-[Singularity](#Singularity)
+[Singularity](#singularity)
 
-[Performance](#Performance)
+[Performance](#performance)
 
 [Q&A](#qa)
 
@@ -34,7 +34,7 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 [Maintainance Team](#maintainance-team)
 
-[Contact](#Contact)
+[Contact](#contact)
 
 --------------------------------------------
 
@@ -45,16 +45,16 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 <img src="https://user-images.githubusercontent.com/17311837/95255932-fb925880-07d6-11eb-8c16-7d2a5e1d12ed.png" alt="Image_representation" width=50%> 
 
-An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualitites, and blue channel for the strand orientations of the read. Note that the green channel is modified to show better contrast for human eyes.
+An RGB image was used to represent the pileup results for all the reads aligned to a single genomic position. Reads supporting different alleles were grouped, in the order of the reference allele, the first, second, and third alternative alleles, respectively. Red channel was used to represent the bases, green channel for the base qualities, and blue channel for the strand orientations of the read. Note that the green channel is modified to show better contrast for human eyes.
 
 * <b>DeepMosaic Classification Module:</b> Workflow from variant to result (10 models were compared and Efficientnet b4 was selected as default because it performed the best on a gold standard benchmark dataset.): 
 
      
 <img src="https://user-images.githubusercontent.com/17311837/95255993-0fd65580-07d7-11eb-843d-2a3950469cb9.png"  width=80%>
 
-Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. Deep convolution neural network then extract the high-dimontional information from the image, experimental, genomic, and population related information were further incoperated in to the classifier.
+Workflow of DeepMosaic on best-performed deep convolutional neural network model after benchmarking. Variants were first transformed into images based on the alignment information. A deep convolution neural network then extracted the high-dimensional information from the image, and experimental, genomic, and population-related information was further incorporated into the classifier.
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 --------------------------------------------
 
@@ -76,11 +76,11 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch) version>=0.7.1
 * [argparse](https://docs.python.org/3/library/argparse.html)
 
-Some of the version of packages are provided as an example in this [list](https://github.com/Virginiaxu/DeepMosaic/blob/master/environment.yml). 
+Some of the versions of packages are provided as an example in this [list](https://github.com/Virginiaxu/DeepMosaic/blob/master/environment.yml). 
 
-Alternatively you can use the singularity container. See [Singularity](#Singularity).
+Alternatively, you can use the singularity container. See [Singularity](#Singularity).
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -92,7 +92,7 @@ Alternatively you can use the singularity container. See [Singularity](#Singular
 
 </summary>
 
-We are now providing a [singularity image](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow the these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem linux etc., whichever have the computational resource and >20G storage to run DeepMosaic)
+We are now providing a [singularity image](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
 
 ## Step 1. Install DeepMosaic
 
@@ -128,7 +128,7 @@ Make sure you cloned the whole repository, total folder size should be ~ 4G.
     
    to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -212,7 +212,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 4. `input.hg19_gnomad_genome_dropped`, `input.hg19_gnomad_genome_filtered`, `input.exonic_variant_function`, `input.variant_function` are ANNOVAR outputs annotating the gnomad and variant function information.
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -267,7 +267,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 ## We also provided a [Snakemake wrapper](https://github.com/Virginiaxu/DeepMosaic/tree/master/Snakemake) for DeepMosaic users.
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -323,7 +323,7 @@ We have provided a simple example in the sub-directory of "demo". The directory 
 
 Due to package differences and internal machine differences, the demo result on your machine might be slightly different from the numbers shown here (<0.1% deviations), but the overall prediction should be the same.
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -351,7 +351,7 @@ example command:
 
 `python trainModel.py -i test_input_training_10.csv -e 2 --model_type efficientnet-b4 --model_path efficientnet-b4_epoch_6.pt -o ./test_trained_model`
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -384,7 +384,7 @@ Training and using your own model
 
 See [Usage](#Usage) and [Model Training](#model-training) for more details.
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -406,7 +406,7 @@ We estimated ~40% experimental validation rate for WES data identified as "mosai
 
 Note that the performance of DeepMosaic on GRCh38 will be different, our preliminary estimation showed.
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -452,7 +452,7 @@ Note that the performance of DeepMosaic on GRCh38 will be different, our prelimi
 
    A: Because you didn't fully download DeepMosaic, the entire model folder should be more than 200 MB. Please refer to the git-lfs section in the tutorial.
    
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
 
 </details>
 
@@ -490,4 +490,4 @@ If you have any questions please post a thread at the [issues](https://github.co
 
 :email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
 
-[Return to Contents](#Contents)
+[Return to Contents](#contents)
