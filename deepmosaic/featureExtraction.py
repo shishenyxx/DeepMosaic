@@ -126,6 +126,7 @@ def getOptions(args=sys.argv[1:]):
     parser.add_argument("-o", "--output_dir", required=True, help="Output directory (output)")
     parser.add_argument("-a", "--annovar_path", required=True, help="Absolute path to the annovar package \
                                                                      (humandb directory should already be specified inside)")
+    parser.add_argument("-db", "--dbtype", required=False, default="gnomad_genome", help="db file located in annovar directory,  this feeds directly into the annovar parameter --dbtype, default: gnomad_genome")
     parser.add_argument("-b", "--build", required=False, default="hg19", help="Version of genome build, options: hg19, hg38")
     options = parser.parse_args(args)
     return options
@@ -158,6 +159,7 @@ def main():
     annovar_path = options.annovar_path
     global build 
     build = options.build
+    dbtype = options.dbtype
     
     if annovar_path.endswith("/"):
         annovar = annovar_path + "annotate_variation.pl"
@@ -165,9 +167,15 @@ def main():
     else:
         annovar = annovar_path + "/annotate_variation.pl"
         annovar_db = annovar_path + "/humandb"
+
     #check if annovar path is valid
     if not os.path.exists(annovar) or not os.path.exists(annovar_db):
         sys.stderr.write("Please provide a valid annovar program directory.\n")
+        sys.exit(2)
+
+    #check if db path is valid
+    if not os.path.exists(annovar_db + '/' + build + '_' + dbtype + '.txt'):
+        sys.stderr.write("Please provide a valid annovar dbtype. db file should have the location annovar/humandb/<build>_<dbtype>.txt\n")
         sys.exit(2)
 
     #check if input path is valid
@@ -234,7 +242,7 @@ def main():
     repeats_dict = repeats_annotation(all_variants, output_dir, build)
 
     #annovar annotation for gnomad
-    function_dict, gnomad_dict = gnomad_annotation(all_variants, output_dir, annovar, annovar_db, build)
+    function_dict, gnomad_dict = gnomad_annotation(all_variants, output_dir, annovar, annovar_db, build, dbtype)
 
     #draw images
     try:
