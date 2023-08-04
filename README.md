@@ -185,9 +185,9 @@ While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic. Running Mu
 
 6. `path_to_ANNOVAR` is the absolute path to the ANNOVAR program directory.
      
-7. `genome_build` is the build version of the reference genome, currently hg19 and hg38 are supported.
+7. `genome_build` is the build version of the reference genome, currently `hg19` and `hg38` are supported. defaults to `hg19`.
 
-8. `name_of_annovar_db` is the name of the db you want to use from the annovar subdirectory `[annovar/humandb]`. For example, if you want to use `annovar/humandb/hg38_gnomad312_genome.txt`, you would use `-db gnomad312_genome`. This option is fed directly into the annovar command as `--dbtype`.
+8. `name_of_annovar_db` is the name of the db you want to use from the annovar subdirectory `[annovar/humandb]`. For example, if you want to use `annovar/humandb/hg38_gnomad312_genome.txt`, you would use `-db gnomad312_genome`. This option is fed directly into the annovar command as `--dbtype`. defaults to `gnomad_genome`.
 
 9. To generate h5 files for other genome builds (not recommended) please follow [this link](https://github.com/gmcvicker/genome), note that this package runs in Python 2.7.
 
