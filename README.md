@@ -480,9 +480,11 @@ If you have any questions please post a thread at the [issues](https://github.co
 
 [Return to Contents](#Contents)
 
+--------------------------------------------
+
 # Maintainance Team
 
-Arzoo Petal
+Arzoo Patel
 
 Virginia (Xin) Xu
 
