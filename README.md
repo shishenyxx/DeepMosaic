@@ -1,6 +1,7 @@
 # DeepMosaic  <img src="https://user-images.githubusercontent.com/17311837/88461876-52d18f80-ce5c-11ea-9aed-534dfd07d351.png" alt="DeepMosaic_Logo" width=15%> 
 
-Visualization and control-independent classification tool of noncancer (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks.
+Visualization and control-independent classification tool of noncancer (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks. Originally written by [Virginia (Xin) Xu](https://github.com/Virginiaxu) and [Xiaoxu Yang](https://github.com/shishenyxx), maintained by [Arzoo Patel](https://github.com/arzoopatel5). 
+
 
 --------------------------------------------
 
@@ -487,6 +488,8 @@ Released under GNU-GPL 3.0 [licence](https://github.com/Virginiaxu/DeepMosaic/bl
 If you have any questions please post a thread at the [issues](https://github.com/Virginiaxu/DeepMosaic/issues) section or contact us at:
 
 :email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
+
+:email: Virginia (Xin) Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com) 
 
 :email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
 
