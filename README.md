@@ -77,7 +77,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 * [EfficientNet PyTorch](https://github.com/lukemelas/EfficientNet-PyTorch) version>=0.7.1
 * [argparse](https://docs.python.org/3/library/argparse.html)
 
-Some of the versions of packages are provided as an example in this [list](https://github.com/Virginiaxu/DeepMosaic/blob/master/environment.yml). 
+Some of the versions of packages are provided as an example in this [list](https://github.com/shishenyxx/DeepMosaic/blob/master/environment.yml). 
 
 Alternatively, you can use the singularity container. See [Singularity](#Singularity).
 
@@ -100,7 +100,7 @@ We are now providing a [singularity image](https://cloud.sylabs.io/library/arzoo
 Make sure you have <b>git-lfs</b> installed in your environment (download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), unzip the tar.gz and put the binary file ```git-lfs``` in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs, you only need to do it once) to be able to download this repository correctly. 
 
 ```
-> git clone --recursive https://github.com/Virginiaxu/DeepMosaic
+> git clone --recursive https://github.com/shishenyxx/DeepMosaic
 ```
 
 Make sure you cloned the whole repository, total folder size should be ~ 4G.
@@ -266,7 +266,7 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 
 `homopolymer` and `dinucleotide` are calculated from the .h5 files in the "resources" folder. 
 
-## We also provided a [Snakemake wrapper](https://github.com/Virginiaxu/DeepMosaic/tree/master/Snakemake) for DeepMosaic users.
+## We also provided a [Snakemake wrapper](https://github.com/shishenyxx/DeepMosaic/tree/master/Snakemake) for DeepMosaic users.
 
 [Return to Contents](#contents)
 
@@ -336,7 +336,7 @@ Due to package differences and internal machine differences, the demo result on 
 
 </summary>
 
-If you have you own training set, you can train you own DeepMosaic model using [trainModel.py](https://github.com/Virginiaxu/DeepMosaic/blob/master/deepmosaic/trainModel.py). 
+If you have you own training set, you can train you own DeepMosaic model using [trainModel.py](https://github.com/shishenyxx/DeepMosaic/blob/master/deepmosaic/trainModel.py). 
 
 -i: input file, tab delimiated |path_to_npy_file_generated_by_DeepMosaic_draw|label|
 
@@ -419,7 +419,7 @@ Note that the performance of DeepMosaic on GRCh38 will be different, our prelimi
 
 </summary>
 
-## [Starting from Jan 2023, new Q&A section will be added to the wiki page](https://github.com/Virginiaxu/DeepMosaic/wiki), please also visit the [issues](https://github.com/Virginiaxu/DeepMosaic/issues) section so see whether other users already encountered the same questions.
+## [Starting from Jan 2023, new Q&A section will be added to the wiki page](https://github.com/shishenyxx/DeepMosaic/wiki), please also visit the [issues](https://github.com/shishenyxx/DeepMosaic/issues) section so see whether other users already encountered the same questions.
 
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
    
@@ -447,7 +447,7 @@ Note that the performance of DeepMosaic on GRCh38 will be different, our prelimi
 
 6. Q: What genome versions does DeepMosaic support?
 
-   A: DeepMosaic is benchmarked on GRCh37(hg19) we are working on some tests for GRCh38(hg39) and are providing some scripts and annotation resources [here](https://github.com/Virginiaxu/DeepMosaic/tree/master/DeepMosaic_hg38) the model is still the same so the main differences lie in coordinate differences. We will make further updates when we finish new models trained on GRCh38 or CHM13. As most of our current benchmark experiments are carried out on GRCh37 we cannot guarantee the performance on GRCh38.
+   A: DeepMosaic is benchmarked on GRCh37(hg19) we are working on some tests for GRCh38(hg39) and are providing some scripts and annotation resources [here](https://github.com/shishenyxx/DeepMosaic/tree/master/DeepMosaic_hg38) the model is still the same so the main differences lie in coordinate differences. We will make further updates when we finish new models trained on GRCh38 or CHM13. As most of our current benchmark experiments are carried out on GRCh37 we cannot guarantee the performance on GRCh38.
    
 7. Q: Why I got errors about pickle_module.load(f, **pickle_load_args)?
 
@@ -462,12 +462,12 @@ Note that the performance of DeepMosaic on GRCh38 will be different, our prelimi
 # Cite DeepMosaic
 Yang X*<sup>,#</sup>, Xin X*, <i>et al.</i> Gleeson JG<sup>#</sup>. Control-independent mosaic single nucleotide variant detection with DeepMosaic. ([<i>Nature Biotechnology</i>](https://www.nature.com/articles/s41587-022-01559-w))
 
-The Manuscript is also available [here](https://github.com/Virginiaxu/DeepMosaic/blob/master/Publication/s41587-022-01559-w.pdf).
+The Manuscript is also available [here](https://github.com/shishenyxx/DeepMosaic/blob/master/Publication/s41587-022-01559-w.pdf).
 
 --------------------------------------------
 
 # Licence
-Released under GNU-GPL 3.0 [licence](https://github.com/Virginiaxu/DeepMosaic/blob/master/LICENSE).
+Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/blob/master/LICENSE).
 
 --------------------------------------------
 
@@ -485,7 +485,7 @@ Released under GNU-GPL 3.0 [licence](https://github.com/Virginiaxu/DeepMosaic/bl
 
 # Contact
 
-If you have any questions please post a thread at the [issues](https://github.com/Virginiaxu/DeepMosaic/issues) section or contact us at:
+If you have any questions please post a thread at the [issues](https://github.com/shishenyxx/DeepMosaic/issues) section or contact us at:
 
 :email: Xiaoxu Yang: [xiy010@health.ucsd.edu](mailto:xiy010@health.ucsd.edu), [yangxiaoxu-shishen@hotmail.com](mailto:yangxiaoxu-shishen@hotmail.com)
 
