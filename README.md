@@ -473,13 +473,14 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 
 # Maintainance Team
 
-[Arzoo Patel](https://github.com/arzoopatel5) 
+[Xiaoxu Yang](https://github.com/shishenyxx)
 
 [Virginia (Xin) Xu](https://github.com/Virginiaxu)
 
+[Arzoo Patel](https://github.com/arzoopatel5) 
+
 [Jiawei Shen](https://github.com/JiaweiShen1116)
 
-[Xiaoxu Yang](https://github.com/shishenyxx)
 
 --------------------------------------------
 
