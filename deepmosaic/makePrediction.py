@@ -100,7 +100,7 @@ def prediction_decision(features_df, scores_list):
               (gnomads < 0.001) & (mosaic_scores > 0.6)
     predictions[np.where(mosaic_filters)] = "mosaic"
     extra_mosaic_filters = (depth_fractions >= 0.6) & (depth_fractions <= 1.7) & (segdups == 0) & (all_repeats == 0) &\
-              (gnomads < 0.001) & (lower_CIs >= 0.5) & (upper_CIs < 0.5)
+              (gnomads < 0.001) & (upper_CIs >= 0.5) & (lower_CIs < 0.5)
     extra_mosaic_filters_X = extra_mosaic_filters & (sexs == "M") & (chroms == "X") & (check_x_region(positions))
     extra_mosaic_filters_Y = extra_mosaic_filters & (sexs == "M") & (chroms == "Y") & (check_y_region(positions))
     predictions[extra_mosaic_filters_X | extra_mosaic_filters_Y] = "mosaic"
