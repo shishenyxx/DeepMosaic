@@ -21,10 +21,7 @@ MAX_DP = 500
 WIDTH = 300
 
 def list_to_string(info_list):
-    string = ""
-    for item in info_list:
-        string += item[1] + ":" + str(item[0]) + " "
-    return string
+    return " ".join([item[1] + ":" + str(item[0]) for item in info_list])
 
 def wilson_binom_interval(success, total, alpha = 0.05):
     q_ = success / total
