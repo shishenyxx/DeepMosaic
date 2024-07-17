@@ -419,7 +419,7 @@ Note that the performance of DeepMosaic on GRCh38 will be different, our prelimi
 
 </summary>
 
-## [Starting from Jan 2023, new Q&A section will be added to the wiki page](https://github.com/shishenyxx/DeepMosaic/wiki), please also visit the [issues](https://github.com/shishenyxx/DeepMosaic/issues) section so see whether other users already encountered the same questions.
+## [Starting from Jan 2023, new Q&A section will be added to the wiki page](https://github.com/shishenyxx/DeepMosaic/wiki), please also visit the [issues](https://github.com/shishenyxx/DeepMosaic/issues) or [closed issues](https://github.com/shishenyxx/DeepMosaic/issues?q=is%3Aissue+is%3Aclosed) sections to see whether other users already encountered the same questions.
 
 1. Q: How do I run DeepMosaic for multiple samples most efficiently?
    
