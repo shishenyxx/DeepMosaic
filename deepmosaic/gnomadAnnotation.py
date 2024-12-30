@@ -27,14 +27,14 @@ def gnomad_annotation(all_variants, output_dir, annovar, annovar_db, build, dbty
         os.remove(gm_path)
     if os.path.exists(output_dir + "input." + build + "_" + dbtype + "_dropped") and not \
        os.stat(output_dir + "input." + build + "_" + dbtype + "_dropped").st_size == 0:
-            df = pd.read_csv(output_dir + "input." + build + "_" + dbtype + "_dropped", header=None, sep="\t")
-            gnomad_dict = dict(zip(df[7], df[1]))
+           df = pd.read_csv(output_dir + "input." + build + "_" + dbtype + "_dropped", header=None, sep="\t", dtype={1: str, 2: str})
+           gnomad_dict = dict(zip(df[7], df[1]))
     else:
         gnomad_dict = {}
     if os.path.exists(output_dir + "input.variant_function") and not \
        os.stat(output_dir + "input.variant_function").st_size == 0:
-            df = pd.read_csv(output_dir + "input.variant_function", header=None, sep="\t")
-            function_dict = dict(zip(df[7], map(list, zip(df[0], df[1]))))
+           df = pd.read_csv(output_dir + "input.variant_function", header=None, sep="\t", dtype={2: str})
+           function_dict = dict(zip(df[7], map(list, zip(df[0], df[1]))))
     else:
         function_dict = {}
     if os.path.exists(output_dir + "input.exonic_variant_function") and not \

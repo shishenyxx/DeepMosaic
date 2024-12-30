@@ -69,7 +69,8 @@ OUTPUT_HEADER = [
     SEX_DICT,
     LINE_DICT,
 ) = get_sample_and_input_dicts()
-print(SAMPLE)
+#print(SAMPLE)
+
 OUT_DIR = config["out_dir"]
 INPUT_FILES = config["input_files"]
 ANNOVAR = config["annovar"]
@@ -104,8 +105,8 @@ rule generate_sample_input_txt:
         sample_id=lambda wildcards: LINE_DICT[wildcards.sample][0],
     run:
         # for sample in SAMPLE:
-        if not os.path.exists(params.sample_id):
-            os.mkdir(params.sample_id)
+        #if not os.path.exists(params.sample_id):
+            #os.mkdir(params.sample_id)
         # outfile = OUT_DIR + "/" + sample + "/" + sample + "_input.txt"
         if not os.path.exists(output.outfile) or os.path.getsize(output.outfile) == 0:
             wfile = open(output.outfile, "w")
@@ -124,18 +125,19 @@ rule deepmosaic_draw:
     log:
         OUT_DIR + "/{sample}/deepmosaic_draw.log",
     params:
-        cluster="-q home -l nodes=1:ppn=1 -l walltime=168:00:00",
+        cluster="--ntasks=1 --time=168:00:00",
         target_dir=directory(OUT_DIR + "/{sample}"),
         #sample_id = lambda wildcards: LINE_DICT[wildcards.sample][0],
     benchmark:
         OUT_DIR + "/benchmark/deepmosaic_draw/{sample}.deepmosaic_draw.benchmark.txt"
     conda:
-        "deepmosaic"
+        "DM"
     shell:
         "({DEEPMOSAIC}/deepmosaic-draw"
         " -i {input.infile}"
         " -o {params.target_dir}"
-        " -a {ANNOVAR}) 2> {log}"
+        " -a {ANNOVAR}"
+	" -c /scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/ref/human_g1k_v37_decoy.fasta.gz) 2> {log}"
 
 
 rule deepmosaic_predict:
@@ -146,7 +148,7 @@ rule deepmosaic_predict:
     log:
         OUT_DIR + "/{sample}/deepmosaic_predict.log",
     params:
-        cluster="-q hotel -l nodes=1:ppn=12 -l walltime=168:00:00",
+        cluster="--ntasks=12 --time=168:00:00",
         #sample_id = lambda wildcards: LINE_DICT[wildcards.sample][0],
     benchmark:
         (
@@ -154,11 +156,12 @@ rule deepmosaic_predict:
             + "/benchmark/deepmosaic_predict/{sample}.deepmosaic_predict.benchmark.txt"
         )
     conda:
-        "deepmosaic"
+        "DM"
     shell:
         "({DEEPMOSAIC}/deepmosaic-predict"
         " -i {input.infile}"
-        " -o {output.outfile}) 2> {log}"
+        " -o {output.outfile}"
+	" -gb hg19) 2> {log}"
 
 
 # filter out mosaic variants from the prediction results
@@ -177,7 +180,7 @@ rule merge_filtered_results:
     output:
         outfile=OUT_DIR + "/final_summary.vcf",
     params:
-        cluster="-q condo -l walltime=2:00:00",
+        cluster="--time=2:00:00",
     run:
         wfile = open(output.outfile, "w")
         wfile.write("\t".join(OUTPUT_HEADER) + "\n")

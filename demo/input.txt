@@ -1,5 +1,7 @@
 #sample_name    bam     vcf     depth   sex
-sample_1	bams/sample_1.bam	vcfs/sample_1.vcf	200	M
-sample_2	bams/sample_2.bam	vcfs/sample_2.vcf	200	M
-sample_3	bams/sample_3.bam	vcfs/sample_3.vcf	200	M
-sample_4	bams/sample_4.bam	vcfs/sample_4.vcf	200	M
+sample_1	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/bams/sample_1.bam	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/vcfs/sample_1.vcf	200	M
+sample_2	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/bams/sample_2.bam	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/vcfs/sample_2.vcf	200	M
+sample_3	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/bams/sample_3.bam	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/vcfs/sample_3.vcf	200	M
+sample_4	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/bams/sample_4.bam	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/vcfs/sample_4.vcf	200	M
+sample_chr	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/bams/sample_chr.bam	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/vcfs/sample_chr.vcf	200	M
+sample_chr_cr	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/crams/sample_chr_cr.cram	/scratch/ucgd/lustre-labs/yang/Pipelines/Pipeline_redwood/DNA_WGS_mosaic_variant_calling_Xiaoxu/3_DeepMosaic/demo/vcfs/sample_chr.vcf	200	M

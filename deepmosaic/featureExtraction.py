@@ -53,7 +53,7 @@ def check_y_region(position):
 
 
 def multiprocess_iterator(line):
-    sample_name, bam, chrom, pos, ref, alt, sequencing_depth, sex = line
+    sample_name, bam, chrom, pos, ref, alt, sequencing_depth, sex, cram_ref_dir = line
     '''
     if len(line) == 6:
         bam, chrom, pos, ref, alt, sequencing_depth = line
@@ -68,7 +68,7 @@ def multiprocess_iterator(line):
         sys.stderr.write("Please provide a valid input file.")
         sys.exit(2)
     '''
-    pysam_reader = pysamReader(bam, chrom, pos, ref, alt)
+    pysam_reader = pysamReader(bam, chrom, pos, cram_ref_dir, ref, alt)
     pysam_reader.downsample_to_max_depth()
     pysam_reader.build_reads_dict()
 
@@ -98,7 +98,6 @@ def multiprocess_iterator(line):
     else:
         maf = alt_count /(ref_count + alt_count)
         lower_CI, upper_CI = wilson_binom_interval(alt_count, ref_count + alt_count)
-
     #save images
     key =  "_".join(list(map(str,[chrom, pos, ref, alt])))
     filename = sample_name + "-" + key
@@ -128,6 +127,7 @@ def getOptions(args=sys.argv[1:]):
                                                                      (humandb directory should already be specified inside)")
     parser.add_argument("-db", "--dbtype", required=False, default="gnomad_genome", help="db file located in annovar directory,  this feeds directly into the annovar parameter --dbtype, default: gnomad_genome")
     parser.add_argument("-b", "--build", required=False, default="hg19", help="Version of genome build, options: hg19, hg38")
+    parser.add_argument("-c", "--cram_ref_dir", required=False, help="CRAM file reference path")
     options = parser.parse_args(args)
     return options
 
@@ -150,7 +150,7 @@ def main():
         x_par2_region = [155701383, 156030895]
         y_par2_region = [56887903, 57217415]
     else:
-        sys.stderr.write(options.build + " is an invalid genome build, please ssee help message")
+        sys.stderr.write(options.build + " is an invalid genome build, please see help message")
         sys.exit(3)
 
     input_file = options.input_file
@@ -160,6 +160,7 @@ def main():
     global build 
     build = options.build
     dbtype = options.dbtype
+    cram_ref_dir = options.cram_ref_dir
     
     if annovar_path.endswith("/"):
         annovar = annovar_path + "annotate_variation.pl"
@@ -193,6 +194,12 @@ def main():
         os.makedirs(output_dir)
     if not output_dir.endswith("/"):
         output_dir += "/"
+    
+    #check if cram  path is valid
+    if cram_ref_dir != None:
+        if not os.path.exists(cram_ref_dir):
+            sys.stderr.write("Please provide a valid CRAM reference path.\n")
+            sys.exit(2)
 
     global image_outdir
     image_outdir= output_dir + "images/"
@@ -219,6 +226,16 @@ def main():
             if line.startswith("#"):
                 continue
             sample_name, bam, vcf, depth, sex = line.rstrip().split("\t")
+            
+            if bam.endswith(".cram"):
+                sys.stderr.write("Input file is CRAM, checking if -c is used... ")
+                if cram_ref_dir is None:
+                    raise Exception("CRAM input must have a reference path. Use -c and make sure to put in the correct path to the reference file.")
+                    sys.exit(2)
+                else:
+                    sys.stderr.write("CRAM reference path has been given.")
+                    sys.stderr.write('\n')
+
             if vcf.endswith(".vcf.gz"):
                 vcf_file = gzip.open(vcf, "rt")
             elif vcf.endswith(".vcf"):
@@ -226,6 +243,7 @@ def main():
             else:
                 raise Exception("input file must contains valid vcf files ending with '.vcf' or '.vcf.gz'")
                 sys.exit(2)
+            
             for vcf_line in vcf_file:
                 if vcf_line.startswith("#"):
                    continue
@@ -243,7 +261,11 @@ def main():
 
     #annovar annotation for gnomad
     function_dict, gnomad_dict = gnomad_annotation(all_variants, output_dir, annovar, annovar_db, build, dbtype)
-
+    
+    #Add cram ref path to variants
+    for variants in all_variants:
+        variants.append(cram_ref_dir)
+     
     #draw images
     try:
         pool = Pool(8) # on 8 processors
