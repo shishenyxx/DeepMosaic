@@ -23,7 +23,8 @@ class pysamReader():
             self.samfile = pysam.AlignmentFile(file_name, "rb")
             self.reads = self.samfile.fetch(chrom, self.pos, self.pos+1)
             if cram_ref_dir != None:
-                sys.stdout.write("NOTICE: CRAM reference directory was given when input file type is BAM.\n")
+                sys.stdout.write("NOTICE: CRAM reference directory was given when input file type is BAM for " + str(file_name) + "\n")
+                #sys.exit(2)
         elif file_name.endswith('.cram'):
             if cram_ref_dir !=  None:
                 self.samfile = pysam.AlignmentFile(file_name, "rc", reference_filename=cram_ref_dir)

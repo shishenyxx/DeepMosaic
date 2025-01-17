@@ -228,13 +228,14 @@ def main():
             sample_name, bam, vcf, depth, sex = line.rstrip().split("\t")
             
             if bam.endswith(".cram"):
-                sys.stderr.write("Input file is CRAM, checking if -c is used... ")
+                sys.stdout.write("NOTICE: Input file is CRAM, checking if -c is used... ")
+                sys.stdout.write('\n')
                 if cram_ref_dir is None:
                     raise Exception("CRAM input must have a reference path. Use -c and make sure to put in the correct path to the reference file.")
                     sys.exit(2)
                 else:
-                    sys.stderr.write("CRAM reference path has been given.")
-                    sys.stderr.write('\n')
+                    sys.stdout.write("CRAM reference path has been given for " + str(sample_name))
+                    sys.stdout.write('\n')
 
             if vcf.endswith(".vcf.gz"):
                 vcf_file = gzip.open(vcf, "rt")

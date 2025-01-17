@@ -1,0 +1,12 @@
+ANNOVAR Version:
+	$Date: 2020-06-07 23:56:37 -0400 (Sun,  7 Jun 2020) $
+ANNOVAR Information:
+	For questions, comments, documentation, bug reports and program update, please visit http://www.openbioinformatics.org/annovar/
+ANNOVAR Command:
+	../../../Annovar/annotate_variation.pl -filter -build hg38 -dbtype gnomad_genome /tmp/tmp5vr_7_fq ../../../Annovar/humandb -outfile results/hg38_cram_result/input
+ANNOVAR Started:
+	Thu Jan 16 14:08:42 2025
+NOTICE: Output file with variants matching filtering criteria is written to results/hg38_cram_result/input.hg38_gnomad_genome_dropped, and output file with other variants is written to results/hg38_cram_result/input.hg38_gnomad_genome_filtered
+NOTICE: Processing next batch with 4 unique variants in 4 input lines
+NOTICE: Database index loaded. Total number of bins is 28084439 and the number of bins to be scanned is 4
+NOTICE: Scanning filter database ../../../Annovar/humandb/hg38_gnomad_genome.txt...Done
