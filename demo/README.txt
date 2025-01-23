@@ -1,14 +1,20 @@
 ***
 NOTICES:
 
--Please be aware that the CRAM file line has been omitted in the input.txt as it requires the -C <reference_path> flag when running deepmosaic-draw. The CRAM file was created using hg19, so please use your own downloaded hg19 (or hg38) reference file to test the demo.
+--Please be aware that the CRAM file line has been omitted in the input.txt 
+as it requires the -C <reference_path> flag when running deepmosaic-draw. 
+The CRAM file was created using hg19, so please use your own downloaded 
+hg19 (or hg38) reference file to test the demo.
 
--hgdownload from UCSC
+--hgdownload from UCSC
 https://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/
 
--Currently model training with trainModel.py will only work with the default efficientnet-b4 model. Additional model training will be updated in future release.
+--Currently model training with trainModel.py will only work with the default 
+efficientnet-b4 model. Additional model training will be updated in future release.
 
--When using the -m flag for deepmosaic-predict to change prediction models, please use the file names exactly as stored within the deepmosaic/models folder and NOT the absolute path as that might cause errors. 
+--When using the -m flag for deepmosaic-predict to change prediction models, 
+please use the file names exactly as stored within the deepmosaic/models folder 
+and NOT the absolute path as that might cause errors. 
 ***
 
 ADDITIONS TO DEMO:
