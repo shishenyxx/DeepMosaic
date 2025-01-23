@@ -1,4 +1,2 @@
 #sample_name	bam	vcf	depth	sex
-#merged_sample	/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/DeepMosaic/demo/bams/hg19_M_merged.bam	/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/DeepMosaic/demo/vcfs/merged_output.vcf	800	M
-8950-Sa	/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/DeepMosaic/demo/cram_test/8950-Sa_chr1_testfiles/8950-Sa_chr1.cram	/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/DeepMosaic/demo/cram_test/filtered.vcf.gz	25	M
-#8950-Sa	/scratch/ucgd/lustre-labs/yang/Uniformly_Processed_Data/20230911_Xiaoxu_Changuk_heart9112_smoker8950_8953_8954_8957_8958_9011_TSC9099_RCIGM/1-Alignment/merged_bams/8950-Sa.merged.bam	/scratch/ucgd/lustre-labs/yang/Uniformly_Processed_Data/20230911_Xiaoxu_Changuk_heart9112_smoker8950_8953_8954_8957_8958_9011_TSC9099_RCIGM/4-Mutect2_Single_mode/passed_single_mode/8950-Sa_somatic.vcf.gz	25	M
+merged_sample	bams/sample_merged.bam vcfs/sample_merged.vcf	200	M

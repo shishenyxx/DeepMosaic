@@ -1,18 +1,9 @@
-## NEW EDITS BELOW
-__default__:
-        partition: ucgd-rw
-        account: ucgd-rw
-        time: 1:00:00
-        nodes: 1
-        ntasks: 8
-## NEW EDITS ABOvE
-
-out_dir: "/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/DeepMosaic/Snakemake/Split/RE_only"
+out_dir: "/DeepMosaic/Snakemake/Split/output"
 
 #path to aggregated input txt
-input_files: "/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/DeepMosaic/Snakemake/Split/RE_only/input_files.txt"
+input_files: "/DeepMosaic/Snakemake/Split/input_files.txt"
 #path to annovar 
-annovar: "/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/Annovar"
+annovar: "/Annovar"
 
 #path to deepmosaic
-deepmosaic: "/scratch/ucgd/lustre-labs/yang/User/u6063942_Sang/DeepMosaic/deepmosaic"
+deepmosaic: "/DeepMosaic/deepmosaic"
