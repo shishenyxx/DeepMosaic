@@ -1,6 +1,6 @@
 # DeepMosaic  <img src="https://user-images.githubusercontent.com/17311837/88461876-52d18f80-ce5c-11ea-9aed-534dfd07d351.png" alt="DeepMosaic_Logo" width=15%> 
 
-Visualization and control-independent classification tool of noncancer (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks. Originally written by [Virginia (Xin) Xu](https://github.com/Virginiaxu) and [Xiaoxu Yang](https://github.com/shishenyxx), maintained by [Arzoo Patel](https://github.com/arzoopatel5). 
+Visualization and control-independent classification tool of noncancer (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks. Originally written by [Virginia (Xin) Xu](https://github.com/Virginiaxu) and [Xiaoxu Yang](https://github.com/shishenyxx), maintained by [Arzoo Patel](https://github.com/arzoopatel5), bugfixes and updates by [Sang Lee](https://github.com/sang0318). 
 
 
 --------------------------------------------
@@ -194,6 +194,8 @@ While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic. Running Mu
 
 9. To generate h5 files for other genome builds (not recommended) please follow [this link](https://github.com/gmcvicker/genome), note that this package runs in Python 2.7.
 
+10. OPTIONAL: To utilize `CRAM` file inputs instead of `BAM`, use the `-c` flag and include the path to the reference file that was used to build the cram file (such as hg19) when running the command from above.
+    
 ### Output:
 After deepmosaic-draw is successfully executed, the following files/directories would be generated in the `[output_dir]`
 
@@ -471,7 +473,9 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 
 --------------------------------------------
 
-# Maintainance Team
+# Contributors
+
+[Sang Lee](https://github.com/sang0318)
 
 [Arzoo Patel](https://github.com/arzoopatel5) 
 
@@ -487,9 +491,7 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 
 If you have any questions please post a thread at the [issues](https://github.com/shishenyxx/DeepMosaic/issues) section or contact us at:
 
-:email: Xiaoxu Yang: [u6055394@utah.edu](mailto:u6055394@utah.edu), [xiaoxuyanglab@gmail.com](mailto:xiaoxuyanglab@gmail.com)
-
-:email: Virginia (Xin) Xu: [virginiaxuxin@gmail.com](mailto:virginiaxuxin@gmail.com) 
+:email: Xiaoxu Yang: [u6055394@utah.edu](mailto:u6055394@utah.edu), [xiaoxu.yang@genetics.utah.edu](mailto:xiaoxu.yang@genetics.utah.edu)
 
 :email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
 
