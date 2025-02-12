@@ -373,7 +373,7 @@ example command:
 
 </summary>
 
-Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic).
+Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/sanglee8888/deepmosaic/deepmosaic).
 
 ### Note
 
