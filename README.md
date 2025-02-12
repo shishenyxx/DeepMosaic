@@ -1,6 +1,6 @@
 # DeepMosaic  <img src="https://user-images.githubusercontent.com/17311837/88461876-52d18f80-ce5c-11ea-9aed-534dfd07d351.png" alt="DeepMosaic_Logo" width=15%> 
 
-Visualization and control-independent classification tool of noncancer (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks. Originally written by [Virginia (Xin) Xu](https://github.com/Virginiaxu) and [Xiaoxu Yang](https://github.com/shishenyxx), maintained by [Arzoo Patel](https://github.com/arzoopatel5), bugfixes and updates by [Sang Lee](https://github.com/sang0318). 
+Visualization and control-independent classification tool of noncancer (somatic or germline) mosaic single nucleotide variants (SNVs) with deep convolutional neural networks. Originally written by [Virginia (Xin) Xu](https://github.com/Virginiaxu) and [Xiaoxu Yang](https://github.com/shishenyxx), maintained by [Arzoo Patel](https://github.com/arzoopatel5) and [Sang Lee](https://github.com/sang0318). 
 
 
 --------------------------------------------
@@ -482,11 +482,11 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 
 # Contributors
 
+[Virginia (Xin) Xu](https://github.com/Virginiaxu)
+
 [Sang Lee](https://github.com/sang0318)
 
 [Arzoo Patel](https://github.com/arzoopatel5) 
-
-[Virginia (Xin) Xu](https://github.com/Virginiaxu)
 
 [Jiawei Shen](https://github.com/JiaweiShen1116)
 
@@ -498,8 +498,8 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 
 If you have any questions please post a thread at the [issues](https://github.com/shishenyxx/DeepMosaic/issues) section or contact us at:
 
-:email: Xiaoxu Yang: [u6055394@utah.edu](mailto:u6055394@utah.edu), [xiaoxu.yang@genetics.utah.edu](mailto:xiaoxu.yang@genetics.utah.edu)
+:email: Xiaoxu Yang: [xiaoxu.yang@genetics.utah.edu](mailto:xiaoxu.yang@genetics.utah.edu)
 
-:email: Joseph Gleeson: [jogleeson@health.ucsd.edu](mailto:jogleeson@health.ucsd.edu) 
+[Information about the Yang Lab](https://sites.google.com/view/xiaoxu-yang-lab)
 
 [Return to Contents](#contents)
