@@ -1,0 +1,13 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##contig=<ID=chr10>
+##contig=<ID=chr14>
+##contig=<ID=chr20>
+##contig=<ID=chr16>
+##bcftools_mergeVersion=1.10+htslib-1.10
+##bcftools_mergeCommand=merge -o merged_output.vcf sample_1.sorted.vcf.gz sample_2.sorted.vcf.gz sample_3.sorted.vcf.gz sample_4.sorted.vcf.gz; Date=Mon Dec  2 11:21:22 2024
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+chr10	25509499	.	A	G	.	.	.
+chr14	37531674	.	A	T	.	.	.
+chr20	1805075	.	G	T	.	.	.
+chr16	65589896	.	G	C	.	.	.

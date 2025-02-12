@@ -1,9 +1,9 @@
-out_dir: "/Deepmosaic_no_split"
+out_dir: "/DeepMosaic/Snakemake/No_split/output"
 
 #path to aggregated input txt
-input_files: "/Deepmosaic_no_split/input_files.txt"
+input_files: "/DeepMosaic/Snakemake/No_split/input_files.txt"
 #path to annovar 
-annovar: "/annovar"
+annovar: "/Annovar"
 
 #path to deepmosaic
 deepmosaic: "/DeepMosaic/deepmosaic"

@@ -3,3 +3,6 @@ sample_1	bams/sample_1.bam	vcfs/sample_1.vcf	200	M
 sample_2	bams/sample_2.bam	vcfs/sample_2.vcf	200	M
 sample_3	bams/sample_3.bam	vcfs/sample_3.vcf	200	M
 sample_4	bams/sample_4.bam	vcfs/sample_4.vcf	200	M
+#sample_merged	bams/sample_merged.bam	vcfs/sample_merged.vcf	200	M
+#sample_merged_cr	crams/sample_merged_cr.cram	vcfs/sample_merged.vcf	200	M
+#hg38_merged_cr	crams/hg38_merged.cram	vcfs/hg38_merged.vcf	200	M

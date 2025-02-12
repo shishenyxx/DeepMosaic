@@ -1,1 +1,2 @@
 #sample_name	bam	vcf	depth	sex
+8950-Sa	bams/sample_merged.bam	vcfs/sample_merged.vcf	200	M

@@ -95,7 +95,7 @@ OUTPUT_HEADER = [
     SEX_DICT,
     LINE_DICT,
 ) = get_sample_and_input_dicts()
-print(SAMPLE)
+#print(SAMPLE)
 
 OUT_DIR = config["out_dir"]
 INPUT_FILES = config["input_files"]
@@ -145,8 +145,8 @@ rule generate_sample_input_txt:
     params:
         sample_id=lambda wildcards: LINE_DICT[wildcards.sample][0],
     run:
-        if not os.path.exists(params.sample_id):
-            os.mkdir(params.sample_id)
+        #if not os.path.exists(params.sample_id):
+            #os.mkdir(params.sample_id)
         if not os.path.exists(output.outfile) or os.path.getsize(output.outfile) == 0:
             wfile = open(output.outfile, "w")
             wfile.write("\t".join(INPUT_HEADER) + "\n")
@@ -166,7 +166,7 @@ rule deepmosaic_draw:
     log:
         OUT_DIR + "/{sample}/logs/deepmosaic_draw.log",
     params:
-        cluster="-q hotel -l nodes=1:ppn=1 -l walltime=168:00:00",
+        cluster="--ntasks=1 --time=168:00:00",
         target_dir=directory(OUT_DIR + "/{sample}"),
     benchmark:
         (
@@ -174,7 +174,7 @@ rule deepmosaic_draw:
             + "/{sample}/benchmark/deepmosaic_draw/{sample}.deepmosaic_draw.benchmark.txt"
         )
     conda:
-        "deepmosaic"
+        "DM"
     shell:
         "({DEEPMOSAIC}/deepmosaic-draw"
         " -i {input.infile}"
@@ -217,19 +217,20 @@ rule deepmosaic_predict:
     log:
         OUT_DIR + "/{sample}/logs/{split}.deepmosaic_predict.log",
     params:
-        cluster="-q hotel -l nodes=1:ppn=12,mem=64g -l walltime=168:00:00",
+        cluster="--ntasks=12 --mem=64G --time=168:00:00",
     benchmark:
         (
             OUT_DIR
             + "/{sample}/benchmark/deepmosaic_predict/{split}.deepmosaic_predict.benchmark.txt"
         )
     conda:
-        "deepmosaic"
+        "DM"
     shell:
         "({DEEPMOSAIC}/deepmosaic-predict"
         " -i {input.infile}"
         " -b 5"
-        " -o {output.outfile}) 2> {log}"
+        " -o {output.outfile}"
+	" -gb hg19) 2> {log}"
 
 
 rule gather_prediction_results:
@@ -243,7 +244,7 @@ rule gather_prediction_results:
     output:
         outfile=OUT_DIR + "/{sample}/output.txt",
     params:
-        cluster="-q glean -l walltime=1:00:00",
+        cluster="--time=1:00:00",
     run:
         wfile = open(output.outfile, "w")
         for file in input:
@@ -277,7 +278,7 @@ rule merge_filtered_results:
     output:
         outfile=OUT_DIR + "/final_summary.vcf",
     params:
-        cluster="-q glean -l walltime=2:00:00",
+        cluster="--time=2:00:00",
     run:
         wfile = open(output.outfile, "w")
         wfile.write("\t".join(OUTPUT_HEADER) + "\n")

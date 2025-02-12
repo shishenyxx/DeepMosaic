@@ -9,6 +9,9 @@ import argparse
 import pickle
 import math
 from efficientnet_pytorch import EfficientNet
+from torchvision.models import densenet121
+from torchvision.models import inception_v3
+from torchvision.models import resnet18
 import torch.optim as optim
 from torch.optim import lr_scheduler
 import time
@@ -145,6 +148,27 @@ def main():
         num_ftrs = model._fc.in_features
         model._fc = nn.Linear(num_ftrs, 3)
         model.load_state_dict(torch.load(model_path,map_location=device))
+        model = model.to(device)
+
+    elif model_type.startswith("densenet"): 
+        model = densenet121(pretrained=False)
+        num_ftrs = model.classifier.in_features
+        model.classifier = nn.Linear(num_ftrs, 3)
+        model.load_state_dict(torch.load(model_path,map_location=device))
+        model = model.to(device)
+
+    elif model_type.startswith("inception"):
+        model = inception_v3(pretrained=False)
+        num_ftrs = model.fc.in_features
+        model.fc = nn.Linear(num_ftrs, 3)
+        model.load_state_dict(torch.load(model_path, map_location=device))
+        model = model.to(device)
+    
+    elif model_type.startswith("resnet"):
+        model = resnet18(pretrained=False)
+        num_ftrs = model.fc.in_features
+        model.fc = nn.Linear(num_ftrs, 3)
+        model.load_state_dict(torch.load(model_path, map_location=device))
         model = model.to(device)
 
     train_data = data[:int(len(data)*0.8), :]
