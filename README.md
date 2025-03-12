@@ -25,6 +25,8 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 [Singularity](#Singularity)
 
+[Docker](#Docker)
+
 [Performance](#Performance)
 
 [Q&A](#qa)
@@ -401,7 +403,40 @@ See [Usage](#Usage) and [Model Training](#model-training) for more details.
 --------------------------------------------
 
 <details><summary>
+     
+# Docker
 
+</summary>
+
+Current Docker image is available as `sanglee8888/deepmosaic:latest` on [docker hub](#https://hub.docker.com/) which can be pulled to your local using `docker pull sanglee8888/deepmosaic:latest`. The usage for it is as follows:
+
+You need to have the input.txt file set up as something like:
+
+## input.txt
+
+|#sample_name|bam|vcf|depth|sex|
+|---|---|---|---|---|
+|sample_1|/mnt/demo/bams/sample_1.bam|/mnt/demo/vcfs/sample_1.vcf|200|M|
+|sample_2|/mnt/demo/bams/sample_2.bam|/mnt/demo/vcfs/sample_2.vcf|200|M|
+|sample_3|/mnt/demo/bams/sample_3.bam|/mnt/demo/vcfs/sample_3.vcf|200|M|
+|sample_4|/mnt/demo/bams/sample_4.bam|/mnt/demo/vcfs/sample_4.vcf|200|M|
+
+Where you must include the /mnt directory for usage with Docker's -v flag command. The sample command for running deepmosaic-draw and deepmosaic-predict are as follows:
+
+## deepmosaic-draw
+docker run -v ~/Desktop/annovar:/mnt/annovar -v ~/Desktop/DeepMosaic/demo:/mnt/demo -v ~/Desktop/output:/mnt/output sanglee8888/deepmosaic draw -i /mnt/demo/input.txt -o /mnt/output -a /mnt/annovar
+
+## deepmosaic-predict 
+docker run -v ~/Desktop/output:/mnt/output sanglee8888/deepmosaic predict -i /mnt/output/features.txt -o /mnt/output/prediction.txt -gb hg19
+
+[Return to Contents](#contents)
+
+</details>
+
+--------------------------------------------
+
+<details><summary>
+     
 # Performance
 
 </summary>
