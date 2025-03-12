@@ -408,7 +408,7 @@ See [Usage](#Usage) and [Model Training](#model-training) for more details.
 
 </summary>
 
-Current Docker image is available as `sanglee8888/deepmosaic:latest` on [docker hub](#https://hub.docker.com/) which can be pulled to your local using `docker pull sanglee8888/deepmosaic:latest`. The usage for it is as follows:
+Current Docker image is available as `sanglee8888/deepmosaic:latest` on [dockerhub](https://hub.docker.com/), which can be pulled to your local using `docker pull sanglee8888/deepmosaic:latest`. The usage for it is as follows:
 
 You need to have the input.txt file set up as something like:
 
