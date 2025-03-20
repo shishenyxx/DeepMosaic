@@ -81,7 +81,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 Some of the versions of packages are provided as an example in this [list](https://github.com/shishenyxx/DeepMosaic/blob/master/environment.yml). 
 
-Alternatively, you can use the singularity container. See [Singularity](#Singularity).
+Alternatively, you can use singularity or docker container. See [Singularity](#Singularity) and [Docker](#Docker).
 
 [Return to Contents](#contents)
 
@@ -95,11 +95,11 @@ Alternatively, you can use the singularity container. See [Singularity](#Singula
 
 </summary>
 
-We are now providing [singularity image]([https://cloud.sylabs.io/library/sanglee8888/deepmosaic/deepmosaic]) and [docker image]([https://hub.docker.com/repository/docker/sanglee8888/deepmosaic/general]) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
+We are now providing [singularity image](https://cloud.sylabs.io/library/sanglee8888/deepmosaic/deepmosaic) and [docker image](https://hub.docker.com/repository/docker/sanglee8888/deepmosaic/general) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
 
 ## Step 1. Install DeepMosaic
 
-Make sure you have <b>git-lfs</b> installed in your environment (download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), unzip the tar.gz and put the binary file ```git-lfs``` in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs, you only need to do it once) to be able to download this repository correctly. 
+Make sure you have <b>git-lfs</b> installed in your environment to be able to download this repository correctly. Download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), unzip the tar.gz and put the binary file ```git-lfs``` in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs. You only need to do it once.
 
 ```
 > git clone --recursive https://github.com/shishenyxx/DeepMosaic
@@ -377,14 +377,14 @@ example command:
 
 Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/sanglee8888/deepmosaic/deepmosaic).
 
-### Note
+## Note
 
 1. The singularity container currently only works with hg19/GRCh37 and hg38/GRCh38.
 2. You'll need your own copy of ANNOVAR outside the singularity (please specify the path of ANNOVAR in `<options>`).
 
-### Usage
+## Usage
 
-# Basic Usage
+### Basic Usage
 
 1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
@@ -392,7 +392,7 @@ Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/
 
 `singularity exec -B <path/to/annovar> DeepMosaic.sif deepmosaic-draw <options>`
 
-# Training and using your own model
+#### Training and using your own model
 
 1. `singularity exec DeepMosaic.sif python /DeepMosaic/deepmosaic/trainModel.py <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options> --model-path <path_to_your_model>`
