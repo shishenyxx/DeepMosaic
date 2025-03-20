@@ -129,7 +129,7 @@ Make sure you cloned the whole repository, total folder size should be ~ 4G.
 > perl ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gnomad_genome humandb/    
 ```
     
-   to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
+   to install the hg19.gnomad_genome file needed for the feature extraction from the bam file
 
 [Return to Contents](#contents)
 
@@ -388,6 +388,9 @@ Basic Usage
 
 1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
+
+There maybe some instances where the path to ANNOVAR may not be detected depending on how singularity is set up. In this case, please use the -B flag along with the path to the annovar before running the command options to have it mounted to the sif file.
+`singularity exec -B <path/to/annovar> DeepMosaic.sif deepmosaic-draw <options>`
 
 Training and using your own model
 
