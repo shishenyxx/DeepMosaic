@@ -384,14 +384,15 @@ Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/
 
 ### Usage
 
-Basic Usage
+#Basic Usage
 
 1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
 3. There maybe some instances where the path to ANNOVAR may not be detected depending on how singularity is set up. In this case, please use the -B flag along with the path to the annovar before running the command options to have it mounted to the sif file.
+
 `singularity exec -B <path/to/annovar> DeepMosaic.sif deepmosaic-draw <options>`
 
-Training and using your own model
+#Training and using your own model
 
 1. `singularity exec DeepMosaic.sif python /DeepMosaic/deepmosaic/trainModel.py <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options> --model-path <path_to_your_model>`
