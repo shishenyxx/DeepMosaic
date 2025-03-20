@@ -25,6 +25,8 @@ Visualization and control-independent classification tool of noncancer (somatic 
 
 [Singularity](#Singularity)
 
+[Docker](#Docker)
+
 [Performance](#Performance)
 
 [Q&A](#qa)
@@ -79,7 +81,7 @@ Workflow of DeepMosaic on best-performed deep convolutional neural network model
 
 Some of the versions of packages are provided as an example in this [list](https://github.com/shishenyxx/DeepMosaic/blob/master/environment.yml). 
 
-Alternatively, you can use the singularity container. See [Singularity](#Singularity).
+Alternatively, you can use singularity or docker container. See [Singularity](#Singularity) and [Docker](#Docker).
 
 [Return to Contents](#contents)
 
@@ -93,11 +95,11 @@ Alternatively, you can use the singularity container. See [Singularity](#Singula
 
 </summary>
 
-We are now providing a [singularity image](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
+We are now providing [singularity image](https://cloud.sylabs.io/library/sanglee8888/deepmosaic/deepmosaic) and [docker image](https://hub.docker.com/repository/docker/sanglee8888/deepmosaic/general) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
 
 ## Step 1. Install DeepMosaic
 
-Make sure you have <b>git-lfs</b> installed in your environment (download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), unzip the tar.gz and put the binary file ```git-lfs``` in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs, you only need to do it once) to be able to download this repository correctly. 
+Make sure you have <b>git-lfs</b> installed in your environment to be able to download this repository correctly. Download [git-lfs](https://github.com/git-lfs/git-lfs/releases/), unzip the tar.gz and put the binary file ```git-lfs``` in your bin folder/your $PATH, and run ```git lfs install``` to initialize git-lfs. You only need to do it once.
 
 ```
 > git clone --recursive https://github.com/shishenyxx/DeepMosaic
@@ -127,7 +129,7 @@ Make sure you cloned the whole repository, total folder size should be ~ 4G.
 > perl ./annotate_variation.pl -buildver hg19 -downdb -webfrom annovar gnomad_genome humandb/    
 ```
     
-   to intall the hg19.gnomad_genome file needed for the feature extraction from the bam file
+   to install the hg19.gnomad_genome file needed for the feature extraction from the bam file
 
 [Return to Contents](#contents)
 
@@ -188,9 +190,9 @@ While using MuTect2 we recommend "PASS" vcfs as input for DeepMosaic. Running Mu
 
 6. `path_to_ANNOVAR` is the absolute path to the ANNOVAR program directory.
      
-7. `genome_build` is the build version of the reference genome, currently `hg19` and `hg38` are supported. defaults to `hg19`.
+7. `genome_build` is the build version of the reference genome, currently `hg19` and `hg38` are supported. Defaults to `hg19`.
 
-8. `name_of_annovar_db` is the name of the db you want to use from the annovar subdirectory `[annovar/humandb]`. For example, if you want to use `annovar/humandb/hg38_gnomad312_genome.txt`, you would use `-db gnomad312_genome`. This option is fed directly into the annovar command as `--dbtype`. defaults to `gnomad_genome`.
+8. `name_of_annovar_db` is the name of the db you want to use from the annovar subdirectory `[annovar/humandb]`. For example, if you want to use `annovar/humandb/hg38_gnomad312_genome.txt`, you would use `-db gnomad312_genome`. This option is fed directly into the annovar command as `--dbtype`. Defaults to `gnomad_genome`.
 
 9. To generate h5 files for other genome builds (not recommended) please follow [this link](https://github.com/gmcvicker/genome), note that this package runs in Python 2.7.
 
@@ -375,19 +377,22 @@ example command:
 
 Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/sanglee8888/deepmosaic/deepmosaic).
 
-### Note
+## Note
 
 1. The singularity container currently only works with hg19/GRCh37 and hg38/GRCh38.
 2. You'll need your own copy of ANNOVAR outside the singularity (please specify the path of ANNOVAR in `<options>`).
 
-### Usage
+## Usage
 
-Basic Usage
+### Basic Usage
 
 1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
+3. There maybe some instances where the path to ANNOVAR may not be detected depending on how singularity is set up. In this case, please use the -B flag along with the path to the annovar before running the command options to have it mounted to the sif file.
 
-Training and using your own model
+`singularity exec -B <path/to/annovar> DeepMosaic.sif deepmosaic-draw <options>`
+
+#### Training and using your own model
 
 1. `singularity exec DeepMosaic.sif python /DeepMosaic/deepmosaic/trainModel.py <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options> --model-path <path_to_your_model>`
@@ -401,7 +406,40 @@ See [Usage](#Usage) and [Model Training](#model-training) for more details.
 --------------------------------------------
 
 <details><summary>
+     
+# Docker
 
+</summary>
+
+Current Docker image is available as `sanglee8888/deepmosaic:latest` on [dockerhub](https://hub.docker.com/), which can be pulled to your local using `docker pull sanglee8888/deepmosaic:latest`. Both amd and arm platforms are available, which can be selected with the `--platform linux/arm64` or `linux/amd64` flag. The usage for it is as follows:
+
+You need to have the input.txt file set up as something like:
+
+## input.txt
+
+|#sample_name|bam|vcf|depth|sex|
+|---|---|---|---|---|
+|sample_1|/mnt/demo/bams/sample_1.bam|/mnt/demo/vcfs/sample_1.vcf|200|M|
+|sample_2|/mnt/demo/bams/sample_2.bam|/mnt/demo/vcfs/sample_2.vcf|200|M|
+|sample_3|/mnt/demo/bams/sample_3.bam|/mnt/demo/vcfs/sample_3.vcf|200|M|
+|sample_4|/mnt/demo/bams/sample_4.bam|/mnt/demo/vcfs/sample_4.vcf|200|M|
+
+Where you must include the /mnt directory for usage with Docker's -v flag command. The sample command for running deepmosaic-draw and deepmosaic-predict are as follows:
+
+## deepmosaic-draw
+docker run -v ~/Desktop/annovar:/mnt/annovar -v ~/Desktop/DeepMosaic/demo:/mnt/demo -v ~/Desktop/output:/mnt/output sanglee8888/deepmosaic draw -i /mnt/demo/input.txt -o /mnt/output -a /mnt/annovar
+
+## deepmosaic-predict 
+docker run -v ~/Desktop/output:/mnt/output sanglee8888/deepmosaic predict -i /mnt/output/features.txt -o /mnt/output/prediction.txt -gb hg19
+
+[Return to Contents](#contents)
+
+</details>
+
+--------------------------------------------
+
+<details><summary>
+     
 # Performance
 
 </summary>
