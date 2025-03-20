@@ -388,8 +388,7 @@ Basic Usage
 
 1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
-
-There maybe some instances where the path to ANNOVAR may not be detected depending on how singularity is set up. In this case, please use the -B flag along with the path to the annovar before running the command options to have it mounted to the sif file.
+3. There maybe some instances where the path to ANNOVAR may not be detected depending on how singularity is set up. In this case, please use the -B flag along with the path to the annovar before running the command options to have it mounted to the sif file.
 `singularity exec -B <path/to/annovar> DeepMosaic.sif deepmosaic-draw <options>`
 
 Training and using your own model
