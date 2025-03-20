@@ -95,7 +95,7 @@ Alternatively, you can use the singularity container. See [Singularity](#Singula
 
 </summary>
 
-We are now providing a [singularity image](https://cloud.sylabs.io/library/arzoopatel5/deepmosaic/deepmosaic) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
+We are now providing [singularity image]([https://cloud.sylabs.io/library/sanglee8888/deepmosaic/deepmosaic]) and [docker image]([https://hub.docker.com/repository/docker/sanglee8888/deepmosaic/general]) to run DeepMosaic. If you want to install and run DeepMosaic manually, please read through and follow these steps. The following steps could be performed in a command line shell environment (Linux, Mac, Windows subsystem Linux etc., whichever has the computational resource and >20G storage to run DeepMosaic)
 
 ## Step 1. Install DeepMosaic
 
@@ -384,7 +384,7 @@ Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/
 
 ### Usage
 
-#Basic Usage
+# Basic Usage
 
 1. `singularity exec DeepMosaic.sif deepmosaic-draw <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options>`
@@ -392,7 +392,7 @@ Singularity containers can be found on [Sylabs](https://cloud.sylabs.io/library/
 
 `singularity exec -B <path/to/annovar> DeepMosaic.sif deepmosaic-draw <options>`
 
-#Training and using your own model
+# Training and using your own model
 
 1. `singularity exec DeepMosaic.sif python /DeepMosaic/deepmosaic/trainModel.py <options>`
 2. `singularity exec DeepMosaic.sif deepmosaic-predict <options> --model-path <path_to_your_model>`
