@@ -413,9 +413,41 @@ See [Usage](#Usage) and [Model Training](#model-training) for more details.
 
 Current Docker image is available as `sanglee8888/deepmosaic:latest` on [dockerhub](https://hub.docker.com/), which can be pulled to your local using `docker pull sanglee8888/deepmosaic:latest`. Both amd and arm platforms are available, which can be selected with the `--platform linux/arm64` or `linux/amd64` flag. The usage for it is as follows:
 
-You need to have the input.txt file set up as something like:
+## Install
 
-## input.txt
+Install Docker:
+
+```bash
+curl -fsSL https://get.docker.com | sh
+docker --version
+```
+
+## Pull the Docker image
+```bash
+docker pull sanglee8888/deepmosaic:latest
+```
+
+Both `amd64` and `arm64` platforms are available. Use the `--platform` flag if needed:
+
+```bash
+docker pull --platform linux/amd64 sanglee8888/deepmosaic:latest
+```
+
+Or for arm64:
+
+```bash
+docker pull --platform linux/arm64 sanglee8888/deepmosaic:latest
+```
+
+### Prepare ANNOVAR (Required)
+
+DeepMosaic requires ANNOVAR for variant annotation. To install find previous instructions in the [Installation](#installation) section.
+
+### File and Directory Setup
+
+The input text file should be structured as follows:
+
+#### input.txt
 
 |#sample_name|bam|vcf|depth|sex|
 |---|---|---|---|---|
@@ -424,15 +456,64 @@ You need to have the input.txt file set up as something like:
 |sample_3|/mnt/demo/bams/sample_3.bam|/mnt/demo/vcfs/sample_3.vcf|200|M|
 |sample_4|/mnt/demo/bams/sample_4.bam|/mnt/demo/vcfs/sample_4.vcf|200|M|
 
-Where you must include the /mnt directory for usage with Docker's -v flag command. The sample command for running deepmosaic-draw and deepmosaic-predict are as follows:
+> All file paths must start with `/mnt/...` to be recognized inside the Docker container.  
+> Ensure all BAM files are indexed with corresponding `.bam.bai` files.
 
-## deepmosaic-draw
-docker run -v ~/Desktop/annovar:/mnt/annovar -v ~/Desktop/DeepMosaic/demo:/mnt/demo -v ~/Desktop/output:/mnt/output sanglee8888/deepmosaic draw -i /mnt/demo/input.txt -o /mnt/output -a /mnt/annovar
+Example directory structure on your host machine:
 
-## deepmosaic-predict 
-docker run -v ~/Desktop/output:/mnt/output sanglee8888/deepmosaic predict -i /mnt/output/features.txt -o /mnt/output/prediction.txt -gb hg19
+```
+~/
+├── annovar/
+│   └── humandb/
+├── DeepMosaic/
+│   └── demo/
+│       ├── bams/
+│       ├── vcfs/
+│       ├── input.txt
+│       └── results/
+```
 
-[Return to Contents](#contents)
+---
+
+### Run DeepMosaic with Docker
+
+**Before running**, make sure your directory structure is correct, check the following:
+
+* **`input.txt`**: in demo folder
+* **`demo/bams/`**: in demo folder
+* **`demo/vcfs/`**: in demo folder
+* **`～/annovar/`**: Must be installed, and path should be `~/anovar` or any other path you specify in the command.
+* **`~/DeepMosaic/`** folder should contain the DeepMosaic repository.
+
+#### deepmosaic-draw
+
+Used for feature extraction and visualization, you may find new generated images in the `demo/results/images` folder.
+
+Use the docker to map the local directory to the container. 
+The `-v` flag mounts the local directory to the container. 
+The `--workdir` flag sets the working directory inside the container. (add this if you use current demo/input.txt as the input file)
+The `-i` flag specifies the input file, and `-o` specifies the output directory.
+
+```bash
+sudo docker run \
+  --workdir=/mnt/demo \
+  -v ~/annovar:/mnt/annovar \
+  -v ~/DeepMosaic/demo:/mnt/demo \
+  -v ~/DeepMosaic/demo/results:/mnt/output \
+  sanglee8888/deepmosaic \
+  draw -i /mnt/demo/input.txt -o /mnt/output -a /mnt/annovar
+```
+
+#### deepmosaic-predict
+
+Used for prediction.
+
+```bash
+sudo docker run \
+  -v ~/DeepMosaic/demo/results:/mnt/output \
+  sanglee8888/deepmosaic \
+  predict -i /mnt/output/features.txt -o /mnt/output/predictions.txt -gb hg19
+```
 
 </details>
 
