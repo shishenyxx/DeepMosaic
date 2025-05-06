@@ -232,12 +232,12 @@ After deepmosaic-draw is successfully executed, the following files/directories 
 ### Usage
 
 ```
-> [DeepMosaic Path]/deepmosaic/deepmosaic-predict -i <output_dir/feature.txt> -o <output.txt> -m [prediction_model (default: efficientnet-b4_epoch_6.pt)] -b [batch_size (default: 10)] -gb <genome_build>
+> [DeepMosaic Path]/deepmosaic/deepmosaic-predict -i <output_dir/features.txt> -o <output.txt> -m [prediction_model (default: efficientnet-b4_epoch_6.pt)] -b [batch_size (default: 10)] -gb <genome_build>
 ```
 
 ### Note:
 
-1. `output_dir/feature.txt` is the output file from last step.
+1. `output_dir/features.txt` is the output file from last step.
 
 2. `output.txt` is the final prediction results.
 
@@ -360,7 +360,7 @@ In order to predict with the newly trained model, make sure to copy it into the 
 
 example command:
 
-`> [DeepMosaic Path]/deepmosaic/deepmosaic-predict -i <output_dir/feature.txt> -o <output.txt> -m newly_trained_model_epoch_6.pt -b [batch_size (default: 10)] -gb <genome_build>`
+`> [DeepMosaic Path]/deepmosaic/deepmosaic-predict -i <output_dir/features.txt> -o <output.txt> -m newly_trained_model_epoch_6.pt -b [batch_size (default: 10)] -gb <genome_build>`
 
 
 [Return to Contents](#contents)
