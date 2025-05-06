@@ -52,7 +52,8 @@ def check_y_region(position):
 
 
 
-def multiprocess_iterator(line):
+def multiprocess_iterator(args):
+    line, image_outdir, matrix_outdir, build = args
     sample_name, bam, chrom, pos, ref, alt, sequencing_depth, sex, cram_ref_dir = line
     '''
     if len(line) == 6:
@@ -266,11 +267,13 @@ def main():
     #Add cram ref path to variants
     for variants in all_variants:
         variants.append(cram_ref_dir)
-     
+
+    #prepare args list
+    args_list = [(variant, image_outdir, matrix_outdir, build) for variant in all_variants]
     #draw images
     try:
         pool = Pool(8) # on 8 processors
-        results = pool.map(multiprocess_iterator, all_variants, 8)
+        results = pool.map(multiprocess_iterator, args_list, chunksize=8)
         for result in results:
             if not result:
                 continue
