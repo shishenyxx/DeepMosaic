@@ -273,7 +273,7 @@ def main():
     #draw images
     try:
         pool = Pool(8) # on 8 processors
-        results = pool.map(multiprocess_iterator, args_list)
+        results = pool.map(multiprocess_iterator, args_list, chunksize=8)
         for result in results:
             if not result:
                 continue
