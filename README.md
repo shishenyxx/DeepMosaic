@@ -536,7 +536,7 @@ Released under GNU-GPL 3.0 [licence](https://github.com/shishenyxx/DeepMosaic/bl
 
 If you have any questions please post a thread at the [issues](https://github.com/shishenyxx/DeepMosaic/issues) section or contact us at:
 
-:email: Xiaoxu Yang: [xiaoxu.yang@genetics.utah.edu](mailto:xiaoxu.yang@genetics.utah.edu)
+:email: Xiaoxu Yang: [xiaoxu.yang@genetics.utah.edu](mailto:xiaoxu.yang@genetics.utah.edu) or the Yang lab [xiaoxuyanglab@gmail.com](mailto:xiaoxuyanglab@gmail.com)
 
 [Information about the Yang Lab](https://sites.google.com/view/xiaoxu-yang-lab)
 
